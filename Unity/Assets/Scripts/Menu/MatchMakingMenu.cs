@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Networking;
+using UnityEngine.SceneManagement;
 
 namespace Menu
 {
@@ -47,7 +48,7 @@ namespace Menu
         #region MatchMaking Events Callbacks
         private void OnMatchFounded()
         {
-
+            SceneManager.LoadScene(1);
         }
 
         private void OnFailedToFindAMatch()
