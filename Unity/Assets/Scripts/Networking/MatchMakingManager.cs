@@ -23,6 +23,7 @@ namespace Networking
         public void StartMatchMaking()
         {
             MatchMakingLog("Starting photon matchmaking");
+            PhotonNetwork.AddCallbackTarget(this);
 
             PhotonNetwork.ConnectUsingSettings();
         }
@@ -31,6 +32,16 @@ namespace Networking
         {
             MatchMakingLog("Request cancel photon matchmaking");
             PhotonNetwork.Disconnect();
+        }
+
+        private void FinishMatchMaking()
+        {
+            MatchMakingLog("Match founded!");
+
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.RemoveCallbackTarget(this);
+            MatchFoundedEvent?.Invoke();
         }
 
         #region LOG
@@ -77,14 +88,11 @@ namespace Networking
 
         public void OnJoinedRoom()
         {
-            MatchMakingLog("Joined a room!");
+            MatchMakingLog("Joined a room! Waiting for more players");
 
             if (PhotonNetwork.PlayerList.Length >= TargetNumberOfPlayers)
             {
-                PhotonNetwork.CurrentRoom.IsOpen = false;
-                PhotonNetwork.CurrentRoom.IsVisible = false;
-                PhotonNetwork.RemoveCallbackTarget(this);
-                MatchFoundedEvent?.Invoke();
+                FinishMatchMaking();
             }
         }
 
@@ -94,10 +102,7 @@ namespace Networking
 
             if (PhotonNetwork.PlayerList.Length >= TargetNumberOfPlayers)
             {
-                PhotonNetwork.CurrentRoom.IsOpen = false;
-                PhotonNetwork.CurrentRoom.IsVisible = false;
-                PhotonNetwork.RemoveCallbackTarget(this);
-                MatchFoundedEvent?.Invoke();
+                FinishMatchMaking();
             }
         }
 
