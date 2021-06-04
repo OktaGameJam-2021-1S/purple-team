@@ -1,0 +1,168 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildOsDeps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildPhotonHostRuntimeInterfaces.csproj.include" />
+
+  <PropertyGroup>
+    <AssemblyName>Photon.LoadBalancing</AssemblyName>
+    <RootNamespace>Photon.LoadBalancing</RootNamespace>
+    <OutputType>Library</OutputType>
+    <CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\build\include\TargetFrameworks.csproj.include" />
+  <Import Project="..\..\..\build\include\MinimalPhotonAppDependency.csproj.include" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;$(TargetDefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;RELEASE;$(TargetDefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>./bin</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\PublishProfiles\**" />
+    <Compile Remove="x64\**" />
+    <Compile Remove="x86\**" />
+    <EmbeddedResource Remove="Properties\PublishProfiles\**" />
+    <EmbeddedResource Remove="x64\**" />
+    <EmbeddedResource Remove="x86\**" />
+    <None Remove="Properties\PublishProfiles\**" />
+    <None Remove="x64\**" />
+    <None Remove="x86\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--<PackageReference Include="Microsoft.Data.SQLite" Version="3.0.0" />-->
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="3.1.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.113.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Hive\PhotonHive\PhotonHive.csproj" />
+    <ProjectReference Include="..\..\Photon.Common\Photon.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="GameServer.xml.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Master.xml.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="plugin.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LoadBalancer.config" Link="LoadBalancer.config" />
+    <None Include="..\PhotonServer.LB.Dev.config" Link="PhotonServer.LB.Dev.config" />
+    <None Include="..\Workload.1Gbps.config" Link="Workload.1Gbps.config" />
+    <None Include="..\Workload.config" Link="Workload.config" />
+    <None Include="properties.proj" />
+  </ItemGroup>
+
+  <Target Name="TransformConfig" AfterTargets="PostBuildDeploy" Condition="'$(ProjectDir)'!='' AND '$(transformConfig)'!='false' ">
+    <PropertyGroup>
+      <PropertyFile Condition=" '$(PropertyFile)' == '' ">$(ProjectDir)properties.proj</PropertyFile>
+    </PropertyGroup>
+
+    <Message Importance="high" Text="Proceeding to transform after build with $(PropertyFile) MasterDir: $(MasterDeployDir) transformConfig:$(transformConfig)"></Message>
+    <MSBuild Projects="..\..\..\build\transformConfig.proj" Targets="TransformConfig" Properties="PropertyFile=$(PropertyFile);RootDir=$(MasterDeployDir)" />
+
+    <Message Importance="high" Text="Proceeding to transform after build with $(PropertyFile) GSDir: $(GSDeployDir) transformConfig:$(transformConfig)"></Message>
+    <MSBuild Projects="..\..\..\build\transformConfig.proj" Targets="TransformConfig" Properties="PropertyFile=$(PropertyFile);RootDir=$(GSDeployDir)" />
+
+    <Message Importance="high" Text="---Transformation done PropertyFile: $(PropertyFile) MSDir: $(MasterDeployDir), GSDir: $(GSDeployDir)"></Message>
+  </Target>
+
+  <Target Name="PostBuildDeploy" AfterTargets="Build" Condition=" '$(TargetFramework)' == '$(BuildTargetNetCore)' OR '$(TargetFramework)' == '$(BuildTargetNetFramework)' ">
+
+    <PropertyGroup>
+      <DeployFolder>$(ProjectDir)../../$(DevOutDir)</DeployFolder>
+      <LBDeployDir>$(DeployFolder)/LoadBalancing</LBDeployDir>
+
+      <MasterDeployDir>$(LBDeployDir)/Master/bin</MasterDeployDir>
+      <GSDeployDir>$(LBDeployDir)/GameServer/bin</GSDeployDir>
+
+      <SourceDir>$(TargetDir)</SourceDir>
+
+      <ConfigPath>$(ProjectDir)/../PhotonServer.LB.Dev.config</ConfigPath>
+      <MasterConfigPath>$(ProjectDir)/Master.xml.config</MasterConfigPath>
+      <GSConfigPath>$(ProjectDir)/GameServer.xml.config</GSConfigPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <SourceFiles Include="$(SourceDir)/**/*.*" Exclude="$(SourceDir)/publish/**" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(SourceFiles)" DestinationFiles="@(SourceFiles->'$(MasterDeployDir)/%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(SourceFiles)" DestinationFiles="@(SourceFiles->'$(GSDeployDir)/%(RecursiveDir)%(Filename)%(Extension)')" />
+
+    <Copy SourceFiles="$(MasterConfigPath)" DestinationFolder="$(MasterDeployDir)" />
+    <Copy SourceFiles="$(GSConfigPath)" DestinationFolder="$(GSDeployDir)" />
+
+    <Copy SourceFiles="$(ConfigPath)" DestinationFolder="$(DeployFolder)/$(ConfigDirName)" />
+  </Target>
+
+  <Target Name="TransformConfigAfterPublish" AfterTargets="PostPublishDeploy" Condition="'$(transformConfig)'!='false'">
+    <PropertyGroup>
+      <PropertyFile Condition=" '$(PropertyFile)' == '' ">$(ProjectDir)properties.proj</PropertyFile>
+    </PropertyGroup>
+
+    <Message Importance="high" Text="Proceeding to transform after publish with $(PropertyFile) MasterDir: $(MasterDeployDir) transformConfig:$(transformConfig)"></Message>
+    <MSBuild Projects="..\..\..\build\transformConfig.proj" Targets="TransformConfig" Properties="PropertyFile=$(PropertyFile);RootDir=$(MasterDeployDir)" />
+
+    <Message Importance="high" Text="Proceeding to transform after publish with $(PropertyFile) GSDir: $(GSDeployDir) transformConfig:$(transformConfig)"></Message>
+    <MSBuild Projects="..\..\..\build\transformConfig.proj" Targets="TransformConfig" Properties="PropertyFile=$(PropertyFile);RootDir=$(GSDeployDir)" />
+
+    <Message Importance="high" Text="---Transformation done PropertyFile: $(PropertyFile) MSDir: $(MasterDeployDir), GSDir: $(GSDeployDir)"></Message>
+  </Target>
+  
+  <Target Name="PostPublishDeploy" AfterTargets="Publish">
+
+    <PropertyGroup>
+      <DeployFolder>$(ProjectDir)../../../$(DeployDir)</DeployFolder>
+      <LBDeployDir>$(DeployFolder)/LoadBalancing</LBDeployDir>
+
+      <MasterDeployDir>$(LBDeployDir)/Master/bin</MasterDeployDir>
+      <GSDeployDir>$(LBDeployDir)/GameServer/bin</GSDeployDir>
+
+      <SourceDir>$(TargetDir)/publish</SourceDir>
+
+      <MasterConfigPath>$(ProjectDir)/Master.xml.config</MasterConfigPath>
+      <GSConfigPath>$(ProjectDir)/GameServer.xml.config</GSConfigPath>
+      <!--<ConfigPath>$(ProjectDir)/../PhotonServer.LB.Dev.config</ConfigPath>-->
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PublishSourceFiles Include="$(SourceDir)/*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(PublishSourceFiles)" DestinationFiles="@(PublishSourceFiles->'$(MasterDeployDir)/%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(PublishSourceFiles)" DestinationFiles="@(PublishSourceFiles->'$(GSDeployDir)/%(RecursiveDir)%(Filename)%(Extension)')" />
+
+    <Copy SourceFiles="$(MasterConfigPath)" DestinationFolder="$(MasterDeployDir)" />
+    <Copy SourceFiles="$(GSConfigPath)" DestinationFolder="$(GSDeployDir)" />
+
+    <!--<Copy SourceFiles="$(ConfigPath)" DestinationFolder="$(DeployFolder)/$(PhotonBinDirName)/" />-->
+  </Target>
+
+</Project>

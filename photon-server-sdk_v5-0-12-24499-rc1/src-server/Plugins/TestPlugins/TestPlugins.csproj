@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildOsDeps.csproj.include" />
+  <Import Project="..\..\..\build\include\ExitGamesLibsVersion.csproj.include" />
+
+  <PropertyGroup>
+    <AssemblyName>TestPlugins</AssemblyName>
+    <RootNamespace>TestPlugins</RootNamespace>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks></TargetFrameworks>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\build\include\TargetFrameworks.csproj.include" />
+
+  <ItemGroup>
+    <PackageReference Include="ExitGames.Logging.Log4Net" Version="$(EGLibsVersion)" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\HivePlugin\PhotonHivePlugin.csproj" />
+    <ProjectReference Include="..\..\Hive\PhotonHive\PhotonHive.csproj" />
+    <ProjectReference Include="..\WebHooks1.2\WebHooks1.2.csproj" />
+  </ItemGroup>
+
+
+  <Import Project="..\..\..\build\include\PluginDeploy.csproj.include" />
+
+</Project>

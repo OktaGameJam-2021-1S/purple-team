@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\build\include\BuildOsDeps.csproj.include" />
+
+  <PropertyGroup>
+    <AssemblyName>PhotonHivePlugin</AssemblyName>
+    <RootNamespace>Photon.Hive.Plugin</RootNamespace>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks></TargetFrameworks>
+    <AssemblyVersion>$(PluginApiVersion).$(SdkRevisionId)</AssemblyVersion>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\include\TargetFrameworks.csproj.include" />
+
+
+  <Target Name="CopyToPluginsLib" AfterTargets="Build" Condition=" '$(TargetFramework)' == '$(BuildTargetNetCore)' OR '$(TargetFramework)' == '$(BuildTargetNetFramework)' ">
+    <PropertyGroup>
+      <SourceDir>$(TargetDir)</SourceDir>
+      <TargetFolder>..\$(PluginsFolder)\$(PluginsLibFolder)</TargetFolder>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <SourceFiles Include="$(SourceDir)/**/*.*" Exclude="$(SourceDir)/publish/**" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(SourceFiles)" DestinationFiles="@(SourceFiles->'$(TargetFolder)/$(TargetFramework)/%(RecursiveDir)%(Filename)%(Extension)')" />
+
+  </Target>
+
+</Project>

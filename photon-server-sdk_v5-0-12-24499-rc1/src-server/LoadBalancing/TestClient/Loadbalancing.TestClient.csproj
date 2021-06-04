@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildOsDeps.csproj.include" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\build\include\TargetFrameworks.csproj.include" />
+  <Import Project="..\..\..\build\include\MinimalPhotonAppDependency.csproj.include" />
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Hive\PhotonHive\PhotonHive.csproj" />
+    <ProjectReference Include="..\LoadBalancing\LoadBalancing.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="ExitGames.Logging.Log4Net" Version="$(EGLibsVersion)" />
+    <PackageReference Update="ExitGamesLibs" Version="$(EGLibsVersion)" />
+  </ItemGroup>
+
+
+</Project>

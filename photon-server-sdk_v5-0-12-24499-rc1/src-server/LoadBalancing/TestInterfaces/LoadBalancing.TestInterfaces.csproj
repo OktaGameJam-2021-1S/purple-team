@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildOsDeps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildPhotonHostRuntimeInterfaces.csproj.include" />
+
+  <PropertyGroup>
+    <TargetFramework></TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+  <Import Project="..\..\..\build\include\TargetFrameworksUnitTest.csproj.include" />
+
+</Project>

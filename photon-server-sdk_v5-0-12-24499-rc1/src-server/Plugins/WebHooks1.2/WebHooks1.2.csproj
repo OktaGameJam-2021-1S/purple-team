@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildOsDeps.csproj.include" />
+
+  <PropertyGroup>
+    <AssemblyName>PhotonHive.WebHooksPlugin1.2</AssemblyName>
+    <RootNamespace>Photon.Hive.Plugin.WebHooks</RootNamespace>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks></TargetFrameworks>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\build\include\TargetFrameworks.csproj.include" />
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>TestPlugins</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <Choose>
+    <When Condition="Exists('..\..\HivePlugin\PhotonHivePlugin.csproj')">
+      <ItemGroup>
+        <ProjectReference Include="..\..\HivePlugin\PhotonHivePlugin.csproj" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="PhotonHivePlugin">
+          <HintPath>$(MSBuildThisFileDirectory)\..\lib\$(TargetFramework)\PhotonHivePlugin.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+  <Import Project="..\..\..\build\include\PluginDeploy.csproj.include" />
+
+</Project>

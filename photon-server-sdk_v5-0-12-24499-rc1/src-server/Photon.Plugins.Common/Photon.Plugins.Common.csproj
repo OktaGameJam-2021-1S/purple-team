@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\build\include\BuildOsDeps.csproj.include" />
+
+  <PropertyGroup>
+    <AssemblyName>Photon.Plugins.Common</AssemblyName>
+    <RootNamespace>Photon.Plugins.Common</RootNamespace>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks></TargetFrameworks>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\include\TargetFrameworks.csproj.include" />
+
+</Project>

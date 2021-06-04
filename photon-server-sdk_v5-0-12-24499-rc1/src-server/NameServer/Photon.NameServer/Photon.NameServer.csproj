@@ -1,0 +1,117 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildOsDeps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildPhotonHostRuntimeInterfaces.csproj.include" />
+
+  <PropertyGroup>
+    <AssemblyName>Photon.NameServer</AssemblyName>
+    <RootNamespace>Photon.NameServer</RootNamespace>
+    <CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <TargetFrameworks></TargetFrameworks>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\build\include\TargetFrameworks.csproj.include" />
+  <Import Project="..\..\..\build\include\MinimalPhotonAppDependency.csproj.include" />
+
+  <PropertyGroup>
+    <OutputPath>./bin</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="properties.proj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="3.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Photon.Common\Photon.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="app.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Nameserver.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="NameServer.xml.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="TransformConfig" AfterTargets="PostBuildDeploy" Condition="'$(ProjectDir)'!='' AND '$(transformConfig)'!='false' ">
+    <PropertyGroup>
+      <PropertyFile>$(ProjectDir)properties.proj</PropertyFile>
+    </PropertyGroup>
+    <Message Importance="high" Text="Proceeding to transform After BUILD with $(PropertyFile) TargetDir: $(NSDeployDir)"></Message>
+    <MSBuild Projects="..\..\..\build\transformConfig.proj" Targets="TransformConfig" Properties="PropertyFile=$(PropertyFile);RootDir=$(NSDeployDir)" />
+  </Target>
+
+  <Target Name="PostBuildDeploy" AfterTargets="Build" Condition=" '$(TargetFramework)' == '$(BuildTargetNetCore)' OR '$(TargetFramework)' == '$(BuildTargetNetFramework)' ">
+
+    <PropertyGroup>
+      <DeployFolder>$(ProjectDir)../../$(DevOutDir)</DeployFolder>
+      <NSDeployDir>$(DeployFolder)/NameServer/bin</NSDeployDir>
+
+      <SourceDir>$(TargetDir)</SourceDir>
+
+      <ConfigPath>$(ProjectDir)/Nameserver.json</ConfigPath>
+      <AppConfigPath>$(ProjectDir)/Nameserver.xml.config</AppConfigPath>
+    </PropertyGroup>
+
+    <Message Importance="high" Text="SourceDir is $(SourceDir)"></Message>
+    <Message Importance="high" Text="Building and copying NameServer to $(NSDeployDir)"></Message>
+    <ItemGroup>
+      <SourceFiles Include="$(SourceDir)/*.*" />
+      <RSourceFiles Include="$(SourceDir)/runtimes/**/*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(SourceFiles)" DestinationFiles="@(SourceFiles->'$(NSDeployDir)/%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(RSourceFiles)" DestinationFiles="@(RSourceFiles->'$(NSDeployDir)/runtimes/%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="$(ConfigPath)" DestinationFolder="$(DeployFolder)/" />
+
+    <Copy SourceFiles="$(AppConfigPath)" DestinationFolder="$(NSDeployDir)" />
+  </Target>
+
+  <Target Name="TransformConfigAfterPublish" AfterTargets="PostPublishDeploy" Condition="'$(transformConfig)'!='false'">
+    <PropertyGroup>
+      <PropertyFile Condition=" '$(PropertyFile)' == '' ">$(ProjectDir)properties.proj</PropertyFile>
+    </PropertyGroup>
+    <Message Importance="high" Text="Proceeding to transform After PUBLISH with $(PropertyFile) TargetDir: $(NSDeployDir)"></Message>
+    <MSBuild Projects="..\..\..\build\transformConfig.proj" Targets="TransformConfig" Properties="PropertyFile=$(PropertyFile);RootDir=$(NSDeployDir)" />
+    <Message Importance="high" Text="---Transformation done PropertyFile: $(PropertyFile) TargetDir: $(NSDeployDir)"></Message>
+  </Target>
+
+  <Target Name="PostPublishDeploy" AfterTargets="Publish">
+
+    <PropertyGroup>
+      <DeployFolder>$(ProjectDir)../../../$(DeployDir)</DeployFolder>
+      <NSDeployDir>$(DeployFolder)/Nameserver/bin</NSDeployDir>
+
+      <SourceDir>$(TargetDir)/publish</SourceDir>
+
+      <ConfigPath>$(ProjectDir)/Nameserver.json</ConfigPath>
+
+      <AppConfigPath>$(ProjectDir)/Nameserver.xml.config</AppConfigPath>
+    </PropertyGroup>
+
+    <Message Importance="high" Text="Publishing NameServer to $(NSDeployDir)"></Message>
+    <ItemGroup>
+      <PublishSourceFiles Include="$(SourceDir)/**/*.*" />
+    </ItemGroup>
+    
+    <Copy SourceFiles="@(PublishSourceFiles)" DestinationFiles="@(PublishSourceFiles->'$(NSDeployDir)/%(RecursiveDir)%(Filename)%(Extension)')" />
+
+    <Copy SourceFiles="$(ConfigPath)" DestinationFolder="$(DeployFolder)/" />
+
+    <Copy SourceFiles="$(AppConfigPath)" DestinationFolder="$(NSDeployDir)" />
+  </Target>
+</Project>

@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\build\include\SharedProps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildOsDeps.csproj.include" />
+  <Import Project="..\..\..\build\include\BuildPhotonHostRuntimeInterfaces.csproj.include" />
+
+  <PropertyGroup>
+    <AssemblyName>Photon.LoadBalancing.UnitTests</AssemblyName>
+    <RootNamespace>Photon.LoadBalancing.UnitTests</RootNamespace>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks></TargetFrameworks>
+    <CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\build\include\TargetFrameworksUnitTest.csproj.include" />
+  <Import Project="..\..\..\build\include\MinimalPhotonAppDependency.csproj.include" />
+  <Import Project="..\..\..\build\include\PhotonSocketServer.UnitTesting.csproj.include" />
+  <Import Project="..\..\..\build\include\ClientLibDependency.csproj.include" />
+
+  <ItemGroup>
+    <None Include="..\..\..\lib\PhotonEncryptorPlugin.dll" Link="PhotonEncryptorPlugin.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\LoadBalancing\app.config" Link="app.config" />
+    <None Include="..\LoadBalancing\log4net.config" Link="log4net.config" />
+    <None Include="properties.proj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\HivePlugin\PhotonHivePlugin.csproj" />
+    <ProjectReference Include="..\..\NameServer\Photon.NameServer\Photon.NameServer.csproj" />
+    <ProjectReference Include="..\..\Photon.Plugins.Common\Photon.Plugins.Common.csproj" />
+    <ProjectReference Include="..\..\Photon.UnitTest.Utils\Photon.UnitTest.Utils.csproj" />
+    <ProjectReference Include="..\..\Plugins\TestPlugins\TestPlugins.csproj" />
+    <ProjectReference Include="..\..\Plugins\WebHooks1.2\WebHooks1.2.csproj" />
+    <ProjectReference Include="..\LoadBalancing\LoadBalancing.csproj" />
+    <ProjectReference Include="..\TestInterfaces\LoadBalancing.TestInterfaces.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="3.1.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.Data.SQLite" Version="3.1.8" />
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="LoadBalancer.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LoadBalancing.UnitTests.xml.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="tests_log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  
+  <Target Name="TransformConfig" AfterTargets="Build" Condition="'$(ProjectDir)'!='' AND '$(transformConfig)'!='false' ">
+    <PropertyGroup>
+      <PropertyFile>$(ProjectDir)properties.proj</PropertyFile>
+    </PropertyGroup>
+    <Message Importance="high" Text="Proceeding to transform with $(PropertyFile) $(TargetDir)"></Message>
+    <MSBuild Projects="..\..\..\build\transformConfig.proj" Targets="TransformConfig" Properties="PropertyFile=$(PropertyFile);RootDir=$(TargetDir)" />
+  </Target>
+
+</Project>
