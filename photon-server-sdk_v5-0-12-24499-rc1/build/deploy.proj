@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <Import Project="./include/SharedProps.csproj.include" />
+  <Import Project="./include/TargetFrameworks.csproj.include" />
+  <Import Project="../lib/ExitGames.MSBuild.Extensions/1.0/EGMSBuildExt.tasks"/>
+
+  <PropertyGroup>
+    <PhotonPath Condition=" '$(Framework)'=='netcore' AND '$(OS)' == 'win' ">../deploy_win/bin</PhotonPath>
+    <PhotonPath Condition=" '$(Framework)'=='netcore' AND '$(OS)' == 'linux' ">../deploy_linux/bin</PhotonPath>
+    <PhotonPath Condition=" '$(Framework)'=='netframework' ">../deploy/bin_Win64</PhotonPath>
+    
+    <slnpath>..\src-server</slnpath>
+    <binpath>$(rootpath)\$(binp)</binpath>
+    
+    <SolutionFilePath>$(slnpath)\$(rootpath)\$(slnfile)</SolutionFilePath>
+  </PropertyGroup>
+  
+  <ItemGroup>
+
+    <!-- we are using CLEAN & delete OUTPUT PATHs before builds - so we don't need to exclude much here. -->
+    <!-- SVN files are only used here because we might have some in the "assets" folders. -->
+
+    <DefaultExclude Include="$(slnpath)/$(rootpath)/**/*.svn-base"/>
+    <DefaultExclude Include="$(slnpath)/$(rootpath)/**/.svn/**"/>
+
+    <DefaultExclude Include="$(slnpath)/$(rootpath)/**/*.log"/>
+    <DefaultExclude Include="$(slnpath)/$(rootpath)/**/log/*.*" />
+  </ItemGroup>
+
+  <Target Name="DeployInitialChecks">
+    <Error Condition="'$(Framework)'!= 'netframework' AND '$(Framework)'!= 'netcore' "
+      Text="'Framework' property should be set to either 'netframework' or 'netcore'. But it is '$(Framework)'" />
+      
+    <Error Condition="'$(OS)'!= 'win' AND '$(OS)'!= 'linux' "
+      Text="'OS' property should be set to either 'win' or 'linux'. But it is '$(OS)'" />
+  </Target>
+
+
+  <!-- *** TARGETS  -->
+
+  <Target Name="Loadbalancing" DependsOnTargets="DeployInitialChecks">
+    <Exec Condition=" '$(Framework)'=='netcore' " Command="dotnet publish ../src-server/LoadBalancing/LoadBalancing.sln -f $(BuildTargetNetCore)" />
+    <Exec Condition=" '$(Framework)'=='netframework' " Command="dotnet publish ../src-server/LoadBalancing/LoadBalancing.sln -f $(BuildTargetNetFramework)" />
+  </Target>
+
+  <Target Name="NameServer" DependsOnTargets="DeployInitialChecks">
+    <Message Text="Building NameServer. Configuration $(Configuration) Framework $(Framework). os=$(OS)" Importance="high"/>
+    
+    <Exec Condition=" '$(Framework)'=='netcore'  AND '$(OS)' == 'win'" Command="dotnet publish ../src-server/NameServer/Photon.NameServer/Photon.NameServer.csproj -f $(BuildTargetNetCore)" />
+
+    <Exec Condition=" '$(Framework)'=='netcore'  AND '$(OS)' == 'linux'" Command="dotnet publish ../src-server/NameServer/Photon.NameServer/Photon.NameServer.csproj -f $(BuildTargetNetCore)" />
+
+    <Exec Condition=" '$(Framework)'=='netframework' " Command="dotnet publish ../src-server/NameServer/NameServer.sln -f $(BuildTargetNetFramework)" />
+
+  </Target>
+
+  <Target Name="BuildAll" DependsOnTargets="Loadbalancing;NameServer"/>
+  <!-- for backards compatibility -->
+  <Target Name="BuildAndCopyForDeployComplete" DependsOnTargets="Loadbalancing;NameServer"/>
+
+  <!-- ************************************************************** -->
+
+  <!-- ************************************************************** -->
+  
+    <Target Name="CopyConfigFiles">
+      
+    <Message Text="- - Copy config files: $(configpath)\config\** $(destination)" Importance="high"></Message>
+
+    <ItemGroup>
+      <DeployConfigFiles Include="$(configpath)\config\**\**;$(configpath)\config\**" Exclude="@(DefaultExclude);$(configpath)\config\**\.svn\**" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(DeployConfigFiles)" DestinationFiles="@(DeployConfigFiles->'$(destination)\%(RecursiveDir)%(Filename)%(Extension)')" />
+        
+  </Target>
+
+  <Target Name="Clean">
+    <!-- Clean solution-->
+    <Message Text="- - Clean solution: $(SolutionFilePath) at slnpath $(slnpath) at rootpath $(rootpath)" Importance="high"></Message>
+    <Message Text="- - Configuration: $(Configuration), Framework: $(Framework)" Importance="high"/>
+    
+    <Exec Command="dotnet clean $(SolutionFilePath) -c $(Configuration)" />
+
+    <Message Text="- - Delete output path: $(slnpath)\$(binpath)bin" Importance="high"></Message>
+        
+    <RemoveDir Directories="$(slnpath)\$(binpath)bin"/>
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="Clean">
+    <Message Text="- - Building Solution: $(SolutionFilePath)" Importance="high"/>
+    <Message Text="- - Configuration: $(Configuration), Framework: $(Framework)" Importance="high"/>
+
+    <!-- <MSBuild Projects="$(SolutionFilePath)" Properties="Configuration=$(Configuration)" /> -->
+    <Exec Condition=" '$(Framework)'=='netcore'  AND '$(OS)' == 'win'" Command="dotnet publish $(SolutionFilePath) -f $(BuildTargetNetCore) /p:TransformConfig=$(TransformConfig) -c $(Configuration)" />
+
+    <Exec Condition=" '$(Framework)'=='netcore'  AND '$(OS)' == 'linux'" Command="dotnet publish $(SolutionFilePath) -f $(BuildTargetNetCore) /p:TransformConfig=$(TransformConfig) -c $(Configuration)" />
+
+    <Exec Condition=" '$(Framework)'=='netframework' " Command="dotnet publish $(SolutionFilePath) -f $(BuildTargetNetFramework) /p:TransformConfig=$(TransformConfig) -c $(Configuration)" />
+
+    <Message Text=" "></Message>
+    <Message Text="- - rebuild $(SolutionFilePath) finished." Importance="high"/>
+  </Target>
+
+
+  <Target Name="BuildAndCopyForDeploy" DependsOnTargets="build">
+    <!-- <Message Text="Copy for deploy: $(slnpath)\$(binpath) (assets\** and bin\**);dest:$(destination)" Importance="high"/> -->
+    
+    <!-- <Message Text="Remove $(destination)" Importance="high"/> -->
+    <!-- <RemoveDir Directories="$(destination)" /> -->
+
+    <!-- <CreateItem Include="$(slnpath)\$(binpath)bin\**\*.*"> -->
+      <!-- <Output ItemName="FilesToCopy" TaskParameter="Include"/> -->
+    <!-- </CreateItem> -->
+    <!-- <Message Text="Copy: @(FilesToCopy)"/> -->
+    <!-- <Copy SourceFiles="@(FilesToCopy)" DestinationFiles="@(FilesToCopy->'$(destination)\bin\%(RecursiveDir)%(Filename)%(Extension)')" /> -->
+
+    <!-- <CreateItem Include="$(slnpath)\$(binpath)assets\**\*.*"> -->
+      <!-- <Output ItemName="AssetsToCopy" TaskParameter="Include"/> -->
+    <!-- </CreateItem> -->
+    <!-- <Message Text="Copy: @(AssetsToCopy)"/> -->
+    <!-- <Copy SourceFiles="@(AssetsToCopy)" DestinationFiles="@(AssetsToCopy->'$(destination)\assets\%(RecursiveDir)%(Filename)%(Extension)')" /> -->
+
+    <!-- <Message Text=">>> COPY for server deploy completed for $(SolutionFilePath)" Importance="high" /> -->
+  </Target> 
+  
+</Project>

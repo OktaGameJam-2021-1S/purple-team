@@ -1,0 +1,12 @@
+<!-- Ensures that native libraries are copied to the output directory for Exe targets -->
+<Project>
+
+  <Import Project="PhotonSocketServer.csproj.include" />
+	<Import Project="ExitGamesLibsVersion.csproj.include" />
+
+
+  <ItemGroup>
+    <PackageReference Include="ExitGamesLibs" Version="$(EGLibsVersion)" />
+  </ItemGroup>
+
+</Project>

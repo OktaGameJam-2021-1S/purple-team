@@ -1,0 +1,10 @@
+<!-- Ensures that native libraries are copied to the output directory for Exe targets -->
+<Project>
+
+  <Import Project="MinimalPhotonDependency.csproj.include" />
+
+  <ItemGroup>
+    <PackageReference Include="ExitGames.Logging.Log4Net" Version="$(EGLibsVersion)" />
+  </ItemGroup>
+
+</Project>

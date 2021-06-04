@@ -1,0 +1,19 @@
+<!-- Ensures that native libraries are copied to the output directory for Exe targets -->
+<Project>
+
+  <PropertyGroup Condition=" '$(OS)' != 'Unix' ">
+    <BuildOS>Windows</BuildOS>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(OS)' == 'Unix' And Exists('/Applications') And Exists('/Library') And Exists('/System') ">
+    <BuildOS>Mac</BuildOS>
+    <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(OS)' == 'Unix' And '$(BuildOS)' == '' ">
+    <BuildOS>Linux</BuildOS>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <Import Project="BuildOsDeps.$(BuildOS).csproj.include" />
+
+</Project>

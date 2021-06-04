@@ -1,0 +1,33 @@
+<Project>
+
+  <PropertyGroup Condition=" '$(RuntimeIdentifier)' == 'linux-x64' OR '$(RuntimeIdentifier)' == 'ubuntu.16.04-x64' ">
+    <DeployDir>$(DeployLinuxDirName)</DeployDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RuntimeIdentifier)' == 'osx-x64'">
+    <DeployDir>$(DeployOsxDirName)</DeployDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == '$(BuildTargetNetFramework)'">
+    <DeployDir>$(DeployNetFrameworkDirName)</DeployDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RuntimeIdentifier)' == 'win-x64' AND '$(TargetFramework)'!= '$(BuildTargetNetFramework)'">
+    <DeployDir>$(DeployWinDirName)</DeployDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == '$(BuildTargetNetFramework)'">
+    <DevOutPlatform>framework</DevOutPlatform>
+    <PhotonBinDirName>bin_Win64</PhotonBinDirName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)'!= '$(BuildTargetNetFramework)'">
+    <DevOutPlatform>netcore</DevOutPlatform>
+    <PhotonBinDirName>bin</PhotonBinDirName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DevOutDir>$(DevOutDirName)/$(DevOutPlatform)</DevOutDir>
+  </PropertyGroup>
+
+</Project>

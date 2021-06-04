@@ -1,0 +1,59 @@
+<Project>
+  <Target Name="SetPluginPublishDir" Outputs="$(localProp)">
+    <PropertyGroup>
+      <localProp>$(ProjectName)</localProp>
+      <localProp Condition="'$(ProjectName)'=='TestPlugins'">$(PublishTPDirName)</localProp>
+      <localProp Condition="'$(ProjectName)'=='WebHooks1.2'">$(PublishWB12DirName)</localProp>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="PostPublishDeploy" AfterTargets="Publish">
+
+    <PropertyGroup  Condition="'$(PhotonPluginVersion)'==''">
+        <PhotonPluginVersion>1.0</PhotonPluginVersion>
+    </PropertyGroup>
+
+    <CallTarget Targets="SetPluginPublishDir">
+      <Output TaskParameter="TargetOutputs" PropertyName="PluginPublishDir"/>
+    </CallTarget>
+
+    <Message Importance="high" Text="Publishing plugins: $(ProjectName) to $(PluginPublishDir)"></Message>
+
+    <!--putting stuff to deploy_xxx/...-->
+    <PropertyGroup>
+      <DeployFolder>$(MSBuildThisFileDirectory)../../$(DeployDir)</DeployFolder>
+      <PluginsDeployDir>$(DeployFolder)/Plugins/$(PluginPublishDir)/bin</PluginsDeployDir>
+      <SourceDir>$(TargetDir)/publish</SourceDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PublishSourceFiles Include="$(SourceDir)/*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(PublishSourceFiles)" DestinationFolder="$(PluginsDeployDir)/" />
+  </Target>
+
+  <Target Name="PostBuildDeploy" AfterTargets="Build"  Condition=" '$(TargetFramework)' == '$(BuildTargetNetCore)' OR '$(TargetFramework)' == '$(BuildTargetNetFramework)' ">
+
+    <PropertyGroup  Condition="'$(PhotonPluginVersion)'==''">
+        <PhotonPluginVersion>1.0</PhotonPluginVersion>
+    </PropertyGroup>
+
+    <CallTarget Targets="SetPluginPublishDir">
+      <Output TaskParameter="TargetOutputs" PropertyName="PluginOutDir"/>
+    </CallTarget>
+    
+    <!--putting stuff to dev_out_xxx/...-->
+    <PropertyGroup>
+      <DevOutFolder>$(MSBuildThisFileDirectory)../../src-server/$(DevOutDir)</DevOutFolder>
+      <PluginsOutDir>$(DevOutFolder)/Plugins/$(PluginOutDir)/bin</PluginsOutDir>
+      <SourceDir>$(TargetDir)</SourceDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <BuildSourceFiles Include="$(SourceDir)/*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(BuildSourceFiles)" DestinationFolder="$(PluginsOutDir)/" />
+  </Target>
+</Project>

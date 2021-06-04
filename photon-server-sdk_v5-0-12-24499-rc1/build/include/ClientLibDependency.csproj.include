@@ -1,0 +1,10 @@
+<Project>
+  <ItemGroup>
+    <Reference Include="PhotonClient-ServerSdk">
+      <HintPath>$(MSBuildThisFileDirectory)\..\..\lib\Photon-NetStandard-ServerSdk.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonRealtimeClient-ServerSdk">
+      <HintPath>$(MSBuildThisFileDirectory)\..\..\lib\PhotonRealtime-NetStandard-ServerSdk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,44 @@
+<Project>
+
+  <PropertyGroup>
+    <BuildTargetNetCore>netcoreapp3.1</BuildTargetNetCore>
+    <BuildTargetNetFramework>net461</BuildTargetNetFramework>
+    <BuildTargetNetStandard>netstandard2.0</BuildTargetNetStandard>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BuildTargetNetCoreDefines></BuildTargetNetCoreDefines>
+    <BuildTargetNetFrameworkDefines></BuildTargetNetFrameworkDefines>
+    <BuildTargetNetStandardDefines></BuildTargetNetStandardDefines>
+  </PropertyGroup>
+
+  <!-- Windows libs -->
+  <PropertyGroup Condition=" '$(BuildOS)' == 'Windows' AND '$(OutputType)' != 'exe' ">
+    <TargetFrameworks>$(BuildTargetNetFramework)</TargetFrameworks>
+  </PropertyGroup>
+
+  <!-- Windows executables -->
+  <PropertyGroup Condition=" '$(BuildOS)' == 'Windows' AND '$(OutputType)' == 'exe' ">
+    <TargetFrameworks>$(BuildTargetNetFramework)</TargetFrameworks>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == '$(BuildTargetNetCore)' ">
+    <TargetDefineConstants>$(BuildTargetNetCoreDefines)</TargetDefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == '$(BuildTargetNetFramework)' ">
+    <TargetDefineConstants>$(BuildTargetNetFrameworkDefines)</TargetDefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == '$(BuildTargetNetStandard)' ">
+    <TargetDefineConstants>$(BuildTargetNetStandardDefines)</TargetDefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <DefineConstants>$(TargetDefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <Import Project="DeployDirSelector.csproj.include" />
+
+
+</Project>

@@ -1,0 +1,8 @@
+<!-- Ensures that native libraries are copied to the output directory for Exe targets -->
+<Project >
+
+  <ItemGroup>
+    <PackageReference Include="ExitGames.PhotonHostRuntimeInterfaces" Version="3.81.0" />
+  </ItemGroup>
+
+</Project>

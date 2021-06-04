@@ -1,0 +1,11 @@
+<Project>
+  <!--
+  <ItemGroup>
+    <Content Include="somdirpath\some_os_specific_file_we_want_to_have">
+      <Link>libgrpc_csharp_ext.x86.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>false</Pack>
+    </Content>
+  </ItemGroup>
+   -->
+</Project>

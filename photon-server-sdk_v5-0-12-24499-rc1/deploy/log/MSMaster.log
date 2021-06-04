@@ -1,0 +1,309 @@
+﻿2021-06-04 17:42:46,946 [1] INFO  Photon.LoadBalancing.MasterServer.MasterApplication - Master server initialization started
+2021-06-04 17:42:46,968 [1] INFO  Photon.LoadBalancing.MasterServer.MasterApplication - TokenCreator initialized with an expiration of 01:00:00
+2021-06-04 17:42:47,708 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - Static initialization of Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters counter manager with fake counters
+2021-06-04 17:42:47,709 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - Static initialization of Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters counter manager with fake counters compete
+2021-06-04 17:42:47,710 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - Initializing performance counters
+2021-06-04 17:42:47,710 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - User perf counters permission level detected as:Write
+2021-06-04 17:42:47,710 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - PerformanceCounter category 'Photon: Custom Authentication Results' found.
+2021-06-04 17:42:47,711 [1] INFO  Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - PerformanceCounter Results Data does not exists. Counters and will be recreated
+2021-06-04 17:42:47,711 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - PerformanceCounter category 'Photon: Custom Authentication Results' validation failed, recreating category.
+2021-06-04 17:42:50,871 [1] INFO  Photon.Common.LoadBalancer.LoadBalancer`1 - Initialized Load Balancer from configuration file: E:\external_projects\purple-team\photon-server-sdk_v5-0-12-24499-rc1\deploy\LoadBalancer.config
+2021-06-04 17:42:50,873 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - Creating application: appId={Default}/{Default}
+2021-06-04 17:42:50,949 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Creating lobby: name=, type=Default
+2021-06-04 17:42:50,950 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - AppLobby - useLegacyLobbies False, limitGameList null, limitGameListUpdate null, limitSqlFilterResults null
+2021-06-04 17:42:50,950 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - MasterServerSettings - limitGameList 500, limitGameListUpdate 500, limitSqlFilterResults 100
+2021-06-04 17:42:50,952 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameList - Creating new GameList
+2021-06-04 17:42:50,953 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.LimitedGameList - Creating new LimitedGameList
+2021-06-04 17:42:50,962 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - Plugin configured: name=TestPlugins
+2021-06-04 17:42:50,962 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: AsyncJoin=False
+2021-06-04 17:42:50,962 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: BaseUrl=http://localhost:55557/realtime-webhooks-1.2
+2021-06-04 17:42:50,963 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: HasErrorInfo=true
+2021-06-04 17:42:50,963 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: IsPersistent=true
+2021-06-04 17:42:50,963 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathClose=GameClose
+2021-06-04 17:42:50,963 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathCreate=GameCreate
+2021-06-04 17:42:50,963 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathEvent=GameEvent
+2021-06-04 17:42:50,964 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathGameProperties=GameProperties
+2021-06-04 17:42:50,964 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathJoin=GameJoin
+2021-06-04 17:42:50,964 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathLeave=GameLeave
+2021-06-04 17:42:50,964 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathLoad=GameCreate
+2021-06-04 17:42:50,971 [1] DEBUG Photon.Common.Authentication.CustomAuthHandler - AuthSettings are disabled in config. No CustomAuth
+2021-06-04 17:42:50,972 [1] INFO  Photon.LoadBalancing.MasterServer.MasterApplication - Master server initialization finished
+2021-06-04 17:42:50,972 [1] INFO  Photon.SocketServer.ApplicationBase - Application start: AppId=Master; AppPath=E:\external_projects\purple-team\photon-server-sdk_v5-0-12-24499-rc1\deploy\LoadBalancing\Master, Type=Photon.LoadBalancing.MasterServer.MasterApplication 
+2021-06-04 17:42:50,973 [1] INFO  Photon.SocketServer.ApplicationBase - Using Server GC:True
+2021-06-04 17:42:50,973 [1] INFO  Photon.SocketServer.ApplicationBase - Using GC LatencyMode:Interactive
+2021-06-04 17:42:53,539 [19] DEBUG Photon.LoadBalancing.MasterServer.MasterApplication - Received init request from game client on leader node
+2021-06-04 17:42:53,550 [19] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker scheduled. authTimeout:20000 p:T:MasterClientPeer,ConnId:0,ip:127.0.0.1:0,Udp,GpBinaryV18
+2021-06-04 17:42:53,554 [19] INFO  Photon.SocketServer.Diagnostics.HttpQueuePerformanceCounters - Performance counters successfully initialized: instanceName=_Total
+2021-06-04 17:42:53,560 [18] DEBUG Photon.LoadBalancing.MasterServer.MasterApplication - Received init request from game server
+2021-06-04 17:42:53,562 [18] INFO  Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - game server connection from 127.0.0.1:52942 established (id=1)
+2021-06-04 17:42:53,612 [18] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContextManager - Registering GS by InitRequest. key:'127.0.0.1-5056-4531', id:'d17ff238-46ba-49e3-9a0d-8440a564d931', state:0, loadIndex:3, p:T:IncomingGameServerPeer,ConnId:1,ip:127.0.0.1:52942,Tcp,GpBinaryV18
+2021-06-04 17:42:53,617 [18] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - Attaching new peer to context. old peer:, new peer:T:IncomingGameServerPeer,ConnId:1,ip:127.0.0.1:52942,Tcp,GpBinaryV18, ctx:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:42:53,618 [18] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - Context attached to peer. context:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], p:GameServer(Id=d17ff238-46ba-49e3-9a0d-8440a564d931, ConnId=1) at 127.0.0.1:4531/127.0.0.1:5056
+2021-06-04 17:42:53,619 [18] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - Peer attached to context:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:42:53,620 [18] INFO  Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistant - Replication started for context:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:42:53,624 [18] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - GameServer state changed for 127.0.0.1:4531: old=Offline, new=Normal 
+2021-06-04 17:42:53,631 [18] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Adding server: server=[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931] workload=Level3, priority=0
+2021-06-04 17:42:53,654 [18] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level3 and load of the rest=Level3
+2021-06-04 17:42:53,655 [18] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:42:53,656 [18] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Added server: server=[Server:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], State:Normal, Load:Level3, Prio:0, Weight:13] workload=Level3
+2021-06-04 17:42:53,658 [18] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContextManager - GS is added. key:'127.0.0.1-5056-4531', id:'d17ff238-46ba-49e3-9a0d-8440a564d931',p:GameServer(Id=d17ff238-46ba-49e3-9a0d-8440a564d931, ConnId=1) at 127.0.0.1:4531/127.0.0.1:5056
+2021-06-04 17:42:53,660 [18] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContextManager - GameServers List:
+host_localhost, state_Normal, load_Level3, lbPriority_0, serverId_d17ff238-46ba-49e3-9a0d-8440a564d931, key_127.0.0.1-5056-4531, p_has peer
+
+2021-06-04 17:42:53,668 [19] INFO  Photon.SocketServer.Diagnostics.HttpQueuePerformanceCounters - Performance counters successfully initialized: instanceName=LoadBalancing_rpc
+2021-06-04 17:42:53,714 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Handling of ReplicationHelperEvent event. replicated count:0,expected count:0. context:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:42:53,715 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistant - OnReplicationFinsihed for server: [key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:42:53,779 [18] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Disconnect: peer=T:MasterClientPeer,ConnId:0,ip:127.0.0.1:0,Udp,GpBinaryV18, UserId:: reason=1, detail=
+2021-06-04 17:42:53,780 [18] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker stopped. authTimeout:20000 p:T:MasterClientPeer,ConnId:0,ip:127.0.0.1:0,Udp,GpBinaryV18
+2021-06-04 17:42:54,729 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level3 to Level5, PeerCount 1
+2021-06-04 17:42:54,731 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], State:Normal, Load:Level3, Prio:0, Weight:13], oldWorkload=Level3, newWorkload=Level5
+2021-06-04 17:42:54,732 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level5 and load of the rest=Level5
+2021-06-04 17:42:54,732 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:43:01,830 [16] DEBUG Photon.LoadBalancing.MasterServer.MasterApplication - Received init request from game client on leader node
+2021-06-04 17:43:01,830 [16] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker scheduled. authTimeout:20000 p:T:MasterClientPeer,ConnId:1,ip:127.0.0.1:62049,Udp,GpBinaryV18
+2021-06-04 17:43:01,972 [17] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker stopped. authTimeout:20000 p:T:MasterClientPeer,ConnId:1,ip:127.0.0.1:62049,Udp,GpBinaryV18
+2021-06-04 17:43:01,973 [17] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - HandleAuthenticateRequest:appId=2e3a4622-ea08-472f-9c17-0754ee01ae0c;version=_2.31;region=;type=0;userId=546ac140-9ece-43b4-a77a-80c439c21401
+2021-06-04 17:43:01,979 [17] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - OnClientConnect: peerId=1, appId={Default}
+2021-06-04 17:43:01,981 [19] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=546ac140-9ece-43b4-a77a-80c439c21401, master=True, gid=
+2021-06-04 17:43:02,061 [19] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - Created game: gameId=Public 9764, appId={Default}
+2021-06-04 17:43:02,195 [19] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount updated: in list=1, in game oldPlayerCount=0, playerCount=1, DebugData:CheckUserOnJoin:False, PeerCount:1, GameServerPlayerCount:0, YetExpectedCount:0, InactiveCount:0,JoiningCount:1,ActivePlayers:[],Inactive:[],Expected:[], Joining:[{"UtcCreated":"2021-06-04T20:43:02.0633967Z","UserId":"546ac140-9ece-43b4-a77a-80c439c21401"}], lastUpdateEvent:''
+2021-06-04 17:43:02,196 [19] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Added peer: gameId=Public 9764, userId=546ac140-9ece-43b4-a77a-80c439c21401, joiningPeers=1
+2021-06-04 17:43:02,198 [16] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=546ac140-9ece-43b4-a77a-80c439c21401, master=True, gid=Public 9764
+2021-06-04 17:43:02,199 [19] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Token Validation: Creating token for GS:localhost and game:Public 9764
+2021-06-04 17:43:02,234 [17] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Disconnect: peer=T:MasterClientPeer,ConnId:1,ip:127.0.0.1:62049,Udp,GpBinaryV18, UserId:546ac140-9ece-43b4-a77a-80c439c21401: reason=0, detail=
+2021-06-04 17:43:02,235 [17] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - OnClientDisconnect: peerId=1, appId={Default}
+2021-06-04 17:43:02,236 [17] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker stopped. authTimeout:20000 p:T:MasterClientPeer,ConnId:1,ip:127.0.0.1:62049,Udp,GpBinaryV18
+2021-06-04 17:43:03,027 [18] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState
+2021-06-04 17:43:03,030 [18] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState: Public 9764, reinitialize: True
+2021-06-04 17:43:03,049 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game is reinitialized. game:Public 9764
+2021-06-04 17:43:03,049 [18] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Replication complete. Got event:{"ActorCount":1,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 9764","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":["546ac140-9ece-43b4-a77a-80c439c21401"],"RemovedUsers":null,"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":true,"Replication":1,"MaxPlayers":2,"IsOpen":true,"IsVisible":true,"PropertyFilter":[],"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":true,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:43:03,049 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Got update game event.content={"ActorCount":1,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 9764","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":["546ac140-9ece-43b4-a77a-80c439c21401"],"RemovedUsers":null,"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":true,"Replication":1,"MaxPlayers":2,"IsOpen":true,"IsVisible":true,"PropertyFilter":[],"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":true,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:43:03,050 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User joined on game server: gameId=Public 9764, userId=546ac140-9ece-43b4-a77a-80c439c21401
+2021-06-04 17:43:03,050 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User removed from joining list.userId=546ac140-9ece-43b4-a77a-80c439c21401
+2021-06-04 17:43:03,052 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game reinitialization done. game:Public 9764
+2021-06-04 17:43:03,053 [19] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=546ac140-9ece-43b4-a77a-80c439c21401, master=False, gid=Public 9764
+2021-06-04 17:43:03,053 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - UpdateGameState: id=Public 9764, peers=1, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:43:03,215 [18] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Publishing game changes. AppLobby:, type:Default
+2021-06-04 17:43:03,224 [18] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Game changes published. Peers Count:0, GamesCount:1
+2021-06-04 17:43:03,295 [16] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Updating game server stats. new values peerCount=1, gameCount=1
+2021-06-04 17:43:06,841 [19] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Publishing application stats. MasterPeerCount=0, PlayerCount=1, GameCount=1
+2021-06-04 17:43:08,607 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState
+2021-06-04 17:43:08,608 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState: Public 9764, reinitialize: False
+2021-06-04 17:43:08,608 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Replication complete. Got event:{"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 9764","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["546ac140-9ece-43b4-a77a-80c439c21401"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:43:08,608 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Got update game event.content={"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 9764","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["546ac140-9ece-43b4-a77a-80c439c21401"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:43:08,609 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User left on game server: gameId=Public 9764, userId=546ac140-9ece-43b4-a77a-80c439c21401
+2021-06-04 17:43:08,609 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount updated: in list=0, in game oldPlayerCount=1, playerCount=0, DebugData:CheckUserOnJoin:True, PeerCount:0, GameServerPlayerCount:0, YetExpectedCount:0, InactiveCount:0,JoiningCount:0,ActivePlayers:[],Inactive:[],Expected:[], Joining:[], lastUpdateEvent:'{"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 9764","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["546ac140-9ece-43b4-a77a-80c439c21401"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}'
+2021-06-04 17:43:08,610 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - UpdateGameState: id=Public 9764, peers=0, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:43:08,610 [21] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player removed: pid=546ac140-9ece-43b4-a77a-80c439c21401, master=False, gid=
+2021-06-04 17:43:08,744 [19] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleRemoveGameState: Public 9764
+2021-06-04 17:43:08,746 [19] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - HandleRemoveGameState: gameId=Public 9764, joiningPlayers=0
+2021-06-04 17:43:08,746 [19] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - Removed game: gameId=Public 9764, appId={Default}
+2021-06-04 17:43:08,747 [19] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - RemoveGameState:id=Public 9764, peers=0, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:43:08,748 [19] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game removed on GS. GameId=Public 9764, ServerId=[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:43:08,749 [19] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount changed after game remove. New Value=0
+2021-06-04 17:43:09,608 [20] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Updating game server stats. new values peerCount=0, gameCount=0
+2021-06-04 17:43:09,623 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Publishing game changes. AppLobby:, type:Default
+2021-06-04 17:43:09,623 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Game changes published. Peers Count:0, GamesCount:1
+2021-06-04 17:43:09,702 [19] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Checked join timeouts: before=0, after=0
+2021-06-04 17:43:14,619 [27] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Publishing application stats. MasterPeerCount=0, PlayerCount=0, GameCount=0
+2021-06-04 17:43:15,031 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level5 to Level4, PeerCount 1
+2021-06-04 17:43:15,031 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], State:Normal, Load:Level5, Prio:0, Weight:9], oldWorkload=Level5, newWorkload=Level4
+2021-06-04 17:43:15,032 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level4 and load of the rest=Level4
+2021-06-04 17:43:15,032 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:43:28,108 [17] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level4 to Level3, PeerCount 1
+2021-06-04 17:43:28,108 [17] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], State:Normal, Load:Level4, Prio:0, Weight:11], oldWorkload=Level4, newWorkload=Level3
+2021-06-04 17:43:28,108 [17] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level3 and load of the rest=Level3
+2021-06-04 17:43:28,108 [17] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:43:39,214 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level3 to Level4, PeerCount 1
+2021-06-04 17:43:39,215 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], State:Normal, Load:Level3, Prio:0, Weight:13], oldWorkload=Level3, newWorkload=Level4
+2021-06-04 17:43:39,215 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level4 and load of the rest=Level4
+2021-06-04 17:43:39,215 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:44:08,204 [18] DEBUG Photon.LoadBalancing.MasterServer.MasterApplication - Received init request from game client on leader node
+2021-06-04 17:44:08,204 [18] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker scheduled. authTimeout:20000 p:T:MasterClientPeer,ConnId:3,ip:192.168.100.2:51264,Udp,GpBinaryV18
+2021-06-04 17:44:08,295 [21] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker stopped. authTimeout:20000 p:T:MasterClientPeer,ConnId:3,ip:192.168.100.2:51264,Udp,GpBinaryV18
+2021-06-04 17:44:08,296 [21] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - HandleAuthenticateRequest:appId=2e3a4622-ea08-472f-9c17-0754ee01ae0c;version=_2.31;region=;type=0;userId=e3d537aa-dabe-458e-936e-9ab035f4e7c3
+2021-06-04 17:44:08,296 [21] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - OnClientConnect: peerId=3, appId={Default}
+2021-06-04 17:44:08,296 [21] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=e3d537aa-dabe-458e-936e-9ab035f4e7c3, master=True, gid=
+2021-06-04 17:44:08,394 [27] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - Created game: gameId=Public 3698, appId={Default}
+2021-06-04 17:44:08,395 [27] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount updated: in list=1, in game oldPlayerCount=0, playerCount=1, DebugData:CheckUserOnJoin:False, PeerCount:1, GameServerPlayerCount:0, YetExpectedCount:0, InactiveCount:0,JoiningCount:1,ActivePlayers:[],Inactive:[],Expected:[], Joining:[{"UtcCreated":"2021-06-04T20:44:08.3958743Z","UserId":"e3d537aa-dabe-458e-936e-9ab035f4e7c3"}], lastUpdateEvent:''
+2021-06-04 17:44:08,395 [27] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Added peer: gameId=Public 3698, userId=e3d537aa-dabe-458e-936e-9ab035f4e7c3, joiningPeers=1
+2021-06-04 17:44:08,395 [27] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Token Validation: Creating token for GS:localhost and game:Public 3698
+2021-06-04 17:44:08,396 [27] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=e3d537aa-dabe-458e-936e-9ab035f4e7c3, master=True, gid=Public 3698
+2021-06-04 17:44:08,431 [20] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Disconnect: peer=T:MasterClientPeer,ConnId:3,ip:192.168.100.2:51264,Udp,GpBinaryV18, UserId:e3d537aa-dabe-458e-936e-9ab035f4e7c3: reason=0, detail=
+2021-06-04 17:44:08,431 [20] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - OnClientDisconnect: peerId=3, appId={Default}
+2021-06-04 17:44:08,431 [20] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker stopped. authTimeout:20000 p:T:MasterClientPeer,ConnId:3,ip:192.168.100.2:51264,Udp,GpBinaryV18
+2021-06-04 17:44:08,620 [16] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState
+2021-06-04 17:44:08,620 [16] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState: Public 3698, reinitialize: True
+2021-06-04 17:44:08,620 [16] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Replication complete. Got event:{"ActorCount":1,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 3698","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":["e3d537aa-dabe-458e-936e-9ab035f4e7c3"],"RemovedUsers":null,"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":true,"Replication":1,"MaxPlayers":2,"IsOpen":true,"IsVisible":true,"PropertyFilter":[],"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":true,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:44:08,620 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game is reinitialized. game:Public 3698
+2021-06-04 17:44:08,621 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Got update game event.content={"ActorCount":1,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 3698","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":["e3d537aa-dabe-458e-936e-9ab035f4e7c3"],"RemovedUsers":null,"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":true,"Replication":1,"MaxPlayers":2,"IsOpen":true,"IsVisible":true,"PropertyFilter":[],"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":true,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:44:08,621 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User joined on game server: gameId=Public 3698, userId=e3d537aa-dabe-458e-936e-9ab035f4e7c3
+2021-06-04 17:44:08,622 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User removed from joining list.userId=e3d537aa-dabe-458e-936e-9ab035f4e7c3
+2021-06-04 17:44:08,622 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game reinitialization done. game:Public 3698
+2021-06-04 17:44:08,622 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - UpdateGameState: id=Public 3698, peers=1, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:44:08,622 [17] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=e3d537aa-dabe-458e-936e-9ab035f4e7c3, master=False, gid=Public 3698
+2021-06-04 17:44:09,405 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Publishing game changes. AppLobby:, type:Default
+2021-06-04 17:44:09,405 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Game changes published. Peers Count:0, GamesCount:1
+2021-06-04 17:44:09,452 [21] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Updating game server stats. new values peerCount=1, gameCount=1
+2021-06-04 17:44:12,834 [20] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState
+2021-06-04 17:44:12,835 [20] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState: Public 3698, reinitialize: False
+2021-06-04 17:44:12,835 [20] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Replication complete. Got event:{"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 3698","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["e3d537aa-dabe-458e-936e-9ab035f4e7c3"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:44:12,836 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Got update game event.content={"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 3698","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["e3d537aa-dabe-458e-936e-9ab035f4e7c3"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:44:12,837 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User left on game server: gameId=Public 3698, userId=e3d537aa-dabe-458e-936e-9ab035f4e7c3
+2021-06-04 17:44:12,837 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount updated: in list=0, in game oldPlayerCount=1, playerCount=0, DebugData:CheckUserOnJoin:True, PeerCount:0, GameServerPlayerCount:0, YetExpectedCount:0, InactiveCount:0,JoiningCount:0,ActivePlayers:[],Inactive:[],Expected:[], Joining:[], lastUpdateEvent:'{"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 3698","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["e3d537aa-dabe-458e-936e-9ab035f4e7c3"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}'
+2021-06-04 17:44:12,837 [21] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - UpdateGameState: id=Public 3698, peers=0, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:44:12,837 [33] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player removed: pid=e3d537aa-dabe-458e-936e-9ab035f4e7c3, master=False, gid=
+2021-06-04 17:44:12,950 [34] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleRemoveGameState: Public 3698
+2021-06-04 17:44:12,950 [34] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - HandleRemoveGameState: gameId=Public 3698, joiningPlayers=0
+2021-06-04 17:44:12,951 [34] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - Removed game: gameId=Public 3698, appId={Default}
+2021-06-04 17:44:12,951 [34] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - RemoveGameState:id=Public 3698, peers=0, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:44:12,951 [34] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game removed on GS. GameId=Public 3698, ServerId=[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:44:12,952 [34] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount changed after game remove. New Value=0
+2021-06-04 17:44:13,215 [21] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Publishing application stats. MasterPeerCount=0, PlayerCount=1, GameCount=1
+2021-06-04 17:44:13,839 [35] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Publishing game changes. AppLobby:, type:Default
+2021-06-04 17:44:13,839 [35] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Game changes published. Peers Count:0, GamesCount:1
+2021-06-04 17:44:13,839 [35] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Updating game server stats. new values peerCount=0, gameCount=0
+2021-06-04 17:44:15,911 [16] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Checked join timeouts: before=0, after=0
+2021-06-04 17:44:18,855 [16] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Publishing application stats. MasterPeerCount=0, PlayerCount=0, GameCount=0
+2021-06-04 17:44:28,632 [16] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level4 to Level3, PeerCount 1
+2021-06-04 17:44:28,632 [16] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], State:Normal, Load:Level4, Prio:0, Weight:11], oldWorkload=Level4, newWorkload=Level3
+2021-06-04 17:44:28,632 [16] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level3 and load of the rest=Level3
+2021-06-04 17:44:28,632 [16] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:44:57,985 [17] INFO  Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - Got leave message from server. context=[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], p:GameServer(Id=d17ff238-46ba-49e3-9a0d-8440a564d931, ConnId=1) at 127.0.0.1:4531/127.0.0.1:5056
+2021-06-04 17:44:57,986 [17] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - Got GameServerLeave event: [key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:44:57,987 [17] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - Context dettached from peer. p:T:IncomingGameServerPeer,ConnId:1,ip:127.0.0.1:52942,Tcp,GpBinaryV18
+2021-06-04 17:44:57,987 [17] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - Peer detached from context:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:44:57,987 [17] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Stopping game replication from server [key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:44:57,988 [17] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Stopping skipped. No replication in progress for server [key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931]
+2021-06-04 17:44:57,990 [17] DEBUG Photon.Common.LoadBalancer.Priorities.ServerBunch`1 - Removing server. Server=[Server:[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], State:Normal, Load:Level3, Prio:0, Weight:13]
+2021-06-04 17:44:57,993 [17] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:44:57,994 [17] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Removed server: workload=Level3
+2021-06-04 17:44:57,995 [17] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContextManager - Removing context. context=[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931],p:T:IncomingGameServerPeer,ConnId:1,ip:127.0.0.1:52942,Tcp,GpBinaryV18
+2021-06-04 17:44:57,995 [17] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContextManager - Context was removed. context=[key:127.0.0.1-5056-4531, serverId:d17ff238-46ba-49e3-9a0d-8440a564d931], p:T:IncomingGameServerPeer,ConnId:1,ip:127.0.0.1:52942,Tcp,GpBinaryV18
+2021-06-04 17:44:57,998 [17] WARN  Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - s2s GS connection: OnDisconnect - game server connection closed (connectionId=1, addr:{null}, serverId=d17ff238-46ba-49e3-9a0d-8440a564d931, reason=2)
+2021-06-04 17:44:58,990 [1] INFO  Photon.LoadBalancing.MasterServer.MasterApplication - OnStopRequested... going to disconnect 0 GS peers
+2021-06-04 17:44:58,991 [1] INFO  Photon.SocketServer.ApplicationBase - Application is stopping: AppId=Master
+2021-06-04 17:44:58,999 [1] INFO  Photon.LoadBalancing.MasterServer.MasterApplication - Master server TearDown is called. Master server stopped
+2021-06-04 17:44:58,999 [1] INFO  Photon.SocketServer.ApplicationBase - Application stop: AppId=Master
+2021-06-04 17:44:59,004 [20] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Publishing game changes. AppLobby:, type:Default
+2021-06-04 17:45:19,034 [1] INFO  Photon.LoadBalancing.MasterServer.MasterApplication - Master server initialization started
+2021-06-04 17:45:19,055 [1] INFO  Photon.LoadBalancing.MasterServer.MasterApplication - TokenCreator initialized with an expiration of 01:00:00
+2021-06-04 17:45:19,755 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - Static initialization of Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters counter manager with fake counters
+2021-06-04 17:45:19,756 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - Static initialization of Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters counter manager with fake counters compete
+2021-06-04 17:45:19,757 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - Initializing performance counters
+2021-06-04 17:45:19,757 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - User perf counters permission level detected as:Write
+2021-06-04 17:45:19,758 [1] DEBUG Photon.Common.Authentication.Diagnostic.CustomAuthResultCounters - PerformanceCounter category 'Photon: Custom Authentication Results' found.
+2021-06-04 17:45:19,778 [1] INFO  Photon.Common.LoadBalancer.LoadBalancer`1 - Initialized Load Balancer from configuration file: E:\external_projects\purple-team\photon-server-sdk_v5-0-12-24499-rc1\deploy\LoadBalancer.config
+2021-06-04 17:45:19,780 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - Creating application: appId={Default}/{Default}
+2021-06-04 17:45:19,795 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Creating lobby: name=, type=Default
+2021-06-04 17:45:19,796 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - AppLobby - useLegacyLobbies False, limitGameList null, limitGameListUpdate null, limitSqlFilterResults null
+2021-06-04 17:45:19,796 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - MasterServerSettings - limitGameList 500, limitGameListUpdate 500, limitSqlFilterResults 100
+2021-06-04 17:45:19,799 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameList - Creating new GameList
+2021-06-04 17:45:19,799 [1] DEBUG Photon.LoadBalancing.MasterServer.Lobby.LimitedGameList - Creating new LimitedGameList
+2021-06-04 17:45:19,808 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - Plugin configured: name=TestPlugins
+2021-06-04 17:45:19,808 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: AsyncJoin=False
+2021-06-04 17:45:19,809 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: BaseUrl=http://localhost:55557/realtime-webhooks-1.2
+2021-06-04 17:45:19,809 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: HasErrorInfo=true
+2021-06-04 17:45:19,809 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: IsPersistent=true
+2021-06-04 17:45:19,809 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathClose=GameClose
+2021-06-04 17:45:19,810 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathCreate=GameCreate
+2021-06-04 17:45:19,810 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathEvent=GameEvent
+2021-06-04 17:45:19,810 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathGameProperties=GameProperties
+2021-06-04 17:45:19,811 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathJoin=GameJoin
+2021-06-04 17:45:19,811 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathLeave=GameLeave
+2021-06-04 17:45:19,811 [1] INFO  Photon.LoadBalancing.MasterServer.GameApplication - 	Attribute: PathLoad=GameCreate
+2021-06-04 17:45:19,818 [1] DEBUG Photon.Common.Authentication.CustomAuthHandler - AuthSettings are disabled in config. No CustomAuth
+2021-06-04 17:45:19,820 [1] INFO  Photon.LoadBalancing.MasterServer.MasterApplication - Master server initialization finished
+2021-06-04 17:45:19,821 [1] INFO  Photon.SocketServer.ApplicationBase - Application start: AppId=Master; AppPath=E:\external_projects\purple-team\photon-server-sdk_v5-0-12-24499-rc1\deploy\LoadBalancing\Master, Type=Photon.LoadBalancing.MasterServer.MasterApplication 
+2021-06-04 17:45:19,821 [1] INFO  Photon.SocketServer.ApplicationBase - Using Server GC:True
+2021-06-04 17:45:19,821 [1] INFO  Photon.SocketServer.ApplicationBase - Using GC LatencyMode:Interactive
+2021-06-04 17:45:22,131 [21] DEBUG Photon.LoadBalancing.MasterServer.MasterApplication - Received init request from game server
+2021-06-04 17:45:22,137 [21] INFO  Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - game server connection from 127.0.0.1:51108 established (id=1)
+2021-06-04 17:45:22,157 [21] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContextManager - Registering GS by InitRequest. key:'127.0.0.1-5056-4531', id:'edfef349-d0b4-4888-909c-67deb661387b', state:0, loadIndex:3, p:T:IncomingGameServerPeer,ConnId:1,ip:127.0.0.1:51108,Tcp,GpBinaryV18
+2021-06-04 17:45:22,163 [21] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - Attaching new peer to context. old peer:, new peer:T:IncomingGameServerPeer,ConnId:1,ip:127.0.0.1:51108,Tcp,GpBinaryV18, ctx:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b]
+2021-06-04 17:45:22,164 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - Context attached to peer. context:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b], p:GameServer(Id=edfef349-d0b4-4888-909c-67deb661387b, ConnId=1) at 127.0.0.1:4531/127.0.0.1:5056
+2021-06-04 17:45:22,164 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - Peer attached to context:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b]
+2021-06-04 17:45:22,165 [21] INFO  Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistant - Replication started for context:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b]
+2021-06-04 17:45:22,169 [21] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - GameServer state changed for 127.0.0.1:4531: old=Offline, new=Normal 
+2021-06-04 17:45:22,176 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Adding server: server=[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b] workload=Level3, priority=0
+2021-06-04 17:45:22,191 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level3 and load of the rest=Level3
+2021-06-04 17:45:22,191 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:45:22,193 [21] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Added server: server=[Server:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b], State:Normal, Load:Level3, Prio:0, Weight:13] workload=Level3
+2021-06-04 17:45:22,193 [21] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContextManager - GS is added. key:'127.0.0.1-5056-4531', id:'edfef349-d0b4-4888-909c-67deb661387b',p:GameServer(Id=edfef349-d0b4-4888-909c-67deb661387b, ConnId=1) at 127.0.0.1:4531/127.0.0.1:5056
+2021-06-04 17:45:22,194 [21] INFO  Photon.LoadBalancing.MasterServer.GameServer.GameServerContextManager - GameServers List:
+host_localhost, state_Normal, load_Level3, lbPriority_0, serverId_edfef349-d0b4-4888-909c-67deb661387b, key_127.0.0.1-5056-4531, p_has peer
+
+2021-06-04 17:45:22,245 [19] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Handling of ReplicationHelperEvent event. replicated count:0,expected count:0. context:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b]
+2021-06-04 17:45:22,246 [19] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistant - OnReplicationFinsihed for server: [key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b]
+2021-06-04 17:45:23,246 [16] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level3 to Level4, PeerCount 1
+2021-06-04 17:45:23,249 [16] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b], State:Normal, Load:Level3, Prio:0, Weight:13], oldWorkload=Level3, newWorkload=Level4
+2021-06-04 17:45:23,250 [16] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level4 and load of the rest=Level4
+2021-06-04 17:45:23,251 [16] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:50:23,936 [17] DEBUG Photon.LoadBalancing.MasterServer.MasterApplication - Received init request from game client on leader node
+2021-06-04 17:50:23,940 [17] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker scheduled. authTimeout:20000 p:T:MasterClientPeer,ConnId:0,ip:10.42.76.99:57557,Udp,GpBinaryV18
+2021-06-04 17:50:23,958 [17] INFO  Photon.SocketServer.Diagnostics.HttpQueuePerformanceCounters - Performance counters successfully initialized: instanceName=_Total
+2021-06-04 17:50:24,061 [17] INFO  Photon.SocketServer.Diagnostics.HttpQueuePerformanceCounters - Performance counters successfully initialized: instanceName=LoadBalancing_rpc
+2021-06-04 17:50:24,264 [17] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker stopped. authTimeout:20000 p:T:MasterClientPeer,ConnId:0,ip:10.42.76.99:57557,Udp,GpBinaryV18
+2021-06-04 17:50:24,265 [17] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - HandleAuthenticateRequest:appId=2e3a4622-ea08-472f-9c17-0754ee01ae0c;version=_2.31;region=;type=0;userId=757bedeb-c6f5-4ddb-b5c1-38df691abaaf
+2021-06-04 17:50:24,271 [17] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - OnClientConnect: peerId=0, appId={Default}
+2021-06-04 17:50:24,274 [20] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=757bedeb-c6f5-4ddb-b5c1-38df691abaaf, master=True, gid=
+2021-06-04 17:50:24,358 [26] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - Created game: gameId=Public 1353, appId={Default}
+2021-06-04 17:50:24,508 [26] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount updated: in list=1, in game oldPlayerCount=0, playerCount=1, DebugData:CheckUserOnJoin:False, PeerCount:1, GameServerPlayerCount:0, YetExpectedCount:0, InactiveCount:0,JoiningCount:1,ActivePlayers:[],Inactive:[],Expected:[], Joining:[{"UtcCreated":"2021-06-04T20:50:24.3602512Z","UserId":"757bedeb-c6f5-4ddb-b5c1-38df691abaaf"}], lastUpdateEvent:''
+2021-06-04 17:50:24,510 [26] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Added peer: gameId=Public 1353, userId=757bedeb-c6f5-4ddb-b5c1-38df691abaaf, joiningPeers=1
+2021-06-04 17:50:24,511 [24] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=757bedeb-c6f5-4ddb-b5c1-38df691abaaf, master=True, gid=Public 1353
+2021-06-04 17:50:24,514 [26] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Token Validation: Creating token for GS:localhost and game:Public 1353
+2021-06-04 17:50:24,549 [18] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Disconnect: peer=T:MasterClientPeer,ConnId:0,ip:10.42.76.99:57557,Udp,GpBinaryV18, UserId:757bedeb-c6f5-4ddb-b5c1-38df691abaaf: reason=0, detail=
+2021-06-04 17:50:24,550 [18] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - OnClientDisconnect: peerId=0, appId={Default}
+2021-06-04 17:50:24,551 [18] DEBUG Photon.LoadBalancing.MasterServer.MasterClientPeer - Auth Timeout Checker stopped. authTimeout:20000 p:T:MasterClientPeer,ConnId:0,ip:10.42.76.99:57557,Udp,GpBinaryV18
+2021-06-04 17:50:25,205 [25] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState
+2021-06-04 17:50:25,208 [25] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState: Public 1353, reinitialize: True
+2021-06-04 17:50:25,229 [25] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Replication complete. Got event:{"ActorCount":1,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 1353","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":["757bedeb-c6f5-4ddb-b5c1-38df691abaaf"],"RemovedUsers":null,"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":true,"Replication":1,"MaxPlayers":2,"IsOpen":true,"IsVisible":true,"PropertyFilter":[],"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":true,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:50:25,229 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game is reinitialized. game:Public 1353
+2021-06-04 17:50:25,229 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Got update game event.content={"ActorCount":1,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 1353","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":["757bedeb-c6f5-4ddb-b5c1-38df691abaaf"],"RemovedUsers":null,"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":true,"Replication":1,"MaxPlayers":2,"IsOpen":true,"IsVisible":true,"PropertyFilter":[],"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":true,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:50:25,230 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User joined on game server: gameId=Public 1353, userId=757bedeb-c6f5-4ddb-b5c1-38df691abaaf
+2021-06-04 17:50:25,230 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User removed from joining list.userId=757bedeb-c6f5-4ddb-b5c1-38df691abaaf
+2021-06-04 17:50:25,232 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game reinitialization done. game:Public 1353
+2021-06-04 17:50:25,233 [27] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player state changed: pid=757bedeb-c6f5-4ddb-b5c1-38df691abaaf, master=False, gid=Public 1353
+2021-06-04 17:50:25,233 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - UpdateGameState: id=Public 1353, peers=1, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:50:25,529 [28] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Publishing game changes. AppLobby:, type:Default
+2021-06-04 17:50:25,538 [28] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Game changes published. Peers Count:0, GamesCount:1
+2021-06-04 17:50:25,626 [18] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Updating game server stats. new values peerCount=1, gameCount=1
+2021-06-04 17:50:27,154 [24] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState
+2021-06-04 17:50:27,154 [24] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleUpdateGameState: Public 1353, reinitialize: False
+2021-06-04 17:50:27,155 [24] DEBUG Photon.LoadBalancing.MasterServer.GameServer.ReplicationAssistantBase - Replication complete. Got event:{"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 1353","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["757bedeb-c6f5-4ddb-b5c1-38df691abaaf"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:50:27,155 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Got update game event.content={"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 1353","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["757bedeb-c6f5-4ddb-b5c1-38df691abaaf"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}
+2021-06-04 17:50:27,156 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - User left on game server: gameId=Public 1353, userId=757bedeb-c6f5-4ddb-b5c1-38df691abaaf
+2021-06-04 17:50:27,156 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount updated: in list=0, in game oldPlayerCount=1, playerCount=0, DebugData:CheckUserOnJoin:True, PeerCount:0, GameServerPlayerCount:0, YetExpectedCount:0, InactiveCount:0,JoiningCount:0,ActivePlayers:[],Inactive:[],Expected:[], Joining:[], lastUpdateEvent:'{"ActorCount":0,"ApplicationId":null,"ApplicationVersion":null,"GameId":"Public 1353","LobbyId":null,"LobbyType":0,"GameProperties":null,"NewUsers":null,"RemovedUsers":["757bedeb-c6f5-4ddb-b5c1-38df691abaaf"],"InactiveUsers":null,"ExcludedUsers":null,"ExpectedUsers":null,"FailedToAdd":null,"Reinitialize":false,"Replication":null,"MaxPlayers":null,"IsOpen":null,"IsVisible":null,"PropertyFilter":null,"InactiveCount":0,"IsPersistent":false,"CheckUserIdOnJoin":null,"IsReplicationEvent":false,"IsEmptyRoomReplication":false,"IsValid":true}'
+2021-06-04 17:50:27,156 [24] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - UpdateGameState: id=Public 1353, peers=0, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:50:27,157 [24] DEBUG Photon.LoadBalancing.MasterServer.PlayerCache - Player removed: pid=757bedeb-c6f5-4ddb-b5c1-38df691abaaf, master=False, gid=
+2021-06-04 17:50:27,278 [25] DEBUG Photon.LoadBalancing.MasterServer.GameServer.IncomingGameServerPeer - HandleRemoveGameState: Public 1353
+2021-06-04 17:50:27,280 [25] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - HandleRemoveGameState: gameId=Public 1353, joiningPlayers=0
+2021-06-04 17:50:27,281 [25] DEBUG Photon.LoadBalancing.MasterServer.GameApplication - Removed game: gameId=Public 1353, appId={Default}
+2021-06-04 17:50:27,281 [25] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - RemoveGameState:id=Public 1353, peers=0, max=2, open=True, visible=True, peersJoining=0, inactive=0, ispersistent=False
+2021-06-04 17:50:27,282 [25] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameState - Game removed on GS. GameId=Public 1353, ServerId=[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b]
+2021-06-04 17:50:27,283 [25] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - PlayerCount changed after game remove. New Value=0
+2021-06-04 17:50:28,151 [18] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Updating game server stats. new values peerCount=0, gameCount=0
+2021-06-04 17:50:28,167 [17] DEBUG Photon.LoadBalancing.MasterServer.Lobby.AppLobby - Publishing game changes. AppLobby:, type:Default
+2021-06-04 17:50:28,167 [17] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Game changes published. Peers Count:0, GamesCount:1
+2021-06-04 17:50:29,563 [26] DEBUG Photon.LoadBalancing.MasterServer.ApplicationStats - Publishing application stats. MasterPeerCount=0, PlayerCount=0, GameCount=0
+2021-06-04 17:50:32,028 [20] DEBUG Photon.LoadBalancing.MasterServer.Lobby.GameListBase - Checked join timeouts: before=0, after=0
+2021-06-04 17:50:59,188 [26] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level4 to Level3, PeerCount 1
+2021-06-04 17:50:59,188 [26] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b], State:Normal, Load:Level4, Prio:0, Weight:11], oldWorkload=Level4, newWorkload=Level3
+2021-06-04 17:50:59,189 [26] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level3 and load of the rest=Level3
+2021-06-04 17:50:59,189 [26] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:51:27,514 [28] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level3 to Level2, PeerCount 1
+2021-06-04 17:51:27,514 [28] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b], State:Normal, Load:Level3, Prio:0, Weight:13], oldWorkload=Level3, newWorkload=Level2
+2021-06-04 17:51:27,514 [28] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level2 and load of the rest=Level2
+2021-06-04 17:51:27,514 [28] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:51:52,786 [26] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level2 to Level1, PeerCount 1
+2021-06-04 17:51:52,786 [26] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b], State:Normal, Load:Level2, Prio:0, Weight:15], oldWorkload=Level2, newWorkload=Level1
+2021-06-04 17:51:52,786 [26] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level1 and load of the rest=Level1
+2021-06-04 17:51:52,787 [26] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:52:41,251 [17] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Level1 to Lowest, PeerCount 1
+2021-06-04 17:52:41,251 [17] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b], State:Normal, Load:Level1, Prio:0, Weight:17], oldWorkload=Level1, newWorkload=Lowest
+2021-06-04 17:52:41,251 [17] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Lowest and load of the rest=Lowest
+2021-06-04 17:52:41,251 [17] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current
+2021-06-04 17:54:05,119 [31] DEBUG Photon.LoadBalancing.MasterServer.GameServer.GameServerContext - UpdateGameServer - from LoadLevel Lowest to Level1, PeerCount 1
+2021-06-04 17:54:05,120 [31] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - Updating server: server=[Server:[key:127.0.0.1-5056-4531, serverId:edfef349-d0b4-4888-909c-67deb661387b], State:Normal, Load:Lowest, Prio:0, Weight:20], oldWorkload=Lowest, newWorkload=Level1
+2021-06-04 17:54:05,120 [31] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is 0 with load=Level1 and load of the rest=Level1
+2021-06-04 17:54:05,121 [31] DEBUG Photon.Common.LoadBalancer.LoadBalancer`1 - new candidate for current priority is equal to current

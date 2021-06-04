@@ -1,0 +1,41 @@
+<Project>
+
+  <PropertyGroup>
+    <BuildTargetNetCore>netcoreapp3.0</BuildTargetNetCore>
+    <BuildTargetNetFramework>net461</BuildTargetNetFramework>
+    <BuildTargetNetStandard>netstandard2.0</BuildTargetNetStandard>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BuildTargetNetCoreDefines></BuildTargetNetCoreDefines>
+    <BuildTargetNetFrameworkDefines></BuildTargetNetFrameworkDefines>
+    <BuildTargetNetStandardDefines></BuildTargetNetStandardDefines>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition=" '$(BuildOS)' != 'Windows'">
+    <TargetFrameworks>$(BuildTargetNetCore)</TargetFrameworks>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition=" '$(BuildOS)' == 'Windows'">
+    <TargetFrameworks>$(BuildTargetNetFramework)</TargetFrameworks>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == '$(BuildTargetNetCore)' ">
+    <TargetDefineConstants>$(BuildTargetNetCoreDefines)</TargetDefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == '$(BuildTargetNetFramework)' ">
+    <TargetDefineConstants>$(BuildTargetNetFrameworkDefines)</TargetDefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == '$(BuildTargetNetStandard)' ">
+    <TargetDefineConstants>$(BuildTargetNetStandardDefines)</TargetDefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <DefineConstants>$(TargetDefineConstants)</DefineConstants>
+  </PropertyGroup>
+  
+</Project>

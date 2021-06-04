@@ -1,0 +1,14 @@
+<Project>
+  <PropertyGroup>
+    <hPath>$(MSBuildThisFileDirectory)../../lib/PhotonSocketServer/$(TargetFramework)/</hPath>
+    <hPath  Condition=" '$(TargetFramework)' == '$(BuildTargetNetCore)'">$(hPath)/$(RuntimeIdentifier)</hPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Photon.SocketServer">
+      <HintPath>$(hPath)/Photon.SocketServer.dll</HintPath>
+      <!--<HintPath Condition = " $(TargetFramework) == $(BuildTargetNetFramework)">$(MSBuildThisFileDirectory)../../lib/PhotonSocketServer/net461/Photon.SocketServer.dll</HintPath>-->
+    </Reference>
+    <!--<ProjectReference Condition="$(UseReference) == 'true'" Include="..\..\src\Photon.SocketServer\Photon.SocketServer.csproj" />-->
+    <!--<PackageReference Include="Photon.SocketServer" Version="4.1.43" />-->
+  </ItemGroup>
+</Project>

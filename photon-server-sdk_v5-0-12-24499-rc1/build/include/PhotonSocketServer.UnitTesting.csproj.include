@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <hPath>$(MSBuildThisFileDirectory)../../lib/PhotonSocketServer/$(TargetFramework)/</hPath>
+    <hPath  Condition=" '$(TargetFramework)' == '$(BuildTargetNetCore)'">$(hPath)/$(RuntimeIdentifier)</hPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Photon.SocketServer.UnitTesting">
+      <HintPath>$(hPath)/Photon.SocketServer.UnitTesting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
