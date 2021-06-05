@@ -49,6 +49,8 @@ namespace GamePlay
             yield return SpawnPlayers(_playerSpawnPosition);
             yield return SpawnSafeZones(_refillPositions);
 
+            LoadingLog("Finished loading");
+
             _gameController.Initialize(_localPlayer, _playerList, _lostKid);
             _gameController.StartGame();
         }
