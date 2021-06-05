@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2496253690713779701}
   - component: {fileID: 3389700396270497769}
   - component: {fileID: 6944778136644453172}
+  - component: {fileID: 5590478000801955650}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -258,6 +259,25 @@ MonoBehaviour:
   _lightDuration: 30
   _pointLight: {fileID: 1958985742903782760}
   _flashLight: {fileID: 7665183104213275482}
+--- !u!114 &5590478000801955650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707400321833142739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9155f2032d53ddf4d9c7b1e6b8a44c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 0140ff05fb26ef44ea09256cd0578104, type: 3}
+  iconScale: 2
+  rotateIcon: 1
+  tint: {r: 1, g: 0, b: 0, a: 1}
+  exploresFogOfWar: 1
+  fogOfWarNumTileRadius: 5
+  fogOfWarLightFalloffStart: 0.5
 --- !u!1 &2707400322081874913
 GameObject:
   m_ObjectHideFlags: 0

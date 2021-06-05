@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2823776704717866308}
   - component: {fileID: 4963342904068307708}
+  - component: {fileID: 7443507990425292791}
   m_Layer: 0
   m_Name: PlayerSpawnPoint
   m_TagString: Untagged
@@ -46,6 +47,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Tag: 1
+--- !u!114 &7443507990425292791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638530338042742597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9155f2032d53ddf4d9c7b1e6b8a44c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 003ef635885c62f43be0531bcd472a8c, type: 3}
+  iconScale: 2
+  rotateIcon: 0
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  exploresFogOfWar: 0
+  fogOfWarNumTileRadius: 5
+  fogOfWarLightFalloffStart: 0.5
 --- !u!1 &6225726706742104847
 GameObject:
   m_ObjectHideFlags: 0

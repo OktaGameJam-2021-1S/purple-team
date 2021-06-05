@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8725803230619888487}
   - component: {fileID: 3187283140669636102}
+  - component: {fileID: 9164389364490335519}
   m_Layer: 0
   m_Name: Placeholder_LightRefill
   m_TagString: Untagged
@@ -141,6 +142,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Tag: 4
+--- !u!114 &9164389364490335519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725803230619888486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9155f2032d53ddf4d9c7b1e6b8a44c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 492b9988436bd45049a9a6bc52ac8fb0, type: 3}
+  iconScale: 2
+  rotateIcon: 0
+  tint: {r: 1, g: 0.6532073, b: 0.4198113, a: 1}
+  exploresFogOfWar: 0
+  fogOfWarNumTileRadius: 5
+  fogOfWarLightFalloffStart: 0.5
 --- !u!1 &8725803231491953199
 GameObject:
   m_ObjectHideFlags: 0
