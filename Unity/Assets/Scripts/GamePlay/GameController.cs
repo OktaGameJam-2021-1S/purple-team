@@ -7,6 +7,7 @@ namespace GamePlay
     public class GameController : MonoBehaviour
     {
         [SerializeField] private CameraController _cameraController;
+        [SerializeField] private InputController _inputController;
         private List<PlayerController> _playersList;
         private PlayerController _localPlayer;
 
@@ -26,6 +27,7 @@ namespace GamePlay
             _playersList = players;
 
             _cameraController.Initialize(_localPlayer.transform);
+            _inputController.Initialize();
 
             _localPlayer.Initialize(true);
 
@@ -42,26 +44,30 @@ namespace GamePlay
             //TODO: Add code to start the game
         }
 
-        private void ProcessInput()
+        private void ProcessInput(PlayerInput playerInput)
         {
-            Vector2 axis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            _localPlayer.ProcessInput(playerInput.axis, playerInput.interactButton);
+        }
 
-            if (axis.magnitude > 1)
-            {
-                axis.Normalize();
-            }
+        private void FixedUpdate()
+        {
+            if (_gameState != GameState.Main) return;
 
-            _localPlayer.ProcessInput(axis);
+            _localPlayer.UpdatePlayerPosition(Time.fixedDeltaTime);
+            _cameraController.UpdateCameraPosition();
         }
 
         private void Update()
         {
             if (_gameState != GameState.Main) return;
 
-            ProcessInput();
-            _localPlayer.UpdatePlayer(Time.deltaTime);
-            _cameraController.UpdateCameraPosition();
+            _inputController.UpdatePlayerInput();
+            ProcessInput(_inputController.PlayerInput);
 
+            foreach(PlayerController player in _playersList)
+            {
+                player.UpdatePlayer(Time.deltaTime);
+            }
         }
     }
 }
