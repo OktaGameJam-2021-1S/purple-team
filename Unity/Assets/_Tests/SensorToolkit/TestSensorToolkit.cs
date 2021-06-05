@@ -14,12 +14,12 @@ public class TestSensorToolkit : MonoBehaviour
 
         m_TriggerSensor.OnDetected.AddListener((go, sensor) =>
         {
-            Debug.Log($"<color=green>object detected: {go.name}</color>");
+            //Debug.Log($"<color=green>object detected: {go.name}</color>");
         });
 
         m_TriggerSensor.OnLostDetection.AddListener((go, sensor) =>
         {
-            Debug.Log($"<color=red>lost detection of: {go.name}</color>");
+            //Debug.Log($"<color=red>lost detection of: {go.name}</color>");
         });
     }
 }
