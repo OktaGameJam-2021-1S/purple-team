@@ -130,6 +130,7 @@ namespace GamePlay
             OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
 
             NetworkEventDispatcher.RoomPropertiesUpdateEvent += OnChangedRoomData;
+            NetworkEventDispatcher.MasterClientSwitchedEvent += OnMasterClientSwitched;
 
             if (mapSeed == -1 && PhotonNetwork.IsMasterClient)
             {
@@ -139,6 +140,7 @@ namespace GamePlay
             while (mapSeed == -1) yield return null;
 
             NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
+            NetworkEventDispatcher.MasterClientSwitchedEvent -= OnMasterClientSwitched;
 
             LoadingLog("Bulding map");
 
@@ -208,7 +210,7 @@ namespace GamePlay
 
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                Vector3 randomOffset = new Vector3(1, 0, 1) * Random.Range(-1, 1) * 2;
+                Vector3 randomOffset = new Vector3(1, 0, 1) * Random.Range(-1, 1) * 5;
                 PlayerController photonPlayer = Instantiate(_playerPrefab, spawnPosition.position + randomOffset, _playerPrefab.transform.rotation).GetComponent<PlayerController>();
                 photonPlayer.gameObject.name = "Player " + player.ActorNumber;
                 photonPlayer.photonView.OwnerActorNr = player.ActorNumber;
