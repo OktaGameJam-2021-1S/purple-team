@@ -2,33 +2,80 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Photon.Pun;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 10;
-    Rigidbody _rigidbody;
-    PhotonView photonView;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] private Animator _animator;
+    [SerializeField] float _maxSpeed = 5;
+    [SerializeField] float _angularSpeed = 20;
 
-    private void Awake()
+    private Vector3 _velocity;
+    public Vector3 Velocity
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        photonView = GetComponent<PhotonView>();
+        get
+        {
+            return _velocity;
+        }
     }
 
-    private void Update()
+    public Vector3 Forward { get; private set; }
+
+    public void Initialize()
     {
-        if (photonView.IsMine)
+        TeleportToPosition(transform.position);
+        _navMeshAgent.speed = _maxSpeed;
+    }
+
+    public void UpdateAxis(Vector2 axis)
+    {
+        Vector3 moveDirection = new Vector3(axis.x, 0, axis.y);
+
+        Forward = moveDirection;
+        _velocity = Forward * _maxSpeed;
+        _navMeshAgent.angularSpeed = 0;
+
+        UpdateAnimation();
+    }
+
+    public void UpdatePosition(float deltaTime)
+    {
+        _navMeshAgent.Move(Velocity * deltaTime);
+
+        Vector3 forward = Forward;
+        if (forward.magnitude <= 0)
         {
-            Vector3 axis = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
-
-            _rigidbody.velocity = axis * _speed + new Vector3(0, _rigidbody.velocity.y, 0);
-
-            if (axis.magnitude > 0)
-            {
-                transform.LookAt(transform.position + axis);
-            }
+            forward = Velocity.normalized;
         }
+
+        if (forward.magnitude > 0)
+        {
+            Vector3 newForward = Vector3.RotateTowards(_navMeshAgent.transform.forward, forward, _angularSpeed * deltaTime, 0);
+            _navMeshAgent.transform.forward = newForward;
+        }
+    }
+
+    public void TeleportToPosition(Vector3 position)
+    {
+        if (NavMesh.SamplePosition(position, out NavMeshHit hit, 500, 1))
+        {
+            _navMeshAgent.transform.position = hit.position;
+            _navMeshAgent.Warp(hit.position);
+        }
+        else
+        {
+            _navMeshAgent.Warp(position);
+        }
+    }
+
+    public void RotateToAngle(float rotation)
+    {
+        _navMeshAgent.transform.rotation = Quaternion.Euler(0, rotation, 0);
+    }
+
+    private void UpdateAnimation()
+    {
+        _animator.SetFloat("Speed", Velocity.magnitude / _maxSpeed);
     }
 }

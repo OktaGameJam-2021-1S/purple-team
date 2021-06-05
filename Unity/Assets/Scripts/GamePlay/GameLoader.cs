@@ -12,13 +12,15 @@ namespace GamePlay
 {
     public class GameLoader : MonoBehaviour
     {
+        [SerializeField] private GameController _gameController;
         [SerializeField] private GameObject _playerPrefab;
 
-        private List<PhotonView> _playerList;
+        private List<PlayerController> _playerList;
+        private PlayerController _localPlayer;
 
         private void Awake()
         {
-            _playerList = new List<PhotonView>();
+            _playerList = new List<PlayerController>();
         }
 
         private void Start()
@@ -37,6 +39,9 @@ namespace GamePlay
         {
             yield return WaitPlayersToJoin();
             yield return SpawnPlayers();
+
+            _gameController.Initialize(_localPlayer, _playerList);
+            _gameController.StartGame();
         }
 
         private IEnumerator WaitPlayersToJoin()
@@ -87,8 +92,8 @@ namespace GamePlay
                     string key = "playerViewID" + PhotonNetwork.PlayerList[i].ActorNumber;
                     if (properties.TryGetValue(key, out object viewID))
                     {
-                        _playerList[i].ViewID = (int)viewID;
-                        _playerList[i].TransferOwnership(PhotonNetwork.PlayerList[i]);
+                        _playerList[i].photonView.ViewID = (int)viewID;
+                        _playerList[i].photonView.TransferOwnership(PhotonNetwork.PlayerList[i]);
 
                         receivedViewIds = true;
                     }
@@ -109,11 +114,11 @@ namespace GamePlay
 
                 HashtablePhoton viewIDs = new HashtablePhoton();
 
-                foreach (PhotonView photonView in _playerList)
+                foreach (PlayerController player in _playerList)
                 {
                     int id = PhotonNetwork.AllocateViewID(true);
 
-                    viewIDs.Add("playerViewID" + photonView.OwnerActorNr, id);
+                    viewIDs.Add("playerViewID" + player.photonView.OwnerActorNr, id);
                 }
 
                 PhotonNetwork.CurrentRoom.SetCustomProperties(viewIDs);
@@ -121,10 +126,16 @@ namespace GamePlay
 
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                PhotonView photonView = Instantiate(_playerPrefab).GetComponent<PhotonView>();
-                photonView.OwnerActorNr = player.ActorNumber;
-                photonView.ControllerActorNr = player.ActorNumber;
-                _playerList.Add(photonView);
+                PlayerController photonPlayer = Instantiate(_playerPrefab).GetComponent<PlayerController>();
+                photonPlayer.gameObject.name = "Player " + player.ActorNumber;
+                photonPlayer.photonView.OwnerActorNr = player.ActorNumber;
+                photonPlayer.photonView.ControllerActorNr = player.ActorNumber;
+                _playerList.Add(photonPlayer);
+
+                if (player.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
+                {
+                    _localPlayer = photonPlayer;
+                }
             }
 
             OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
@@ -141,6 +152,8 @@ namespace GamePlay
 
             NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
             NetworkEventDispatcher.MasterClientSwitchedEvent -= OnMasterClientSwitched;
+
+            yield return null;
         }
 
     }
