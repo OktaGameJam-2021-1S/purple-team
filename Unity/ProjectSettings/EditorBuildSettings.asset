@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UI/UIRanking.unity
     guid: be93f594285c8124c8389233b483af3c
+  - enabled: 1
+    path: Assets/Scenes/UI/UILogin.unity
+    guid: 5a6309b103a4b02439f926ea69b88b3d
   m_configObjects: {}
