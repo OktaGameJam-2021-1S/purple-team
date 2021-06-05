@@ -82,15 +82,14 @@ public class DungeonHelper : MonoBehaviour
 
     private IEnumerator Co_Build(uint seed, System.Action callback)
     {
-        if (m_Dungeon == null)
-            yield return SceneManager.LoadSceneAsync(DUNGEON_SCENE_NAME, LoadSceneMode.Additive);
+        //if (m_Dungeon == null)
+        //    yield return SceneManager.LoadSceneAsync(DUNGEON_SCENE_NAME, LoadSceneMode.Additive);
 
-        while (m_Dungeon == null)
-            yield return null;
+        //while (m_Dungeon == null)
+        //    yield return null;
 
         m_Dungeon.Config.Seed = seed;
         m_Dungeon.RequestRebuild();
-        callback?.Invoke();
 
         //var builder = m_Dungeon.GetComponent<GridFlowDungeonBuilder>();
         //builder.asyncBuild = false;
