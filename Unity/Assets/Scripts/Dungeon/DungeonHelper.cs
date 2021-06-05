@@ -15,19 +15,10 @@ public class DungeonHelper : MonoBehaviour
         get
         {
             if (m_Instance == null)
-            {
-                m_Instance = new GameObject("DungeonHelper").AddComponent<DungeonHelper>();
-                DontDestroyOnLoad(m_Instance.gameObject);
-            }
+               new GameObject("DungeonHelper").AddComponent<DungeonHelper>();
             return m_Instance;
         }
     }
-
-    //[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-    //private static void Init()
-    //{
-    //    m_Instance = null;
-    //}
 
     private Dungeon m_Dungeon;
 
@@ -38,6 +29,7 @@ public class DungeonHelper : MonoBehaviour
 
     private void Awake()
     {
+        m_Instance = this;
         Reset();
     }
 
@@ -47,17 +39,6 @@ public class DungeonHelper : MonoBehaviour
         m_EnemySpawn = new List<Transform>();
         m_RefillPoint = new List<Transform>();
         m_ObjectivePoint = new List<Transform>();
-    }
-
-    private IEnumerator Start()
-    {
-        //load the dungeon scene
-        if (!SceneManager.GetSceneByName(DUNGEON_SCENE_NAME).isLoaded)
-            yield return SceneManager.LoadSceneAsync(DUNGEON_SCENE_NAME, LoadSceneMode.Additive);
-
-        //wait for it to load and for the Dungeon instance to bind itself to this
-        while (m_Dungeon == null)
-            yield return null;
     }
 
     public void Bind(DungeonItemTag instance)
@@ -93,23 +74,29 @@ public class DungeonHelper : MonoBehaviour
 
     public void BuildDungeon(uint seed, System.Action callback)
     {
+        StopAllCoroutines();
+        StartCoroutine(Co_Build(seed, callback));
+    }
+
+    private IEnumerator Co_Build(uint seed, System.Action callback)
+    {
+        if (m_Dungeon == null)
+            yield return SceneManager.LoadSceneAsync(DUNGEON_SCENE_NAME, LoadSceneMode.Additive);
+
+        while (m_Dungeon == null)
+            yield return null;
+
         m_Dungeon.Config.Seed = seed;
         m_Dungeon.RequestRebuild();
         callback?.Invoke();
+
+        //var builder = m_Dungeon.GetComponent<GridFlowDungeonBuilder>();
+        //builder.asyncBuild = false;
+        //builder.BuildDungeon(m_Dungeon.Config, m_Dungeon.ActiveModel);
+
+        yield return null;
+        callback?.Invoke();
     }
-
-    //private IEnumerator Co_Build(System.Action callback)
-    //{
-    //    //m_Dungeon.DestroyDungeon();
-    //    //m_Dungeon.Build();
-
-    //    //var builder = m_Dungeon.GetComponent<GridFlowDungeonBuilder>();
-    //    //builder.asyncBuild = false;
-    //    //builder.BuildDungeon(m_Dungeon.Config, m_Dungeon.ActiveModel);
-
-    //    yield return null;
-    //    callback?.Invoke();
-    //}
 
     [ContextMenu("Build dungeon")]
     public void test_build()
