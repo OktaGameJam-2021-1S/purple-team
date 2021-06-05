@@ -952,13 +952,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pinType: 0
   node: {fileID: 481396938197725150}
-  position: {x: 94.80778, y: 23.505503}
+  position: {x: 93.5, y: 23.5}
   boundsOffset:
     serializedVersion: 2
-    x: -94.80778
-    y: -23.505503
-    width: 189.61555
-    height: 47.011005
+    x: -93.5
+    y: -23.5
+    width: 187
+    height: 47
   tangent: {x: 0, y: -1}
   tangentStrength: 50
   Padding: {x: 10, y: 10}
@@ -1989,8 +1989,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: -153.76747
     y: 319.8791
-    width: 189.61555
-    height: 47.011005
+    width: 187
+    height: 47
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -2534,13 +2534,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pinType: 1
   node: {fileID: 481396938197725150}
-  position: {x: 94.80778, y: 23.505503}
+  position: {x: 93.5, y: 23.5}
   boundsOffset:
     serializedVersion: 2
-    x: -94.80778
-    y: -23.505503
-    width: 189.61555
-    height: 47.011005
+    x: -93.5
+    y: -23.5
+    width: 187
+    height: 47
   tangent: {x: 0, y: -1}
   tangentStrength: 50
   Padding: {x: 12, y: 12}

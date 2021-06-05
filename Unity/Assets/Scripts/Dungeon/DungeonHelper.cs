@@ -30,6 +30,8 @@ public class DungeonHelper : MonoBehaviour
     private void Awake()
     {
         m_Instance = this;
+        DontDestroyOnLoad(m_Instance.gameObject);
+
         Reset();
     }
 

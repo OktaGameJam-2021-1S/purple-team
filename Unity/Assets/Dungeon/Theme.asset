@@ -24,7 +24,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 90
+  zIndex: 107
   inputPins:
   - {fileID: 4142429116216381994}
   outputPins:
@@ -105,7 +105,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 85
+  zIndex: 104
   inputPins:
   - {fileID: -6781923649540403003}
   outputPins:
@@ -131,7 +131,7 @@ MonoBehaviour:
   consumeOnAttach: 1
   attachmentProbability: 1
   IsStatic: 0
-  affectsNavigation: 1
+  affectsNavigation: 0
   selectionRuleEnabled: 0
   selectionRuleClassName: 
   transformRuleEnabled: 0
@@ -416,7 +416,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 52
+  zIndex: 102
   inputPins:
   - {fileID: 6610699797091687469}
   outputPins:
@@ -526,7 +526,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 0
+  zIndex: 100
   inputPins: []
   outputPins:
   - {fileID: -2419441522117012063}
@@ -555,7 +555,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 50
+  zIndex: 103
   inputPins:
   - {fileID: 7185839056702390941}
   outputPins:
@@ -787,7 +787,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 1
-  zIndex: 91
+  zIndex: 108
   inputPins:
   - {fileID: -489600233967921810}
   outputPins:
@@ -813,7 +813,7 @@ MonoBehaviour:
   consumeOnAttach: 1
   attachmentProbability: 1
   IsStatic: 0
-  affectsNavigation: 1
+  affectsNavigation: 0
   selectionRuleEnabled: 0
   selectionRuleClassName: 
   transformRuleEnabled: 0
@@ -979,7 +979,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 0
+  zIndex: 101
   inputPins: []
   outputPins:
   - {fileID: -2448148224443706691}
@@ -1272,7 +1272,7 @@ MonoBehaviour:
   indexCounter:
     index: 9
   topZIndex:
-    index: 91
+    index: 108
   nodes:
   - {fileID: -6812903639289231307}
   - {fileID: -7274696304824330118}
@@ -1586,7 +1586,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 51
+  zIndex: 99
   inputPins:
   - {fileID: 3784279664006011721}
   outputPins:
