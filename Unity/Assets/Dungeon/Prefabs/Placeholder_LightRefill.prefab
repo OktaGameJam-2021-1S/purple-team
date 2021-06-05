@@ -90,6 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8725803230619888487}
+  - component: {fileID: 3187283140669636102}
   m_Layer: 0
   m_Name: Placeholder_LightRefill
   m_TagString: Untagged
@@ -113,6 +114,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3187283140669636102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725803230619888486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c2e292d9398f946a9730484e6f478a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Tag: 4
 --- !u!1 &8725803231491953199
 GameObject:
   m_ObjectHideFlags: 0
