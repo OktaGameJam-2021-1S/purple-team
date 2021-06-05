@@ -7,18 +7,27 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 using HashtablePhoton = ExitGames.Client.Photon.Hashtable;
 using Hashtable = System.Collections.Hashtable;
+using System;
+using Random = UnityEngine.Random;
 
 namespace GamePlay
 {
     public class GameLoader : MonoBehaviour
     {
+        [SerializeField] private GameController _gameController;
         [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private GameObject _safeZonePrefab;
+        [SerializeField] private LostKid _lostKid;
 
-        private List<PhotonView> _playerList;
+        private List<PlayerController> _playerList;
+        private PlayerController _localPlayer;
+        private Transform _playerSpawnPosition;
+        private List<Transform> _refillPositions;
+        private List<Transform> _enemySpawnPositions;
 
         private void Awake()
         {
-            _playerList = new List<PhotonView>();
+            _playerList = new List<PlayerController>();
         }
 
         private void Start()
@@ -36,7 +45,14 @@ namespace GamePlay
         private IEnumerator LoadGame()
         {
             yield return WaitPlayersToJoin();
-            yield return SpawnPlayers();
+            yield return BuildMap();
+            yield return SpawnPlayers(_playerSpawnPosition);
+            yield return SpawnSafeZones(_refillPositions);
+
+            LoadingLog("Finished loading");
+
+            _gameController.Initialize(_localPlayer, _playerList, _lostKid);
+            _gameController.StartGame();
         }
 
         private IEnumerator WaitPlayersToJoin()
@@ -75,7 +91,80 @@ namespace GamePlay
             NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
         }
 
-        private IEnumerator SpawnPlayers()
+        private IEnumerator BuildMap()
+        {
+            LoadingLog("Loading map seed");
+
+            int mapSeed = -1;
+            string mapSeedKey = "MapSeed";
+            void OnChangedRoomData(HashtablePhoton properties)
+            {
+                if (properties.ContainsKey(mapSeedKey))
+                {
+                    mapSeed = (int)properties[mapSeedKey];
+
+                    LoadingLog("Received map seed " + mapSeed);
+                }
+            }
+
+            void OnMasterClientSwitched(Player newMasterClient)
+            {
+                if (mapSeed == -1 && PhotonNetwork.IsMasterClient)
+                {
+                    GenerateMapSeed();
+                }
+            }
+
+            void GenerateMapSeed()
+            {
+                LoadingLog("Generating viewIDs");
+
+                HashtablePhoton mapSeedHash = new HashtablePhoton()
+                {
+                    { mapSeedKey, (int) Random.Range(0, 100000) }
+                };
+
+                PhotonNetwork.CurrentRoom.SetCustomProperties(mapSeedHash);
+            }
+
+            OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
+
+            NetworkEventDispatcher.RoomPropertiesUpdateEvent += OnChangedRoomData;
+            NetworkEventDispatcher.MasterClientSwitchedEvent += OnMasterClientSwitched;
+
+            if (mapSeed == -1 && PhotonNetwork.IsMasterClient)
+            {
+                GenerateMapSeed();
+            }
+
+            while (mapSeed == -1) yield return null;
+
+            NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
+            NetworkEventDispatcher.MasterClientSwitchedEvent -= OnMasterClientSwitched;
+
+            LoadingLog("Bulding map");
+
+            bool finishedBuilding = false;
+
+            DungeonHelper.Instance.BuildDungeon(Convert.ToUInt32(mapSeed),
+            delegate ()
+            {
+                finishedBuilding = true;
+            });
+
+            while (!finishedBuilding) yield return null;
+
+            yield return null;
+
+            _lostKid.transform.position = DungeonHelper.Instance.GetObjectivePoint().position;
+            _playerSpawnPosition = DungeonHelper.Instance.GetPlayerSpawnPoint();
+            _refillPositions = DungeonHelper.Instance.GetRefillPoints();
+            _enemySpawnPositions = DungeonHelper.Instance.GetEnemySpawnPoints();
+
+            _refillPositions.Add(_lostKid.transform);
+        }
+
+        private IEnumerator SpawnPlayers(Transform spawnPosition)
         {
             LoadingLog("Spawning players");
 
@@ -87,8 +176,8 @@ namespace GamePlay
                     string key = "playerViewID" + PhotonNetwork.PlayerList[i].ActorNumber;
                     if (properties.TryGetValue(key, out object viewID))
                     {
-                        _playerList[i].ViewID = (int)viewID;
-                        _playerList[i].TransferOwnership(PhotonNetwork.PlayerList[i]);
+                        _playerList[i].photonView.ViewID = (int)viewID;
+                        _playerList[i].photonView.TransferOwnership(PhotonNetwork.PlayerList[i]);
 
                         receivedViewIds = true;
                     }
@@ -109,11 +198,11 @@ namespace GamePlay
 
                 HashtablePhoton viewIDs = new HashtablePhoton();
 
-                foreach (PhotonView photonView in _playerList)
+                foreach (PlayerController player in _playerList)
                 {
                     int id = PhotonNetwork.AllocateViewID(true);
 
-                    viewIDs.Add("playerViewID" + photonView.OwnerActorNr, id);
+                    viewIDs.Add("playerViewID" + player.photonView.OwnerActorNr, id);
                 }
 
                 PhotonNetwork.CurrentRoom.SetCustomProperties(viewIDs);
@@ -121,10 +210,17 @@ namespace GamePlay
 
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                PhotonView photonView = Instantiate(_playerPrefab).GetComponent<PhotonView>();
-                photonView.OwnerActorNr = player.ActorNumber;
-                photonView.ControllerActorNr = player.ActorNumber;
-                _playerList.Add(photonView);
+                Vector3 randomOffset = new Vector3(1, 0, 1) * Random.Range(-1, 1) * 5;
+                PlayerController photonPlayer = Instantiate(_playerPrefab, spawnPosition.position + randomOffset, _playerPrefab.transform.rotation).GetComponent<PlayerController>();
+                photonPlayer.gameObject.name = "Player " + player.ActorNumber;
+                photonPlayer.photonView.OwnerActorNr = player.ActorNumber;
+                photonPlayer.photonView.ControllerActorNr = player.ActorNumber;
+                _playerList.Add(photonPlayer);
+
+                if (player.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
+                {
+                    _localPlayer = photonPlayer;
+                }
             }
 
             OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
@@ -141,6 +237,19 @@ namespace GamePlay
 
             NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
             NetworkEventDispatcher.MasterClientSwitchedEvent -= OnMasterClientSwitched;
+
+            yield return null;
+        }
+
+        private IEnumerator SpawnSafeZones(List<Transform> safeZonePositions)
+        {
+            LoadingLog("Spawning " + safeZonePositions.Count + " safe zones");
+            foreach (Transform safePosition in safeZonePositions)
+            {
+                Instantiate(_safeZonePrefab, safePosition.position, safePosition.rotation);
+            }
+
+            yield return null;
         }
 
     }
