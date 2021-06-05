@@ -14,6 +14,7 @@ namespace GamePlay
     {
         [SerializeField] private GameController _gameController;
         [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private LostKid _lostKid;
 
         private List<PlayerController> _playerList;
         private PlayerController _localPlayer;
@@ -40,7 +41,7 @@ namespace GamePlay
             yield return WaitPlayersToJoin();
             yield return SpawnPlayers();
 
-            _gameController.Initialize(_localPlayer, _playerList);
+            _gameController.Initialize(_localPlayer, _playerList, _lostKid);
             _gameController.StartGame();
         }
 

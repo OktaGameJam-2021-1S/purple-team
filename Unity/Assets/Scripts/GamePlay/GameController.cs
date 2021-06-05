@@ -10,6 +10,7 @@ namespace GamePlay
         [SerializeField] private InputController _inputController;
         private List<PlayerController> _playersList;
         private PlayerController _localPlayer;
+        private LostKid _lostKid;
 
         private enum GameState
         {
@@ -20,12 +21,14 @@ namespace GamePlay
 
         private GameState _gameState = GameState.Idle;
 
-        public void Initialize(PlayerController localPlayer, List<PlayerController> players)
+        public void Initialize(PlayerController localPlayer, List<PlayerController> players, LostKid lostKid)
         {
             _gameState = GameState.Idle;
             _localPlayer = localPlayer;
             _playersList = players;
+            _lostKid = lostKid;
 
+            _lostKid.Initialize(_playersList);
             _cameraController.Initialize(_localPlayer.transform);
             _inputController.Initialize();
 
