@@ -38,20 +38,13 @@ namespace GamePlay
 
         public void UpdatePlayerInput()
         {
-            _targetAxis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            _targetAxis = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             if (_targetAxis.magnitude > 1)
             {
                 _targetAxis.Normalize();
             }
 
-            if (_targetAxis.x == 0 && _targetAxis.y == 0)
-            {
-                _playerInput.axis = Vector2.MoveTowards(_playerInput.axis, _targetAxis, _falloffAxis * Time.deltaTime);
-            }
-            else
-            {
-                _playerInput.axis = _targetAxis;
-            }
+            _playerInput.axis = Vector2.MoveTowards(_playerInput.axis, _targetAxis, _falloffAxis * Time.deltaTime);
 
             _playerInput.interactButton = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0);
         }        
