@@ -16,6 +16,7 @@ namespace GamePlay
     {
         [SerializeField] private GameController _gameController;
         [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private GameObject _safeZonePrefab;
         [SerializeField] private LostKid _lostKid;
 
         private List<PlayerController> _playerList;
@@ -46,6 +47,9 @@ namespace GamePlay
             yield return WaitPlayersToJoin();
             yield return BuildMap();
             yield return SpawnPlayers(_playerSpawnPosition);
+            yield return SpawnSafeZones(_refillPositions);
+
+            LoadingLog("Finished loading");
 
             _gameController.Initialize(_localPlayer, _playerList, _lostKid);
             _gameController.StartGame();
@@ -154,6 +158,8 @@ namespace GamePlay
             _playerSpawnPosition = DungeonHelper.Instance.GetPlayerSpawnPoint();
             _refillPositions = DungeonHelper.Instance.GetRefillPoints();
             _enemySpawnPositions = DungeonHelper.Instance.GetEnemySpawnPoints();
+
+            _refillPositions.Add(_lostKid.transform);
         }
 
         private IEnumerator SpawnPlayers(Transform spawnPosition)
@@ -229,6 +235,17 @@ namespace GamePlay
 
             NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
             NetworkEventDispatcher.MasterClientSwitchedEvent -= OnMasterClientSwitched;
+
+            yield return null;
+        }
+
+        private IEnumerator SpawnSafeZones(List<Transform> safeZonePositions)
+        {
+            LoadingLog("Spawning " + safeZonePositions.Count + " safe zones");
+            foreach (Transform safePosition in safeZonePositions)
+            {
+                Instantiate(_safeZonePrefab, safePosition.position, safePosition.rotation);
+            }
 
             yield return null;
         }
