@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameController: {fileID: 612486704}
   _playerPrefab: {fileID: 2707400321833142739, guid: 82d697f8e7469744d931e0405333329a, type: 3}
+  _safeZonePrefab: {fileID: 7391237493236704625, guid: 05f7634219193824f8c4fc3f9d92e386, type: 3}
   _lostKid: {fileID: 1565754397}
 --- !u!4 &184236747
 Transform:
