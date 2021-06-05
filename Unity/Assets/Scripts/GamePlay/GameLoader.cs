@@ -12,13 +12,15 @@ namespace GamePlay
 {
     public class GameLoader : MonoBehaviour
     {
+        [SerializeField] private GameController _gameController;
         [SerializeField] private GameObject _playerPrefab;
 
-        private List<PhotonView> _playerList;
+        private List<PlayerController> _playerList;
+        private PlayerController _localPlayer;
 
         private void Awake()
         {
-            _playerList = new List<PhotonView>();
+            _playerList = new List<PlayerController>();
         }
 
         private void Start()
@@ -37,6 +39,9 @@ namespace GamePlay
         {
             yield return WaitPlayersToJoin();
             yield return SpawnPlayers();
+
+            _gameController.Initialize(_localPlayer, _playerList);
+            _gameController.StartGame();
         }
 
         private IEnumerator WaitPlayersToJoin()
@@ -121,10 +126,15 @@ namespace GamePlay
 
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                PhotonView photonView = Instantiate(_playerPrefab).GetComponent<PhotonView>();
-                photonView.OwnerActorNr = player.ActorNumber;
-                photonView.ControllerActorNr = player.ActorNumber;
-                _playerList.Add(photonView);
+                PlayerController photonPlayer = Instantiate(_playerPrefab).GetComponent<PlayerController>();
+                photonPlayer.OwnerActorNr = player.ActorNumber;
+                photonPlayer.ControllerActorNr = player.ActorNumber;
+                _playerList.Add(photonPlayer);
+
+                if (player.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
+                {
+                    _localPlayer = photonPlayer;
+                }
             }
 
             OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
