@@ -24,7 +24,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 107
+  zIndex: 117
   inputPins:
   - {fileID: 4142429116216381994}
   outputPins:
@@ -786,8 +786,8 @@ MonoBehaviour:
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
-  selected: 1
-  zIndex: 108
+  selected: 0
+  zIndex: 118
   inputPins:
   - {fileID: -489600233967921810}
   outputPins:
@@ -813,7 +813,7 @@ MonoBehaviour:
   consumeOnAttach: 1
   attachmentProbability: 1
   IsStatic: 0
-  affectsNavigation: 0
+  affectsNavigation: 1
   selectionRuleEnabled: 0
   selectionRuleClassName: 
   transformRuleEnabled: 0
@@ -1272,7 +1272,7 @@ MonoBehaviour:
   indexCounter:
     index: 9
   topZIndex:
-    index: 108
+    index: 119
   nodes:
   - {fileID: -6812903639289231307}
   - {fileID: -7274696304824330118}
@@ -1585,8 +1585,8 @@ MonoBehaviour:
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
-  selected: 0
-  zIndex: 99
+  selected: 1
+  zIndex: 119
   inputPins:
   - {fileID: 3784279664006011721}
   outputPins:
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   consumeOnAttach: 1
   attachmentProbability: 1
   IsStatic: 0
-  affectsNavigation: 1
+  affectsNavigation: 0
   selectionRuleEnabled: 0
   selectionRuleClassName: 
   transformRuleEnabled: 0
@@ -2129,15 +2129,15 @@ MonoBehaviour:
   caption: Game Object Node
   bounds:
     serializedVersion: 2
-    x: -2.3664732
-    y: 90.06704
+    x: -1.3664732
+    y: 89.06704
     width: 120
     height: 120
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 70
+  zIndex: 115
   inputPins:
   - {fileID: -7346932279864344615}
   outputPins:
