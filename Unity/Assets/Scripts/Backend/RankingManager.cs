@@ -36,7 +36,10 @@ public class RankingManager : MonoBehaviour
     public void Awake()
     {
         m_Instance = this;
-        DontDestroyOnLoad(this.gameObject);
+
+        if (this.transform.root == this.transform)
+            DontDestroyOnLoad(this.gameObject);
+
         m_Leaderboard = new List<EntryData>();
     }
 

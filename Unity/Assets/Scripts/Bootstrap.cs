@@ -15,7 +15,20 @@ public class Bootstrap : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
 
+        yield return null;
+
+        while (string.IsNullOrEmpty(AuthManager.Instance.localNickname))
+            yield return null;
+
         if (SceneManager.GetActiveScene().name == "Boot")
-            yield return SceneManager.LoadSceneAsync("Menu");
+            yield return SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
+
+        SceneManager.UnloadSceneAsync("Boot");
+    }
+
+    [ContextMenu("PlayersPrefs.ClearAll")]
+    private void ClearPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
