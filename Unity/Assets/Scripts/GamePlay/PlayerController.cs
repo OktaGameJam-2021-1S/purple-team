@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Photon.Pun;
+using Utils;
 
 namespace GamePlay
 {
-    public class PlayerController : PhotonView
+    public class PlayerController : MonoBehaviourPun
     {
         [SerializeField] private MovementController _movementController;
+        [SerializeField] private PlayerLightController _playerLightController;
 
         /// <summary>
         /// Initialize the Player Controller
         /// </summary>
-        public void Initialize()
+        public void Initialize(bool isLocalPlayer)
         {
+            Utilities.ChangeObjectLayer(gameObject, LayerMask.NameToLayer((isLocalPlayer ? "MainCharacter" : "Character")));
+            _playerLightController.Initialize(isLocalPlayer);
             _movementController.Initialize();
         }
 
@@ -27,7 +31,7 @@ namespace GamePlay
             _movementController.UpdateAxis(axis);
         }
 
-        public void UpdatePlayerPosition(float deltaTime)
+        public void UpdatePlayer(float deltaTime)
         {
             _movementController.UpdatePosition(deltaTime);
         }

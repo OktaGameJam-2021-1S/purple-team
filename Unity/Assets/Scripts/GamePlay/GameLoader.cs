@@ -92,8 +92,8 @@ namespace GamePlay
                     string key = "playerViewID" + PhotonNetwork.PlayerList[i].ActorNumber;
                     if (properties.TryGetValue(key, out object viewID))
                     {
-                        _playerList[i].ViewID = (int)viewID;
-                        _playerList[i].TransferOwnership(PhotonNetwork.PlayerList[i]);
+                        _playerList[i].photonView.ViewID = (int)viewID;
+                        _playerList[i].photonView.TransferOwnership(PhotonNetwork.PlayerList[i]);
 
                         receivedViewIds = true;
                     }
@@ -114,11 +114,11 @@ namespace GamePlay
 
                 HashtablePhoton viewIDs = new HashtablePhoton();
 
-                foreach (PhotonView photonView in _playerList)
+                foreach (PlayerController player in _playerList)
                 {
                     int id = PhotonNetwork.AllocateViewID(true);
 
-                    viewIDs.Add("playerViewID" + photonView.OwnerActorNr, id);
+                    viewIDs.Add("playerViewID" + player.photonView.OwnerActorNr, id);
                 }
 
                 PhotonNetwork.CurrentRoom.SetCustomProperties(viewIDs);
@@ -127,8 +127,9 @@ namespace GamePlay
             foreach (Player player in PhotonNetwork.PlayerList)
             {
                 PlayerController photonPlayer = Instantiate(_playerPrefab).GetComponent<PlayerController>();
-                photonPlayer.OwnerActorNr = player.ActorNumber;
-                photonPlayer.ControllerActorNr = player.ActorNumber;
+                photonPlayer.gameObject.name = "Player " + player.ActorNumber;
+                photonPlayer.photonView.OwnerActorNr = player.ActorNumber;
+                photonPlayer.photonView.ControllerActorNr = player.ActorNumber;
                 _playerList.Add(photonPlayer);
 
                 if (player.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
@@ -151,6 +152,8 @@ namespace GamePlay
 
             NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
             NetworkEventDispatcher.MasterClientSwitchedEvent -= OnMasterClientSwitched;
+
+            yield return null;
         }
 
     }

@@ -21,11 +21,19 @@ namespace GamePlay
 
         public void Initialize(PlayerController localPlayer, List<PlayerController> players)
         {
+            _gameState = GameState.Idle;
             _localPlayer = localPlayer;
             _playersList = players;
 
             _cameraController.Initialize(_localPlayer.transform);
-            _gameState = GameState.Idle;
+
+            _localPlayer.Initialize(true);
+
+            foreach (PlayerController player in _playersList)
+            {
+                if (player == _localPlayer) continue;
+                player.Initialize(false);
+            }
         }
 
         public void StartGame()
@@ -51,7 +59,7 @@ namespace GamePlay
             if (_gameState != GameState.Main) return;
 
             ProcessInput();
-            _localPlayer.UpdatePlayerPosition(Time.deltaTime);
+            _localPlayer.UpdatePlayer(Time.deltaTime);
             _cameraController.UpdateCameraPosition();
 
         }
