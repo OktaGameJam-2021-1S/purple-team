@@ -48,7 +48,7 @@ namespace Menu
         #region MatchMaking Events Callbacks
         private void OnMatchFounded()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("GamePlay");
         }
 
         private void OnFailedToFindAMatch()

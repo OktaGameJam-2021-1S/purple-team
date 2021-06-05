@@ -6,6 +6,7 @@ namespace GamePlay
 {
     public class PlayerLightController : MonoBehaviour
     {
+        [SerializeField] private float _lightDuration = 20;
         [SerializeField] private Light _pointLight;
         [SerializeField] private Light _flashLight;
 
@@ -23,7 +24,7 @@ namespace GamePlay
         /// <summary>
         /// Max duration of the light
         /// </summary>
-        public float LightDuration { get; private set; } = 10;
+        public float LightDuration => _lightDuration;
         /// <summary>
         /// Inform if the light is currently on
         /// </summary>

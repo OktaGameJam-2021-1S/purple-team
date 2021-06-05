@@ -7,6 +7,8 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 using HashtablePhoton = ExitGames.Client.Photon.Hashtable;
 using Hashtable = System.Collections.Hashtable;
+using System;
+using Random = UnityEngine.Random;
 
 namespace GamePlay
 {
@@ -18,6 +20,9 @@ namespace GamePlay
 
         private List<PlayerController> _playerList;
         private PlayerController _localPlayer;
+        private Transform _playerSpawnPosition;
+        private List<Transform> _refillPositions;
+        private List<Transform> _enemySpawnPositions;
 
         private void Awake()
         {
@@ -39,7 +44,8 @@ namespace GamePlay
         private IEnumerator LoadGame()
         {
             yield return WaitPlayersToJoin();
-            yield return SpawnPlayers();
+            yield return BuildMap();
+            yield return SpawnPlayers(_playerSpawnPosition);
 
             _gameController.Initialize(_localPlayer, _playerList, _lostKid);
             _gameController.StartGame();
@@ -81,7 +87,76 @@ namespace GamePlay
             NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
         }
 
-        private IEnumerator SpawnPlayers()
+        private IEnumerator BuildMap()
+        {
+            LoadingLog("Loading map seed");
+
+            int mapSeed = -1;
+            string mapSeedKey = "MapSeed";
+            void OnChangedRoomData(HashtablePhoton properties)
+            {
+                if (properties.ContainsKey(mapSeedKey))
+                {
+                    mapSeed = (int)properties[mapSeedKey];
+
+                    LoadingLog("Received map seed " + mapSeed);
+                }
+            }
+
+            void OnMasterClientSwitched(Player newMasterClient)
+            {
+                if (mapSeed == -1 && PhotonNetwork.IsMasterClient)
+                {
+                    GenerateMapSeed();
+                }
+            }
+
+            void GenerateMapSeed()
+            {
+                LoadingLog("Generating viewIDs");
+
+                HashtablePhoton mapSeedHash = new HashtablePhoton()
+                {
+                    { mapSeedKey, (int) Random.Range(0, 100000) }
+                };
+
+                PhotonNetwork.CurrentRoom.SetCustomProperties(mapSeedHash);
+            }
+
+            OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
+
+            NetworkEventDispatcher.RoomPropertiesUpdateEvent += OnChangedRoomData;
+
+            if (mapSeed == -1 && PhotonNetwork.IsMasterClient)
+            {
+                GenerateMapSeed();
+            }
+
+            while (mapSeed == -1) yield return null;
+
+            NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
+
+            LoadingLog("Bulding map");
+
+            bool finishedBuilding = false;
+
+            DungeonHelper.Instance.BuildDungeon(Convert.ToUInt32(mapSeed),
+            delegate ()
+            {
+                finishedBuilding = true;
+            });
+
+            while (!finishedBuilding) yield return null;
+
+            yield return null;
+
+            _lostKid.transform.position = DungeonHelper.Instance.GetObjectivePoint().position;
+            _playerSpawnPosition = DungeonHelper.Instance.GetPlayerSpawnPoint();
+            _refillPositions = DungeonHelper.Instance.GetRefillPoints();
+            _enemySpawnPositions = DungeonHelper.Instance.GetEnemySpawnPoints();
+        }
+
+        private IEnumerator SpawnPlayers(Transform spawnPosition)
         {
             LoadingLog("Spawning players");
 
@@ -127,7 +202,8 @@ namespace GamePlay
 
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                PlayerController photonPlayer = Instantiate(_playerPrefab).GetComponent<PlayerController>();
+                Vector3 randomOffset = new Vector3(1, 0, 1) * Random.Range(-1, 1) * 2;
+                PlayerController photonPlayer = Instantiate(_playerPrefab, spawnPosition.position + randomOffset, _playerPrefab.transform.rotation).GetComponent<PlayerController>();
                 photonPlayer.gameObject.name = "Player " + player.ActorNumber;
                 photonPlayer.photonView.OwnerActorNr = player.ActorNumber;
                 photonPlayer.photonView.ControllerActorNr = player.ActorNumber;
