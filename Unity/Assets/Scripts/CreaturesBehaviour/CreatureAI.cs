@@ -165,6 +165,16 @@ public class CreatureAI : MonoBehaviourPun
     {
         _aiManager = aiManager;
 
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 500, 1))
+        {
+            navMeshAgent.transform.position = hit.position;
+            navMeshAgent.Warp(hit.position);
+        }
+        else
+        {
+            navMeshAgent.Warp(transform.position);
+        }
+
         triggerSensor.OnDetected.AddListener(OnSenseSomething);
         Roam();
         lightDmg = 0;
