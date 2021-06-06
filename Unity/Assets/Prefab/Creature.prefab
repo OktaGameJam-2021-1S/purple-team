@@ -103,7 +103,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 7123516310894976124}
   - {fileID: 3333245079483537272}
-  sceneViewId: 2
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &335660143419083735
@@ -267,7 +267,7 @@ MonoBehaviour:
   SensorRange: 10
   DetectsOnLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   SensorUpdateMode: 0
   CheckInterval: 1
   InitialBufferSize: 20
