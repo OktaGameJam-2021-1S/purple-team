@@ -15,6 +15,8 @@ namespace GamePlay
         [SerializeField] private TriggerSensor _triggerSensor;
         [SerializeField] private float lightDmg = 10;
 
+        public bool HasKid => _carringKid != null;
+
         private LostKid _carringKid = null;
         private LostKid _closeKid = null;
 
