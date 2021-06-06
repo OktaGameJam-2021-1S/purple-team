@@ -1,0 +1,1951 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &430791557853056316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 935041996847491824}
+  - component: {fileID: 3374313448330881215}
+  - component: {fileID: 6040005599876490423}
+  - component: {fileID: 5737974170731329600}
+  - component: {fileID: 5974087408935267944}
+  m_Layer: 5
+  m_Name: UIMapCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &935041996847491824
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430791557853056316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1959448466312199265}
+  m_Father: {fileID: 3963496293514013617}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!223 &3374313448330881215
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430791557853056316}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &6040005599876490423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430791557853056316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 1
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!114 &5737974170731329600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430791557853056316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c519428a0220cce4f82eb7a9bac7dc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Canvas: {fileID: 3374313448330881215}
+  m_Panel: {fileID: 1959448466312199265}
+  startActive: 1
+--- !u!225 &5974087408935267944
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430791557853056316}
+  m_Enabled: 1
+  m_Alpha: 0.1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!1 &673026721254193744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2687771133415971494}
+  - component: {fileID: 5600773630694892332}
+  - component: {fileID: 2770802395471559579}
+  m_Layer: 5
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2687771133415971494
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673026721254193744}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1959448466312199265}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 30, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5600773630694892332
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673026721254193744}
+  m_CullTransparentMesh: 1
+--- !u!114 &2770802395471559579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673026721254193744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 0.4
+--- !u!1 &2461272163759792514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2461272163759792512}
+  - component: {fileID: 2461272163759792513}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2461272163759792512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272163759792514}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3963496293514013617}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2461272163759792513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272163759792514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 604a649c8421dad47ad70dab748e9e8d, type: 2}
+--- !u!1 &2461272164143280673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2461272164143280672}
+  - component: {fileID: 2461272164143280685}
+  - component: {fileID: 2461272164143280686}
+  - component: {fileID: 2461272164143280687}
+  - component: {fileID: 2461272164143280680}
+  - component: {fileID: 2461272164143280681}
+  - component: {fileID: 2461272164143280682}
+  - component: {fileID: 2461272164143280683}
+  - component: {fileID: 2461272164143280676}
+  - component: {fileID: 2461272164143280677}
+  - component: {fileID: 2461272164143280678}
+  - component: {fileID: 2461272164143280679}
+  m_Layer: 0
+  m_Name: DungeonGridFlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &2461272164143280672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3963496293514013617}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2461272164143280685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65b74248fe594982b0d9bfde7d96c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonThemes:
+  - {fileID: 11400000, guid: cd23732324b1a95409f3912208090e17, type: 2}
+  debugDraw: 0
+--- !u!114 &2461272164143280686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb6c97d89d49bb4bb439ecf27df8fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seed: 0
+  flowAsset: {fileID: 11400000, guid: bacac686dd3ee954aac985a35a2392f6, type: 2}
+  gridSize: {x: 4, y: 2, z: 4}
+  Mode2D: 0
+--- !u!114 &2461272164143280687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa6c53aeca2ab446b62af5bc1d59c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asyncBuild: 0
+  maxBuildTimePerFrame: 32
+  asyncBuildStartPosition: {fileID: 0}
+--- !u!114 &2461272164143280680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcaac49d17086f4db6c81ef45e6ea4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layoutGraph:
+    Nodes:
+    - nodeId:
+        A: 2003951762
+        B: 1093231093
+        C: -853961846
+        D: -1983896689
+      position: {x: 0, y: 480, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 0, y: 0, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    - nodeId:
+        A: 1148654129
+        B: 1146491869
+        C: -988263750
+        D: -918146430
+      position: {x: 120, y: 480, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 1, y: 0, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    - nodeId:
+        A: -1485433051
+        B: 1191142849
+        C: -136188240
+        D: -1508714829
+      position: {x: 240, y: 480, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 2, y: 0, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    - nodeId:
+        A: -143255447
+        B: 1290718301
+        C: 8960673
+        D: -1018913296
+      position: {x: 360, y: 480, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 3, y: 0, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    - nodeId:
+        A: 539217924
+        B: 1257909458
+        C: -745710957
+        D: -640708125
+      position: {x: 480, y: 480, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 4, y: 0, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    - nodeId:
+        A: -294924143
+        B: 1288578029
+        C: 898240909
+        D: -395498141
+      position: {x: 0, y: 360, z: 0}
+      active: 1
+      color: {r: 1, g: 0.38431373, b: 0, a: 1}
+      coord: {x: 0, y: 1, z: 0}
+      pathName: refill4
+      items:
+      - itemId:
+          A: -1860825446
+          B: 1197819063
+          C: 2061186746
+          D: 1464792486
+        type: 6
+        markerName: LightRefill
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: Refill
+          text: R
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 1, g: 0.3626509, b: 0.0047169924, a: 1}
+      pathIndex: 0
+      pathLength: 1
+      mainPath: 0
+    - nodeId:
+        A: 2048183106
+        B: 1121993460
+        C: 1565837445
+        D: 1313307637
+      position: {x: 120, y: 360, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 1, y: 1, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    - nodeId:
+        A: -749921445
+        B: 1106883436
+        C: -1360730690
+        D: -1278429822
+      position: {x: 240, y: 360, z: 0}
+      active: 1
+      color: {r: 1, g: 0.38431373, b: 0, a: 1}
+      coord: {x: 2, y: 1, z: 0}
+      pathName: refill1
+      items:
+      - itemId:
+          A: 290770772
+          B: 1226548322
+          C: 845017238
+          D: -1220167318
+        type: 6
+        markerName: LightRefill
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: Refill
+          text: R
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 1, g: 0.3626509, b: 0.0047169924, a: 1}
+      pathIndex: 0
+      pathLength: 1
+      mainPath: 0
+    - nodeId:
+        A: 2104258487
+        B: 1249289493
+        C: -1515317617
+        D: 584615926
+      position: {x: 360, y: 360, z: 0}
+      active: 1
+      color: {r: 1, g: 0.38431373, b: 0, a: 1}
+      coord: {x: 3, y: 1, z: 0}
+      pathName: refill3
+      items:
+      - itemId:
+          A: -854127306
+          B: 1331794034
+          C: 1576174733
+          D: 1514535149
+        type: 6
+        markerName: LightRefill
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: Refill
+          text: R
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 1, g: 0.3626509, b: 0.0047169924, a: 1}
+      pathIndex: 0
+      pathLength: 1
+      mainPath: 0
+    - nodeId:
+        A: -1459223970
+        B: 1160291205
+        C: -288601933
+        D: -1677501253
+      position: {x: 480, y: 360, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 4, y: 1, z: 0}
+      pathName: main_goal
+      items:
+      - itemId:
+          A: 837124890
+          B: 1205088293
+          C: 1020961186
+          D: 412986054
+        type: 5
+        markerName: LevelGoal
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: custom
+          text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 9
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: -1638845206
+        B: 1093278358
+        C: 664043933
+        D: 1488006141
+      position: {x: 0, y: 240, z: 0}
+      active: 1
+      color: {r: 0.2627451, g: 0.2, b: 0.2, a: 1}
+      coord: {x: 0, y: 2, z: 0}
+      pathName: branch2
+      items:
+      - itemId:
+          A: 778673254
+          B: 1226878512
+          C: 382630046
+          D: -105258360
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: -1346829376
+          B: 1166522062
+          C: 1542489259
+          D: 1096869158
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 0
+      pathLength: 1
+      mainPath: 0
+    - nodeId:
+        A: 1070829010
+        B: 1174988399
+        C: 1860444593
+        D: 1991374976
+      position: {x: 120, y: 240, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 1, y: 2, z: 0}
+      pathName: main
+      items:
+      - itemId:
+          A: 1372839779
+          B: 1144040304
+          C: 1662327964
+          D: 397747143
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 3
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: 364592799
+        B: 1116818955
+        C: 490738574
+        D: 1190368716
+      position: {x: 240, y: 240, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 2, y: 2, z: 0}
+      pathName: main
+      items:
+      - itemId:
+          A: -1092584944
+          B: 1192911697
+          C: -1993914239
+          D: 340919466
+        type: 2
+        markerName: EnemySpawner
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: custom
+          text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: 1545285864
+          B: 1077582639
+          C: -351381096
+          D: 1530259803
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 4
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: 460315025
+        B: 1313365716
+        C: 1308550286
+        D: 460485257
+      position: {x: 360, y: 240, z: 0}
+      active: 1
+      color: {r: 0.2627451, g: 0.2, b: 0.2, a: 1}
+      coord: {x: 3, y: 2, z: 0}
+      pathName: branch1
+      items:
+      - itemId:
+          A: -841377693
+          B: 1163010248
+          C: -122854228
+          D: 1160692283
+        type: 2
+        markerName: EnemySpawner
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: custom
+          text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 0
+      pathLength: 1
+      mainPath: 0
+    - nodeId:
+        A: 407189266
+        B: 1315634142
+        C: 1285207714
+        D: -1737986733
+      position: {x: 480, y: 240, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 4, y: 2, z: 0}
+      pathName: main
+      items:
+      - itemId:
+          A: 298446229
+          B: 1247836267
+          C: -1679956562
+          D: 1652818249
+        type: 2
+        markerName: EnemySpawner
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: custom
+          text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 8
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: -670220962
+        B: 1217577080
+        C: 611792036
+        D: -469525571
+      position: {x: 0, y: 120, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 0, y: 3, z: 0}
+      pathName: main
+      items: []
+      pathIndex: 1
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: 127618014
+        B: 1208347824
+        C: -194253406
+        D: -1814202014
+      position: {x: 120, y: 120, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 1, y: 3, z: 0}
+      pathName: main
+      items: []
+      pathIndex: 2
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: 1026012591
+        B: 1257440823
+        C: 1166230695
+        D: 1648899654
+      position: {x: 240, y: 120, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 2, y: 3, z: 0}
+      pathName: main
+      items:
+      - itemId:
+          A: -489193694
+          B: 1222538870
+          C: -390226513
+          D: 1405360205
+        type: 2
+        markerName: EnemySpawner
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: custom
+          text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 5
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: 494046634
+        B: 1293140476
+        C: 1138345088
+        D: 466103823
+      position: {x: 360, y: 120, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 3, y: 3, z: 0}
+      pathName: main
+      items:
+      - itemId:
+          A: -712313714
+          B: 1244252655
+          C: 296317605
+          D: 802088017
+        type: 2
+        markerName: EnemySpawner
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: custom
+          text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: 1227137766
+          B: 1277166553
+          C: 1825271688
+          D: -15924872
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 6
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: -1717916853
+        B: 1310609250
+        C: 326064300
+        D: 178063764
+      position: {x: 480, y: 120, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 4, y: 3, z: 0}
+      pathName: main
+      items:
+      - itemId:
+          A: 595528731
+          B: 1307954536
+          C: -670042705
+          D: -942820354
+        type: 2
+        markerName: EnemySpawner
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: custom
+          text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      pathIndex: 7
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: 2013620087
+        B: 1338176537
+        C: 291311777
+        D: 1522674960
+      position: {x: 0, y: 0, z: 0}
+      active: 1
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
+      coord: {x: 0, y: 4, z: 0}
+      pathName: main_start
+      items:
+      - itemId:
+          A: -941377978
+          B: 1175962413
+          C: -548941184
+          D: 1090395447
+        type: 4
+        markerName: SpawnPoint
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: custom
+          text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: 234644322
+          B: 1197692222
+          C: 1176707501
+          D: 1448731281
+        type: 6
+        markerName: EntranceLadder
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceLadder
+          text: L
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: 345620125
+          B: 1116159277
+          C: 1016506508
+          D: -1275554315
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 1251809880
+          B: 1085028666
+          C: -1581953901
+          D: -810220012
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 1983711033
+          B: 1326287442
+          C: 1479813
+          D: 762852811
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 274523673
+          B: 1326422851
+          C: -1109100892
+          D: -107445525
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 957727664
+          B: 1138437759
+          C: 1595649195
+          D: 915263156
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 1170290358
+          B: 1333425950
+          C: 920036281
+          D: 1185178317
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 641548261
+          B: 1286122664
+          C: 666202245
+          D: -1965456145
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 1104232265
+          B: 1112095361
+          C: 1550780094
+          D: -1075806830
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: -1769828764
+          B: 1190281669
+          C: -378856273
+          D: -218586409
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: -1673942857
+          B: 1141405163
+          C: 1250895291
+          D: 1768708615
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 1951279774
+          B: 1196435819
+          C: -785827958
+          D: 553405087
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 872998681
+          B: 1208353552
+          C: 302131616
+          D: -140089210
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      pathIndex: 0
+      pathLength: 10
+      mainPath: 1
+    - nodeId:
+        A: 396707206
+        B: 1112089972
+        C: 1264821685
+        D: 231788911
+      position: {x: 120, y: 0, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 1, y: 4, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    - nodeId:
+        A: -806899277
+        B: 1078267660
+        C: 1664399501
+        D: 1464327811
+      position: {x: 240, y: 0, z: 0}
+      active: 1
+      color: {r: 1, g: 0.38431373, b: 0, a: 1}
+      coord: {x: 2, y: 4, z: 0}
+      pathName: refill2
+      items:
+      - itemId:
+          A: -1730239203
+          B: 1205563415
+          C: 219024280
+          D: -1105402903
+        type: 6
+        markerName: LightRefill
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: Refill
+          text: R
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 1, g: 0.3626509, b: 0.0047169924, a: 1}
+      pathIndex: 0
+      pathLength: 1
+      mainPath: 0
+    - nodeId:
+        A: -525314519
+        B: 1305498301
+        C: -1727052358
+        D: 285489825
+      position: {x: 360, y: 0, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 3, y: 4, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    - nodeId:
+        A: -1329831821
+        B: 1175521883
+        C: 1003187892
+        D: 347598272
+      position: {x: 480, y: 0, z: 0}
+      active: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+      coord: {x: 4, y: 4, z: 0}
+      pathName: 
+      items: []
+      pathIndex: -1
+      pathLength: 0
+      mainPath: 0
+    Links:
+    - linkId:
+        A: 1629805888
+        B: 1144146063
+        C: -265781622
+        D: 446796959
+      source:
+        A: -1638845206
+        B: 1093278358
+        C: 664043933
+        D: 1488006141
+      destination:
+        A: -294924143
+        B: 1288578029
+        C: 898240909
+        D: -395498141
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: 29219219
+        B: 1167452679
+        C: -687502169
+        D: -135902749
+      source:
+        A: -1638845206
+        B: 1093278358
+        C: 664043933
+        D: 1488006141
+      destination:
+        A: 1070829010
+        B: 1174988399
+        C: 1860444593
+        D: 1991374976
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: -1859747444
+        B: 1100207992
+        C: 698622641
+        D: -1042385434
+      source:
+        A: 1070829010
+        B: 1174988399
+        C: 1860444593
+        D: 1991374976
+      destination:
+        A: 364592799
+        B: 1116818955
+        C: 490738574
+        D: 1190368716
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: -878724454
+        B: 1332296877
+        C: 1906431631
+        D: -1228676387
+      source:
+        A: 364592799
+        B: 1116818955
+        C: 490738574
+        D: 1190368716
+      destination:
+        A: -749921445
+        B: 1106883436
+        C: -1360730690
+        D: -1278429822
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: -1124596077
+        B: 1217709326
+        C: 355478433
+        D: 846776827
+      source:
+        A: 460315025
+        B: 1313365716
+        C: 1308550286
+        D: 460485257
+      destination:
+        A: 2104258487
+        B: 1249289493
+        C: -1515317617
+        D: 584615926
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: -860413517
+        B: 1142015178
+        C: -1786632300
+        D: -632425798
+      source:
+        A: 407189266
+        B: 1315634142
+        C: 1285207714
+        D: -1737986733
+      destination:
+        A: 460315025
+        B: 1313365716
+        C: 1308550286
+        D: 460485257
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: -981185896
+        B: 1192612597
+        C: 1645484440
+        D: -1396779705
+      source:
+        A: 407189266
+        B: 1315634142
+        C: 1285207714
+        D: -1737986733
+      destination:
+        A: -1459223970
+        B: 1160291205
+        C: -288601933
+        D: -1677501253
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: 2064247770
+        B: 1241287428
+        C: -1922564434
+        D: -269400898
+      source:
+        A: -670220962
+        B: 1217577080
+        C: 611792036
+        D: -469525571
+      destination:
+        A: -1638845206
+        B: 1093278358
+        C: 664043933
+        D: 1488006141
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: -590576395
+        B: 1160841907
+        C: -1776075853
+        D: 86672996
+      source:
+        A: -670220962
+        B: 1217577080
+        C: 611792036
+        D: -469525571
+      destination:
+        A: 127618014
+        B: 1208347824
+        C: -194253406
+        D: -1814202014
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: 53102347
+        B: 1152974328
+        C: -1312681339
+        D: 696074702
+      source:
+        A: 127618014
+        B: 1208347824
+        C: -194253406
+        D: -1814202014
+      destination:
+        A: 1070829010
+        B: 1174988399
+        C: 1860444593
+        D: 1991374976
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: 799846432
+        B: 1085231416
+        C: -1240204649
+        D: 194632693
+      source:
+        A: 364592799
+        B: 1116818955
+        C: 490738574
+        D: 1190368716
+      destination:
+        A: 1026012591
+        B: 1257440823
+        C: 1166230695
+        D: 1648899654
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: 1810703275
+        B: 1082422943
+        C: 187457442
+        D: -1305026273
+      source:
+        A: 1026012591
+        B: 1257440823
+        C: 1166230695
+        D: 1648899654
+      destination:
+        A: 494046634
+        B: 1293140476
+        C: 1138345088
+        D: 466103823
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: -1616451540
+        B: 1231731665
+        C: 1417501830
+        D: -1908370943
+      source:
+        A: 460315025
+        B: 1313365716
+        C: 1308550286
+        D: 460485257
+      destination:
+        A: 494046634
+        B: 1293140476
+        C: 1138345088
+        D: 466103823
+      state:
+        type: 2
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: 1854944842
+        B: 1119651101
+        C: 1669636287
+        D: -1005998848
+      source:
+        A: 494046634
+        B: 1293140476
+        C: 1138345088
+        D: 466103823
+      destination:
+        A: -1717916853
+        B: 1310609250
+        C: 326064300
+        D: 178063764
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: 396449367
+        B: 1318445224
+        C: -154375000
+        D: -1286097100
+      source:
+        A: -1717916853
+        B: 1310609250
+        C: 326064300
+        D: 178063764
+      destination:
+        A: 407189266
+        B: 1315634142
+        C: 1285207714
+        D: -1737986733
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: -858294631
+        B: 1174392447
+        C: -2023235910
+        D: 134720038
+      source:
+        A: 2013620087
+        B: 1338176537
+        C: 291311777
+        D: 1522674960
+      destination:
+        A: -670220962
+        B: 1217577080
+        C: 611792036
+        D: -469525571
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+    - linkId:
+        A: 678641576
+        B: 1102160519
+        C: -2116682849
+        D: 429540823
+      source:
+        A: 1026012591
+        B: 1257440823
+        C: 1166230695
+        D: 1648899654
+      destination:
+        A: -806899277
+        B: 1078267660
+        C: 1664399501
+        D: 1464327811
+      state:
+        type: 1
+        items: []
+      sourceSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+      destinationSubNode:
+        A: 0
+        B: 0
+        C: 0
+        D: 0
+  wallsAsEdges: 0
+--- !u!114 &2461272164143280681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0ef9172759d43928c6f1131063f690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemParent: {fileID: 2461272165431747720}
+--- !u!114 &2461272164143280682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5bfe9cc405aea440915ad84edb36ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2461272164143280683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fcceba8b342e742abf05970124e35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2461272164143280676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97ba792dc3405345935639087029a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2461272164143280677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652da2fd54ec98b488459a7ac73afcdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateFrequency: 0.05
+  enableFogOfWar: 1
+  minimapTexture: {fileID: 8400000, guid: 3c135f8fcc8d58a4e99cac37a7f91ff6, type: 2}
+  compositeShader: {fileID: 4800000, guid: 7e1460c86b4767a4cb656ab35f9078c2, type: 3}
+  tileShader: {fileID: 4800000, guid: 935330e389a658349bd9450e337d1cc5, type: 3}
+  initMode: 0
+  icons:
+    iconOneWayDoor: {fileID: 2800000, guid: ff9e76e1bb9817e4abcf4837dd91a594, type: 3}
+  seeThroughWalls: 0
+--- !u!114 &2461272164143280678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d008d22774767a42947f3af95e214a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableRuntimeNavigation: 1
+  boundsPadding: {x: 0, y: 0, z: 0}
+  bakeTerrain: 0
+  terrain: {fileID: 0}
+--- !u!114 &2461272164143280679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164143280673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c2e292d9398f946a9730484e6f478a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Tag: 0
+--- !u!1 &2461272164389422732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2461272164389422738}
+  - component: {fileID: 2461272164389422739}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2461272164389422738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164389422732}
+  m_LocalRotation: {x: 0.4272871, y: -0.11249406, z: 0.5680821, w: 0.6943008}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3963496293514013617}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 46.149, y: 28.377, z: 90.875}
+--- !u!108 &2461272164389422739
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272164389422732}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 0.9968167, g: 1, b: 0.809, a: 1}
+  m_Intensity: 0.5
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.802082
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.02
+    m_NormalBias: 0.1
+    m_NearPlane: 0.1
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 128
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!1 &2461272165431747720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2461272165431747727}
+  m_Layer: 0
+  m_Name: DungeonItems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &2461272165431747727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461272165431747720}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3963496293514013617}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3338981033932967850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9217973775187771594}
+  - component: {fileID: 6856971301467186497}
+  - component: {fileID: 4294224006833998610}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9217973775187771594
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338981033932967850}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1959448466312199265}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6856971301467186497
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338981033932967850}
+  m_CullTransparentMesh: 1
+--- !u!114 &4294224006833998610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338981033932967850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: e3db463d772cc54469cb1bc8367698ee, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: 3c135f8fcc8d58a4e99cac37a7f91ff6, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!1 &3464672874296262838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959448466312199265}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1959448466312199265
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464672874296262838}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_Children:
+  - {fileID: 2687771133415971494}
+  - {fileID: 9217973775187771594}
+  m_Father: {fileID: 935041996847491824}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 169, y: 169}
+  m_SizeDelta: {x: 300.5643, y: 290.6975}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &4952907695452648331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3963496293514013617}
+  m_Layer: 0
+  m_Name: DungeonPrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3963496293514013617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952907695452648331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2461272164143280672}
+  - {fileID: 2461272165431747727}
+  - {fileID: 2461272163759792512}
+  - {fileID: 2461272164389422738}
+  - {fileID: 935041996847491824}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

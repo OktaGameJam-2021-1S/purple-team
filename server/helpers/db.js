@@ -62,16 +62,17 @@ function _topRelative(id) {
 					break;
 				}
 			}
+			const index=_.findIndex(ranks, (rank) => rank.id === id);
 
 			const above5=[];
-			for(let i=0; i < 5; i++) {
-				if(ranks[i].id === id) break;
+			for(let i=index - 5; i < index && i < ranks.length - 1; i++) {
+				if (!ranks[i]) continue;
 				above5.push(ranks[i]);
 			}
 
 			const bottom5=[];
-			for(let i=ranks.length - 1; i > ranks.length - 6; i--) {
-				if(ranks[i].id === id) break;
+			for(let i=index + 5; i > index && i >= 0; i--) {
+				if (!ranks[i]) continue;
 				bottom5.push(ranks[i]);
 			}
 
@@ -91,7 +92,7 @@ function _saveScore(score, player1, player2) {
 	return _updateGamesPlayed(player1, player2)
 		.then(() => _query("INSERT INTO leaderboard(score, player1, player2) VALUES ($1, $2, $3) RETURNING *;", [score, player1, player2]))
 		.then((scores) => scores[0])
-		.then((score) => _topRelative(score.id, score.score))
+		.then((score) => _topRelative(score.id, score.score));
 }
 
 module.exports={
