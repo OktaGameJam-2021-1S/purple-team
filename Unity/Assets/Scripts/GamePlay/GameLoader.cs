@@ -165,6 +165,7 @@ namespace GamePlay
             _enemySpawnPositions = DungeonHelper.Instance.GetEnemySpawnPoints();
 
             _refillPositions.Add(_lostKid.transform);
+            _refillPositions.Add(_exitCave.transform);
         }
 
         private IEnumerator SpawnPlayers(Transform spawnPosition)

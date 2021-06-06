@@ -76,6 +76,11 @@ public class DungeonHelper : MonoBehaviour
 
     public void BuildDungeon(uint seed, System.Action callback)
     {
+        m_PlayerSpawn.Clear();
+        m_ObjectivePoint.Clear();
+        m_EnemySpawn.Clear();
+        m_RefillPoint.Clear();
+
         StopAllCoroutines();
         StartCoroutine(Co_Build(seed, callback));
     }
