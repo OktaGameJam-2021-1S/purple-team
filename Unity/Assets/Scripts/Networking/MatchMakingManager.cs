@@ -18,7 +18,7 @@ namespace Networking
         public event Action CancelMatchmakinEvent;
         public event Action MatchFoundedEvent;
 
-        public const byte TargetNumberOfPlayers = 2;
+        public const byte TargetNumberOfPlayers = 1;
 
         public bool tryCustomServerFirst = true;
 

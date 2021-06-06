@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 using Networking;
 using UnityEngine.SceneManagement;
@@ -11,8 +13,20 @@ namespace Menu
 {
     public class MatchMakingMenu : MonoBehaviour
     {
+
+        [SerializeField] private Button playButton;
+        [SerializeField] private Button exitButton;
+        [SerializeField] private Button leaderboardButton;
+
+        [SerializeField] private Image lamp1;
+        [SerializeField] private Image lamp2;
+
+        [SerializeField] private float findingMatchAnimationTime = 4;
+
         private MatchMakingManager _matchMakingManager;
         public string URL = "https://okta-team-purple.herokuapp.com/";
+        private bool startMatchMakingOnce = true;
+        private Coroutine loadingCoroutine;
 
         #region Coroutine
         private IEnumerator SendWebRequest()
@@ -30,6 +44,10 @@ namespace Menu
         {
             _matchMakingManager = new MatchMakingManager();
             StartCoroutine(SendWebRequest());
+
+            playButton.onClick.AddListener(OnStartMatchMakingClick);
+            exitButton.onClick.AddListener(ExitButton);
+            leaderboardButton.onClick.AddListener(LeaderBoardButton);
         }       
 
         private void OnEnable()
@@ -48,15 +66,48 @@ namespace Menu
         }
         #endregion
 
+        #region Coroutines
+
+        private IEnumerator FindingMatchAnimationCoroutine()
+        {
+            lamp1.gameObject.SetActive(true);
+            while(true)
+            {
+                lamp2.gameObject.SetActive(!lamp2.gameObject.activeInHierarchy);
+                float counter = 0;
+                while(counter < findingMatchAnimationTime)
+                {
+                    counter += Time.deltaTime;
+                    yield return null;
+                }
+            }
+        }
+
+        #endregion
+
         #region UI Callbacks
         public void OnStartMatchMakingClick()
+        {			
+            if (startMatchMakingOnce)
+            {
+                _matchMakingManager.StartMatchMaking(AuthManager.Instance.localDeviceId);
+                startMatchMakingOnce = false;
+                loadingCoroutine = StartCoroutine(FindingMatchAnimationCoroutine());
+            }
+        }
+
+        public void ExitButton()
         {
-            _matchMakingManager.StartMatchMaking(AuthManager.Instance.localDeviceId);
+            Application.Quit();
         }
 
         public void OnCancelMatchMakingClick()
         {
             _matchMakingManager.CancelMatchMaking();
+        }
+        public void LeaderBoardButton()
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
@@ -64,6 +115,8 @@ namespace Menu
         private void OnMatchFounded()
         {
             SceneManager.LoadScene("GamePlay");
+            if (loadingCoroutine != null)
+                loadingCoroutine = StartCoroutine(FindingMatchAnimationCoroutine());
         }
 
         private void OnFailedToFindAMatch()
