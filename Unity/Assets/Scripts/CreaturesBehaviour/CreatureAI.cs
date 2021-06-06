@@ -214,8 +214,7 @@ public class CreatureAI : MonoBehaviourPun
     /// Starts the Roam behaviour for this creature
     /// </summary>
     public void Roam()
-    {
-        print("Roam called");
+    {        
         if (currentAnimationName != idleName)
         {
             animator.SetBool("IsIdle", true);
@@ -247,8 +246,7 @@ public class CreatureAI : MonoBehaviourPun
     /// Starts the Fleeing behaviour for this creature
     /// </summary>
     public void Flee()
-    {
-        print("Flee called");
+    {        
         if (currentAnimationName != idleName)
         {
             currentAnimationName = idleName;
@@ -276,8 +274,7 @@ public class CreatureAI : MonoBehaviourPun
     /// Starts the hunting of a player for this creature
     /// </summary>
     public void HuntPlayer(Transform player)
-    {
-        print("Hunt called");
+    {        
         if (currentAnimationName != idleName)
         {
             currentAnimationName = idleName;
@@ -419,12 +416,10 @@ public class CreatureAI : MonoBehaviourPun
 
         if (CurrentState == BehaviourState.Hunt)
         {
-            print("Back To hunting");
             HuntPlayer(playerHuntingTransform);
         }
         else if (CurrentState == BehaviourState.Roam)
         {
-            print("Back to Roaming");
             Roam();
         }
     }
