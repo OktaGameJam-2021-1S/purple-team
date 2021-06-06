@@ -20,10 +20,12 @@ namespace Networking
 
         public const byte TargetNumberOfPlayers = 2;
 
-        public void StartMatchMaking()
+        public void StartMatchMaking(string userID)
         {
             MatchMakingLog("Starting photon matchmaking");
             PhotonNetwork.AddCallbackTarget(this);
+
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new HashtablePhoton() { { "UserID", userID } });
 
             PhotonNetwork.ConnectUsingSettings();
         }

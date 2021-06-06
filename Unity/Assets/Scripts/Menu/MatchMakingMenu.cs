@@ -36,7 +36,7 @@ namespace Menu
         #region UI Callbacks
         public void OnStartMatchMakingClick()
         {
-            _matchMakingManager.StartMatchMaking();
+            _matchMakingManager.StartMatchMaking(AuthManager.Instance.localDeviceId);
         }
 
         public void OnCancelMatchMakingClick()

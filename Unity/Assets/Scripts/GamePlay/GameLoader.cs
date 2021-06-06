@@ -225,6 +225,7 @@ namespace GamePlay
                 photonPlayer.gameObject.name = "Player " + player.ActorNumber;
                 photonPlayer.photonView.OwnerActorNr = player.ActorNumber;
                 photonPlayer.photonView.ControllerActorNr = player.ActorNumber;
+                photonPlayer.UserID = (string )player.CustomProperties["UserID"];
                 _playerList.Add(photonPlayer);
 
                 if (player.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber)
