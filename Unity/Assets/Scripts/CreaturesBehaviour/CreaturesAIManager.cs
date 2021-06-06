@@ -13,7 +13,7 @@ public class CreaturesAIManager : MonoBehaviour
 
     public float minFleeDistance = 10;
 
-    public List<Transform> lCreaturesSpawnPoints = new List<Transform>();
+    public List<Vector3> lCreaturesSpawnPoints = new List<Vector3>();
 
     #endregion
 
@@ -54,7 +54,7 @@ public class CreaturesAIManager : MonoBehaviour
         {
             path = new NavMeshPath();
             cachedFirstPath = path;
-            if (creature.navMeshAgent.CalculatePath(lCreaturesSpawnPoints[i].position, path))
+            if (creature.navMeshAgent.CalculatePath(lCreaturesSpawnPoints[i], path))
             {
                 if(path.GetPathLength() > minFleeDistance)
                 {
@@ -72,6 +72,8 @@ public class CreaturesAIManager : MonoBehaviour
     private void RegisterCreatureAI(CreatureAI creature)
     {
         creature.Initialize(this);
+
+        lCreaturesSpawnPoints.Add(creature.transform.position);
 
         creature.SetOnBehaviourChangeCallback(CreatureChangeBehaviourCallback);
         lCreatures.Add(creature);
