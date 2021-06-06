@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using GamePlay;
 
 /// <summary>
 /// Manager for the creatures and the general behaviour of the creatures on the game. Also tries to keep up with the players progress to trigger additional obstacles like more aggressiveness 
@@ -11,6 +12,7 @@ public class CreaturesAIManager : MonoBehaviour
 {
     #region Inspector Variables
 
+    public float killDistance = 0.5f;
     public float minFleeDistance = 10;
 
     public List<Vector3> lCreaturesSpawnPoints = new List<Vector3>();
@@ -29,16 +31,25 @@ public class CreaturesAIManager : MonoBehaviour
     List<CreatureAI> huntCreatures = new List<CreatureAI>();
     List<CreatureAI> fleeCreatures = new List<CreatureAI>();
 
+    private GameController _gameController;
+
     #endregion
 
     #region Methods
 
-    public void Initialize(List<CreatureAI> creatures)
+    public void Initialize(GameController gameController, List<CreatureAI> creatures)
     {
+        _gameController = gameController;
+
         foreach (CreatureAI creature in creatures)
         {
             RegisterCreatureAI(creature);
         }
+    }
+
+    public void GotPlayer(CreatureAI creature, PlayerController player)
+    {
+        _gameController.PlayerDied(player);
     }
 
     /// <summary>
@@ -71,7 +82,7 @@ public class CreaturesAIManager : MonoBehaviour
     /// <param name="creature"></param>
     private void RegisterCreatureAI(CreatureAI creature)
     {
-        creature.Initialize(this);
+        creature.Initialize(this, killDistance);
 
         lCreaturesSpawnPoints.Add(creature.transform.position);
 

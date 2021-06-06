@@ -1848,6 +1848,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162086246}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1174091778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8321756628147161179, guid: bd5c3970d86b01845aac5c61cdb11090, type: 3}
+  m_PrefabInstance: {fileID: 335660143419083730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd1782782c33a144aa3b0d575bb80ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1193347997
 GameObject:
   m_ObjectHideFlags: 0
@@ -3492,7 +3503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0489e605a1f42644d8646ac2f8efe87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensor: {fileID: 0}
+  sensor: {fileID: 1174091778}
   animator: {fileID: 335660143419083733}
   skullRenderer: {fileID: 335660143419083732}
   idleName: Skull_Idle
