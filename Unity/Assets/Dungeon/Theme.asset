@@ -3035,7 +3035,7 @@ MonoBehaviour:
   indexCounter:
     index: 56
   topZIndex:
-    index: 759
+    index: 760
   nodes:
   - {fileID: -6812903639289231307}
   - {fileID: -7274696304824330118}
@@ -3998,7 +3998,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 1
-  zIndex: 759
+  zIndex: 760
   inputPins:
   - {fileID: 4282874881693985167}
   outputPins:
@@ -4028,7 +4028,7 @@ MonoBehaviour:
   selectionRuleEnabled: 0
   selectionRuleClassName: 
   transformRuleEnabled: 1
-  transformRuleClassName: RandomRotYTransformRule, DungeonArchitect.Samples, Version=0.0.0.0,
+  transformRuleClassName: RandomRotY90TransformRule, DungeonArchitect.Samples, Version=0.0.0.0,
     Culture=neutral, PublicKeyToken=null
   useSpatialConstraint: 0
   spatialConstraint: {fileID: -4722017678360939986}
