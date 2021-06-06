@@ -15,8 +15,7 @@ public class CreatureAI : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [SerializeField] private string idleName = "Skull_Idle";
-    [SerializeField] private string skullReactionName = "Skull_Reaction";
-
+    [SerializeField] private string skullReactionName = "Skull_Reaction";    
 
     public NavMeshAgent navMeshAgent;
 
@@ -102,6 +101,11 @@ public class CreatureAI : MonoBehaviour
     /// Holds whether this creature is currently taking dmg or not.
     /// </summary>
     private bool takingDmg = false;
+
+    /// <summary>
+    /// Holds the current animation name;
+    /// </summary>
+    private string currentAnimationName;
     #endregion
 
     #region enums
@@ -146,7 +150,11 @@ public class CreatureAI : MonoBehaviour
     public void Roam()
     {
         print("Roam called");
-        animator.Play(idleName);
+        if (currentAnimationName != idleName)
+        {
+            animator.Play(idleName);
+            currentAnimationName = idleName;
+        }
         CurrentState = BehaviourState.Roam;
         triggerSensor.gameObject.SetActive(true);
 
@@ -164,7 +172,11 @@ public class CreatureAI : MonoBehaviour
     public void Flee()
     {
         print("Flee called");
-        animator.Play(idleName);
+        if (currentAnimationName != idleName)
+        {
+            currentAnimationName = idleName;
+            animator.Play(idleName);
+        }
         CurrentState = BehaviourState.Flee;
         triggerSensor.gameObject.SetActive(false);
 
@@ -182,7 +194,11 @@ public class CreatureAI : MonoBehaviour
     public void HuntPlayer(Transform player)
     {
         print("Hunt called");
-        animator.Play(idleName);
+        if (currentAnimationName != idleName)
+        {
+            currentAnimationName = idleName;
+            animator.Play(idleName);
+        }
         CurrentState = BehaviourState.Hunt;
         triggerSensor.gameObject.SetActive(false);
         playerHuntingTransform = player;
@@ -205,7 +221,11 @@ public class CreatureAI : MonoBehaviour
             return;
 
         takingDmg = true;
-        animator.Play(skullReactionName);
+        if (currentAnimationName != skullReactionName)
+        {
+            currentAnimationName = skullReactionName;
+            animator.Play(skullReactionName);
+        }
         lightDmg += dmg;
         print("Applying dmg: "+dmg.ToString()+", current lightDmg value: "+lightDmg+", behaviourState: " + CurrentState.ToString());
         if (lightDmg >= maxLightDmg)
@@ -300,7 +320,6 @@ public class CreatureAI : MonoBehaviour
 
             while(!navMeshAgent.PathComplete())
             {
-                print("Roaming");
                 yield return null;
             }
             //int randomWait = Random.Range(roamWaitMin, roamWaitMax + 1);
@@ -316,7 +335,6 @@ public class CreatureAI : MonoBehaviour
     {        
         while(true)
         {
-            print("Hunting");
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(playerHuntingTransform.position);
             yield return null;
@@ -333,7 +351,6 @@ public class CreatureAI : MonoBehaviour
         navMeshAgent.SetPath(fleePath);
         while(!navMeshAgent.PathComplete())
         {
-            print("Fleeing");
             yield return null;
         }
 

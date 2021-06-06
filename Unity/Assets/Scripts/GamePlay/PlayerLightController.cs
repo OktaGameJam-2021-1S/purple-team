@@ -11,7 +11,7 @@ namespace GamePlay
         [SerializeField] private Light _pointLight;
         [SerializeField] private Light _flashLight;
         [SerializeField] private TriggerSensor _triggerSensor;
-        [SerializeField] private float lightDmg = 10;
+        [SerializeField] private float lightDmg = 10;        
 
         /// <summary>
         /// Current power of the light
@@ -69,8 +69,6 @@ namespace GamePlay
                 CreatureAI creature = go.transform.parent.GetComponent<CreatureAI>();
                 if (creature != null)
                 {
-                    print("Found Creature, adding it to the creatures list");
-                    Debug.Break();
                     creaturesApplyingDmg.Add(creature);
                 }
             }
