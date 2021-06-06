@@ -5,8 +5,9 @@ using UnityEngine.AI;
 using SensorToolkit;
 using System;
 using Random = UnityEngine.Random;
+using Photon.Pun;
 
-public class CreatureAI : MonoBehaviour
+public class CreatureAI : MonoBehaviourPun
 {
 
     #region Inspector Variables
@@ -197,10 +198,10 @@ public class CreatureAI : MonoBehaviour
         print("Roam called");
         if (currentAnimationName != idleName)
         {
-            animator.Play(idleName);
+            animator.SetBool("IsIdle", true);
             currentAnimationName = idleName;            
         }
-        animator.speed = .75f;
+        animator.SetFloat("Speed", 0.75f);
         CurrentState = BehaviourState.Roam;
         triggerSensor.gameObject.SetActive(true);
 
@@ -226,9 +227,9 @@ public class CreatureAI : MonoBehaviour
         if (currentAnimationName != idleName)
         {
             currentAnimationName = idleName;
-            animator.Play(idleName);            
+            animator.SetBool("IsIdle", true);         
         }
-        animator.speed = 2;
+        animator.SetFloat("Speed", 2);
         CurrentState = BehaviourState.Flee;
         triggerSensor.gameObject.SetActive(false);
 
@@ -254,9 +255,9 @@ public class CreatureAI : MonoBehaviour
         if (currentAnimationName != idleName)
         {
             currentAnimationName = idleName;
-            animator.Play(idleName);            
+            animator.SetBool("IsIdle", true);          
         }
-        animator.speed = 1.5f;
+        animator.SetFloat("Speed", 1.5f);
         CurrentState = BehaviourState.Hunt;
         triggerSensor.gameObject.SetActive(false);
         playerHuntingTransform = player;
@@ -286,7 +287,7 @@ public class CreatureAI : MonoBehaviour
         if (currentAnimationName != skullReactionName)
         {
             currentAnimationName = skullReactionName;
-            animator.Play(skullReactionName);
+            animator.SetBool("IsIdle", false);
         }
         EyesMaterial.SetColor("_EmissionColor", fleeColor * 1);
 
