@@ -536,6 +536,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: -8860172471193362429}
   - {fileID: 2496253690713779701}
+  - {fileID: 4676776551535524319}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1200,6 +1201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1210841293810639300}
   - component: {fileID: 5132487341278625806}
+  - component: {fileID: 4676776551535524319}
   m_Layer: 8
   m_Name: Visual
   m_TagString: Untagged
@@ -1243,6 +1245,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4676776551535524319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379335983952389116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: Speed
+  - Type: 4
+    SynchronizeType: 1
+    Name: HasKid
+  - Type: 4
+    SynchronizeType: 1
+    Name: HasLamp
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
 --- !u!1 &7754185931510469562
 GameObject:
   m_ObjectHideFlags: 0

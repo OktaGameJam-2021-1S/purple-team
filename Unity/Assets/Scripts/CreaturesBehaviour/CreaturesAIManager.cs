@@ -9,36 +9,6 @@ using System;
 /// </summary>
 public class CreaturesAIManager : MonoBehaviour
 {
-
-    #region SingletonStuff
-
-    private static CreaturesAIManager _instance = null;
-    public static CreaturesAIManager Instance
-    {
-        get
-        {
-            if(_instance == null)
-            {
-                CreaturesAIManager[] instances = FindObjectsOfType<CreaturesAIManager>();
-                if (instances == null || instances.Length == 0)
-                {
-                    Debug.LogError("There is no CreaturesAiManager in the scene, and someone is trying to use the CreaturesAiManager");
-                    return null;
-                }
-                else if(instances.Length > 1)
-                {
-                    Debug.LogWarning("There is more than one CreaturesAiManager instance in the scene, using the first one found.");
-                }
-
-                _instance = instances[0];
-            }
-            return _instance;
-        }
-        set { _instance = value; }
-    }
-
-    #endregion
-
     #region Inspector Variables
 
     public float minFleeDistance = 10;
@@ -62,6 +32,14 @@ public class CreaturesAIManager : MonoBehaviour
     #endregion
 
     #region Methods
+
+    public void Initialize(List<CreatureAI> creatures)
+    {
+        foreach (CreatureAI creature in creatures)
+        {
+            RegisterCreatureAI(creature);
+        }
+    }
 
     /// <summary>
     /// Gets a fleeing point for the given creature considering its position.
@@ -91,8 +69,10 @@ public class CreaturesAIManager : MonoBehaviour
     /// Used by creatures to register themselves.
     /// </summary>
     /// <param name="creature"></param>
-    public void RegisterCreatureAI(CreatureAI creature)
+    private void RegisterCreatureAI(CreatureAI creature)
     {
+        creature.Initialize(this);
+
         creature.SetOnBehaviourChangeCallback(CreatureChangeBehaviourCallback);
         lCreatures.Add(creature);
         if (creature.CurrentState == CreatureAI.BehaviourState.Roam)
@@ -104,6 +84,7 @@ public class CreaturesAIManager : MonoBehaviour
     }
 
     #endregion
+
     #region Callbacks
 
     public void CreatureChangeBehaviourCallback(CreatureAI creature, CreatureAI.BehaviourState pBState, CreatureAI.BehaviourState cBState)

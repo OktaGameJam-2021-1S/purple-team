@@ -50,18 +50,21 @@ namespace GamePlay
             }
         }
 
-        public void UpdatePlayer(float deltaTime)
-        {
-            _playerLightController.UpdateLight(deltaTime);
-
-            _animator.SetFloat("Speed", _movementController.Velocity.magnitude / _movementController.MaxSpeed);
-            _animator.SetBool("HasKid", HasKid);
-            _animator.SetBool("HasLamp", _playerLightController.CurrentLightPower > 0);
-        }
-
         public void UpdatePlayerPosition(float deltaTime)
         {
             _movementController.UpdatePosition(deltaTime);
+        }
+
+        public void UpdatePlayer(float deltaTime)
+        {
+            _playerLightController.UpdateLight(deltaTime);
+        }
+
+        public void UpdatePlayerAnimation()
+        {
+            _animator.SetFloat("Speed", _movementController.Velocity.magnitude / _movementController.MaxSpeed);
+            _animator.SetBool("HasKid", HasKid);
+            _animator.SetBool("HasLamp", _playerLightController.CurrentLightPower > 0);
         }
 
         public void TakeKid(LostKid kid)

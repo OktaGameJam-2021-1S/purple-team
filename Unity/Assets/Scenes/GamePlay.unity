@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 612486703}
   - component: {fileID: 612486704}
   - component: {fileID: 612486705}
+  - component: {fileID: 612486706}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -576,6 +577,7 @@ MonoBehaviour:
   _cameraController: {fileID: 1409967719}
   _inputController: {fileID: 612486705}
   _endGameController: {fileID: 646359928}
+  _creaturesAIManager: {fileID: 612486706}
 --- !u!114 &612486705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,6 +591,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _falloffAxis: 4
+--- !u!114 &612486706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612486702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e5833030037a743bea7c2d8453a37c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minFleeDistance: 10
+  lCreaturesSpawnPoints: []
 --- !u!1 &646359923
 GameObject:
   m_ObjectHideFlags: 0
