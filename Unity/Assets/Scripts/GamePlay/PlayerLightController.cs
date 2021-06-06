@@ -40,6 +40,7 @@ namespace GamePlay
         private float _maxLightInsensity = 0;
         private float _lightPower = 1;
         private LightRefill _closeRefill;
+        private bool _initialized = false;
 
         /// <summary>
         /// Holds all creatures on the light zone that are receiving dmg
@@ -62,6 +63,7 @@ namespace GamePlay
             }
 
             _maxLightInsensity = _flashLight.intensity;
+            _initialized = true;
         }
 
         #region Creatures Interaction methods
@@ -147,13 +149,16 @@ namespace GamePlay
 
         public void SyncLight(bool isLightOn, float lightPower, float deltaTime)
         {
-            if (isLightOn)
+            if (isLightOn != IsLightOn)
             {
-                TurnOnLight();
-            }
-            else
-            {
-                TurnOffLight();
+                if (isLightOn)
+                {
+                    TurnOnLight();
+                }
+                else
+                {
+                    TurnOffLight();
+                }
             }
 
             float previousLight = _lightPower;
@@ -162,11 +167,12 @@ namespace GamePlay
             UpdateLight(deltaTime);
             UpdateLightIntensity();
 
-            if (previousLight < _lightPower)
+            if (isLightOn && lightPower == 1)
             {
-                _lampRefill.Play();
+                // if (_initialized) _lampRefill.Play();
             } else if (previousLight > _lightPower && _lightPower == 0)
             {
+                if (_initialized) _lampRefill.Play();
                 _lampOut.Play();
             }
         }
