@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ParrelSync;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +28,17 @@ public class AuthManager : MonoBehaviour
 
     public bool initialized { get; private set; }
 
-    public string localDeviceId => SystemInfo.deviceUniqueIdentifier + (ClonesManager.IsClone() ? "" : "_clone");
+    public string localDeviceId
+    {
+        get
+        {
+            string val = SystemInfo.deviceUniqueIdentifier;
+#if UNITY_EDITOR
+            val += (ParrelSync.ClonesManager.IsClone() ? "" : "_clone");
+#endif
+            return val;
+        }
+    }
     public string localNickname { get; private set; }
     private string namePrefsKey => $"{localDeviceId}.name";
 
