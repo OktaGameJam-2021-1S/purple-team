@@ -213,7 +213,7 @@ namespace GamePlay
 
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                Vector3 randomOffset = new Vector3(1, 0, 1) * Random.Range(-1, 1) * 5;
+                Vector3 randomOffset = new Vector3(1, 0, 1) * Random.Range(-1, 1) * 2;
                 PlayerController photonPlayer = Instantiate(_playerPrefab, spawnPosition.position + randomOffset, _playerPrefab.transform.rotation).GetComponent<PlayerController>();
                 photonPlayer.gameObject.name = "Player " + player.ActorNumber;
                 photonPlayer.photonView.OwnerActorNr = player.ActorNumber;
