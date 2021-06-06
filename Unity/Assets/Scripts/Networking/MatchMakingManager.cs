@@ -22,10 +22,12 @@ namespace Networking
 
         public bool tryCustomServerFirst = true;
 
-        public void StartMatchMaking()
+        public void StartMatchMaking(string userID)
         {
             MatchMakingLog("Starting photon matchmaking");
             PhotonNetwork.AddCallbackTarget(this);
+
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new HashtablePhoton() { { "UserID", userID } });
 
             if (tryCustomServerFirst)
             {
@@ -89,11 +91,11 @@ namespace Networking
         {
             MatchMakingLog("Disconnected from matchmaking, cause - photon: " + cause.ToString());
 
-            if (cause == DisconnectCause.ExceptionOnConnect)
+            if (cause == DisconnectCause.Exception)
             {
                 MatchMakingLog("retrying on default server");
                 tryCustomServerFirst = false;
-                StartMatchMaking();
+                StartMatchMaking((string) PhotonNetwork.LocalPlayer.CustomProperties["UserID]"]);
                 return;
             }
 

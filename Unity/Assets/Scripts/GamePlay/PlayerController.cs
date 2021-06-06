@@ -14,6 +14,8 @@ namespace GamePlay
         [SerializeField] private MovementController _movementController;
         [SerializeField] private PlayerLightController _playerLightController;
 
+        public string UserID = "";
+
         public bool HasKid => _carringKid != null;
 
         private LostKid _carringKid = null;

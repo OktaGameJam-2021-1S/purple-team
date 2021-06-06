@@ -11,34 +11,35 @@ function _handshake(req, res) {
 function _login(req, res) {
 	return db.getPlayer(req.params.uid)
 	         .then((player) => {
-		         if(player) return res.send(player)
-		                              .status(200);
+		         if(player) return res.status(200)
+		                              .send(player);
 		         return db.createPlayer(req.params.uid, req.params.name)
-		                  .then((player) => res.send(player)
-		                                       .status(201))
-		                  .catch((err) => res.send({err: "PLAYER NAME ALREADY EXIST"})
-		                                     .status(403));
+		                  .then((player) => res.status(201)
+		                                       .send(player)
+		                  )
+		                  .catch((err) => res.status(403)
+		                                     .send({ err: "PLAYER NAME ALREADY EXIST" }));
 	         })
-	         .catch((err) => res.send({})
-	                            .status(520));
+	         .catch((err) => res.status(520)
+	                            .send(err));
 }
 
 function _saveScore(req, res) {
 	return db.saveScore(req.params.score, req.params.player1, req.params.player2)
-	         .then((rank) => res.send(rank)
-	                            .status(201));
+	         .then((rank) => res.status(201)
+	                            .send(rank));
 }
 
 function _top5(req, res) {
 	return db.top5()
-	         .then((tops) => res.send(tops)
-	                            .status(200));
+	         .then((tops) => res.status(200)
+	                            .send(tops));
 }
 
 function _top10(req, res) {
 	return db.top10()
-	         .then((tops) => res.send(tops)
-	                            .status(200));
+	         .then((tops) => res.status(200)
+	                            .send(tops));
 }
 
 router.get("/", _handshake);

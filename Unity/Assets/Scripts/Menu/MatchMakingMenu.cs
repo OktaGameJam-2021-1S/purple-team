@@ -99,6 +99,7 @@ namespace Menu
         #region UI Callbacks
         public void OnStartMatchMakingClick()
         {
+			_matchMakingManager.StartMatchMaking(AuthManager.Instance.localDeviceId);
             if (startMatchMakingOnce)
             {
                 _matchMakingManager.StartMatchMaking();

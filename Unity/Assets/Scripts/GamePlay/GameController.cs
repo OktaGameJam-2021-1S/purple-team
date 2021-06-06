@@ -61,14 +61,26 @@ namespace GamePlay
         public void PlayerDied(PlayerController player)
         {
             _gameState = GameState.End;
-            _endGameController.ShowEndGame(false);
+
+            foreach (PlayerController p in _playersList)
+            {
+                p.GetComponentInChildren<Animator>().SetFloat("Speed", 0);
+            }
+
+            _endGameController.ShowLoseGame();
         }
 
         public void RescuedKid()
         {
             _gameState = GameState.End;
+
+            foreach (PlayerController p in _playersList)
+            {
+                p.GetComponentInChildren<Animator>().SetFloat("Speed", 0);
+            }
+
             _ambientSound.Stop();
-            _endGameController.ShowEndGame(true);
+            _endGameController.ShowWinGame(_playersList[0].UserID, _playersList.Count > 1? _playersList[1].UserID : "Invalid");
         }       
 
         private void ProcessInput(PlayerInput playerInput)
