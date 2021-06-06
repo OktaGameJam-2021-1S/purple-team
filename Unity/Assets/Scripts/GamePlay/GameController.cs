@@ -40,7 +40,7 @@ namespace GamePlay
             _cameraController.Initialize(_localPlayer.transform);
             _inputController.Initialize();
             _endGameController.Initialize();
-            _creaturesAIManager.Initialize(creatures);
+            _creaturesAIManager.Initialize(this, creatures);
 
             _localPlayer.Initialize(true);
 
@@ -55,6 +55,12 @@ namespace GamePlay
         {
             _gameState = GameState.Main;
             //TODO: Add code to start the game
+        }
+
+        public void PlayerDied(PlayerController player)
+        {
+            _gameState = GameState.End;
+            _endGameController.ShowEndGame(false);
         }
 
         public void RescuedKid()
