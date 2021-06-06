@@ -19,13 +19,16 @@ namespace GamePlay
         public bool HasKid => _carringKid != null;
 
         private LostKid _carringKid = null;
-        private LostKid _closeKid = null;        
+        private LostKid _closeKid = null;
+
+        private bool isLocalPlayer;
 
         /// <summary>
         /// Initialize the Player Controller
         /// </summary>
         public void Initialize(bool isLocalPlayer)
         {
+            this.isLocalPlayer = isLocalPlayer;
             Utilities.ChangeObjectLayer(gameObject, LayerMask.NameToLayer((isLocalPlayer ? "MainCharacter" : "Character")));
             if(isLocalPlayer)
             {
@@ -120,6 +123,39 @@ namespace GamePlay
         private void Start()
         {            
             Initialize(true);
+        }
+
+        private void Update()
+        {/*
+            if(PhotonNetwork.IsMasterClient && isLocalPlayer)
+            {
+                Collider[] cs = Physics.OverlapSphere(transform.position, 3f);
+
+                if (cs == null)
+                    return;
+
+                for(int i = 0;
+                        i < cs.Length;
+                        ++i)
+                {
+                    if(cs[i].transform.parent != null)
+                    {
+                        SafeZone s = cs[i].transform.parent.GetComponent<SafeZone>();
+                        if(s != null)
+                        {
+                            if (!UIPressButtonPrompt.Instance.IsActive)
+                            {
+                                UIPressButtonPrompt.Instance.Show();
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                if (UIPressButtonPrompt.Instance.IsActive)
+                        UIPressButtonPrompt.Instance.Hide();
+
+            }*/
         }
 
         private void OnTriggerEnter(Collider other)
