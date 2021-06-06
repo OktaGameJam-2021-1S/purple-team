@@ -71,6 +71,7 @@ namespace Menu
         private IEnumerator FindingMatchAnimationCoroutine()
         {
             lamp1.gameObject.SetActive(true);
+            lamp2.gameObject.SetActive(true);
             while(true)
             {
                 lamp2.gameObject.SetActive(!lamp2.gameObject.activeInHierarchy);

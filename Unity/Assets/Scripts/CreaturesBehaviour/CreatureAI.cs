@@ -225,6 +225,11 @@ public class CreatureAI : MonoBehaviourPun
         CurrentState = BehaviourState.Roam;
         sensor.gameObject.SetActive(true);
 
+        if(audioSource.clip != roamingClip)
+        {
+            audioSource.Stop();
+        }
+
         navMeshAgent.speed = roamSpeed;
 
         if (eyesCoroutine != null)
@@ -255,7 +260,6 @@ public class CreatureAI : MonoBehaviourPun
 
         navMeshAgent.speed = fleeSpeed;
 
-        audioSource.Stop();
 
         if (eyesCoroutine != null)
             StopCoroutine(eyesCoroutine);
@@ -481,6 +485,8 @@ public class CreatureAI : MonoBehaviourPun
     private IEnumerator FleeingCoroutine()
     {
         NavMeshPath fleePath = _aiManager.GetFleePath(this);
+        //DEBUG::
+        debugRoamingTarget = fleePath.corners[fleePath.corners.Length - 1];
         navMeshAgent.isStopped = false;
         navMeshAgent.SetPath(fleePath);
         while(!navMeshAgent.PathComplete())
