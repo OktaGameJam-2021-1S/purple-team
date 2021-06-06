@@ -213,6 +213,34 @@ namespace Utils
 
             return true;
         }
+
+        /// <summary>
+        /// Place target transform on a wall with rotation looking outside the wall
+        /// </summary>
+        /// <param name="source">source position</param>
+        /// <param name="wallDirection">direction to find a wall</param>
+        /// <param name="target">object to be placed</param>
+        /// <param name="maxDistance">max distance of the wall</param>
+        /// <param name="wallMask">wall mask</param>
+        public static void PlaceOnWall(Vector3 source, Vector3 wallDirection, Transform target, float maxDistance = float.MaxValue, int wallMask = WallMask)
+        {
+            wallDirection.Normalize();
+
+            int layer = wallMask;
+
+            Ray ray = new Ray(source, wallDirection);
+
+            bool rayCastHitted = Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance, layer);
+
+#if ENABLE_DEBUGGER
+            Debug.DrawRay(source, direction * distance, Color.cyan);
+#endif
+            if (rayCastHitted)
+            {
+                target.position = hitInfo.point;
+                target.forward = hitInfo.normal;
+            }
+        }
         #endregion
 
         #region Delta Time Functions

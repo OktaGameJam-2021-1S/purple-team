@@ -9,6 +9,7 @@ using HashtablePhoton = ExitGames.Client.Photon.Hashtable;
 using Hashtable = System.Collections.Hashtable;
 using System;
 using Random = UnityEngine.Random;
+using Utils;
 
 namespace GamePlay
 {
@@ -160,12 +161,13 @@ namespace GamePlay
             _lostKid.transform.position = DungeonHelper.Instance.GetObjectivePoint().position;
             _exitCave.transform.position = DungeonHelper.Instance.GetPlayerSpawnPoint().position;
 
+            Utilities.PlaceOnWall(_exitCave.transform.position, Vector3.forward, _exitCave.transform);
+
             _playerSpawnPosition = DungeonHelper.Instance.GetPlayerSpawnPoint();
             _refillPositions = DungeonHelper.Instance.GetRefillPoints();
             _enemySpawnPositions = DungeonHelper.Instance.GetEnemySpawnPoints();
 
             _refillPositions.Add(_lostKid.transform);
-            _refillPositions.Add(_exitCave.transform);
         }
 
         private IEnumerator SpawnPlayers(Transform spawnPosition)
@@ -250,7 +252,9 @@ namespace GamePlay
             LoadingLog("Spawning " + safeZonePositions.Count + " safe zones");
             foreach (Transform safePosition in safeZonePositions)
             {
-                Instantiate(_safeZonePrefab, safePosition.position, safePosition.rotation);
+                GameObject safeZone = Instantiate(_safeZonePrefab, safePosition.position, _safeZonePrefab.transform.rotation);
+
+                Utilities.PlaceOnWall(safePosition.position, Vector3.forward, safeZone.transform);
             }
 
             yield return null;

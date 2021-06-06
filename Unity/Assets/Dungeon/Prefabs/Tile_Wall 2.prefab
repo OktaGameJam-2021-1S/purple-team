@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5182470253926273077}
   - component: {fileID: 676566459498565213}
   - component: {fileID: 2630241817053027874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5181330872110807233}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tile_Wall 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
