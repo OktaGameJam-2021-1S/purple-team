@@ -23,6 +23,7 @@ namespace GamePlay
 
         private List<PlayerController> _playerList;
         private PlayerController _localPlayer;
+        private List<CreatureAI> _creatures;
         private Transform _playerSpawnPosition;
         private List<Transform> _refillPositions;
         private List<Transform> _enemySpawnPositions;
@@ -53,7 +54,7 @@ namespace GamePlay
 
             LoadingLog("Finished loading");
 
-            _gameController.Initialize(_localPlayer, _playerList, _lostKid, _exitCave);
+            _gameController.Initialize(_localPlayer, _playerList, new List<CreatureAI>(), _lostKid, _exitCave);
             _gameController.StartGame();
         }
 

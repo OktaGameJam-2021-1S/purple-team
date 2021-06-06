@@ -137,6 +137,8 @@ public class CreatureAI : MonoBehaviour
             _eyesMaterial = value;
         }
     }
+
+    private CreaturesAIManager _aiManager;
     #endregion
 
     #region enums
@@ -157,6 +159,18 @@ public class CreatureAI : MonoBehaviour
     #endregion
 
     #region Methods
+
+    public void Initialize(CreaturesAIManager aiManager)
+    {
+        _aiManager = aiManager;
+
+        triggerSensor.OnDetected.AddListener(OnSenseSomething);
+        Roam();
+        lightDmg = 0;
+
+        //DEBUG::: For Testing
+        SetSpawnPosition(transform.position);
+    }
 
     /// <summary>
     /// Sets the on change behaviour callback to be called
@@ -424,7 +438,7 @@ public class CreatureAI : MonoBehaviour
     /// </summary>
     private IEnumerator FleeingCoroutine()
     {
-        NavMeshPath fleePath = CreaturesAIManager.Instance.GetFleePath(this);
+        NavMeshPath fleePath = _aiManager.GetFleePath(this);
         navMeshAgent.isStopped = false;
         navMeshAgent.SetPath(fleePath);
         while(!navMeshAgent.PathComplete())
@@ -458,18 +472,6 @@ public class CreatureAI : MonoBehaviour
     #endregion
 
     #region Unity Events
-
-    private void Start()
-    {
-        triggerSensor.OnDetected.AddListener(OnSenseSomething);
-        CreaturesAIManager.Instance.RegisterCreatureAI(this);
-        Roam();
-        lightDmg = 0;
-
-        //DEBUG::: For Testing
-        SetSpawnPosition(transform.position);
-    }
-
 
     Vector3? debugRoamingTarget = null;
     private void OnDrawGizmos()

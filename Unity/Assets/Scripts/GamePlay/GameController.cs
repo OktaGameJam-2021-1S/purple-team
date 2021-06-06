@@ -11,6 +11,8 @@ namespace GamePlay
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private InputController _inputController;
         [SerializeField] private EndGameController _endGameController;
+        [SerializeField] private CreaturesAIManager _creaturesAIManager;
+
         private List<PlayerController> _playersList;
         private PlayerController _localPlayer;
         private LostKid _lostKid;
@@ -25,7 +27,7 @@ namespace GamePlay
 
         private GameState _gameState = GameState.Idle;
 
-        public void Initialize(PlayerController localPlayer, List<PlayerController> players, LostKid lostKid, ExitCave exitCave)
+        public void Initialize(PlayerController localPlayer, List<PlayerController> players, List<CreatureAI> creatures, LostKid lostKid, ExitCave exitCave)
         {
             _gameState = GameState.Idle;
             _localPlayer = localPlayer;
@@ -38,6 +40,7 @@ namespace GamePlay
             _cameraController.Initialize(_localPlayer.transform);
             _inputController.Initialize();
             _endGameController.Initialize();
+            _creaturesAIManager.Initialize(creatures);
 
             _localPlayer.Initialize(true);
 
@@ -79,6 +82,7 @@ namespace GamePlay
 
             _inputController.UpdatePlayerInput();
             ProcessInput(_inputController.PlayerInput);
+            _localPlayer.UpdatePlayerAnimation();
 
             foreach(PlayerController player in _playersList)
             {
