@@ -11,7 +11,11 @@ namespace GamePlay
         [SerializeField] private Light _pointLight;
         [SerializeField] private Light _flashLight;
         [SerializeField] private TriggerSensor _triggerSensor;
-        [SerializeField] private float lightDmg = 10;        
+        [SerializeField] private float lightDmg = 10;
+
+        [SerializeField] private AudioSource _lampOut;
+        [SerializeField] private AudioSource _lampRefill;
+        [SerializeField] private AudioSource _lampPickup;
 
         /// <summary>
         /// Current power of the light
@@ -101,6 +105,7 @@ namespace GamePlay
             UpdateLightIntensity();
             IsLightOn = true;
             _flashLight.enabled = true;
+            _lampPickup.Play();
         }
 
         public void TurnOffLight()
@@ -113,6 +118,8 @@ namespace GamePlay
         {
             if (IsLightOn)
             {
+                float previousLight = _lightPower;
+
                 _lightPower = Mathf.MoveTowards(CurrentLightPower, 0, deltaTime / LightDuration);
                 UpdateLightIntensity();
 
@@ -123,6 +130,10 @@ namespace GamePlay
                     {
                         creaturesApplyingDmg[i].ApplyLightDamage(lightDmg * Time.deltaTime);
                     }
+                } 
+                else if (previousLight > _lightPower && _lightPower == 0)
+                {
+                    _lampOut.Play();
                 }
             }
         }
@@ -131,22 +142,33 @@ namespace GamePlay
         {
             _lightPower = Mathf.Clamp01(CurrentLightPower + amount);
             UpdateLightIntensity();
+            _lampRefill.Play();
         }
 
         public void SyncLight(bool isLightOn, float lightPower, float deltaTime)
         {
             if (isLightOn)
             {
-                TurnOnLight();                
+                TurnOnLight();
             }
             else
             {
                 TurnOffLight();
             }
 
+            float previousLight = _lightPower;
+
             _lightPower = lightPower;
             UpdateLight(deltaTime);
             UpdateLightIntensity();
+
+            if (previousLight < _lightPower)
+            {
+                _lampRefill.Play();
+            } else if (previousLight > _lightPower && _lightPower == 0)
+            {
+                _lampOut.Play();
+            }
         }
 
         private void UpdateLightIntensity()
