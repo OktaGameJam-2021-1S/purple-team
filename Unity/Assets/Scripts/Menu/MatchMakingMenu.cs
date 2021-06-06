@@ -5,17 +5,32 @@ using UnityEngine;
 using Networking;
 using UnityEngine.SceneManagement;
 
+using UnityEngine.Networking;
+
 namespace Menu
 {
     public class MatchMakingMenu : MonoBehaviour
     {
         private MatchMakingManager _matchMakingManager;
+        public string URL = "https://okta-team-purple.herokuapp.com/";
 
+        #region Coroutine
+        private IEnumerator SendWebRequest()
+        {
+            UnityWebRequestAsyncOperation operation = UnityWebRequest.Get(URL).SendWebRequest();
+            yield return operation;
+
+            Debug.Log("HandShake!");
+            Debug.Log(operation.webRequest.downloadHandler.text);
+        }
+
+        #endregion
         #region UNITY
         private void Awake()
         {
             _matchMakingManager = new MatchMakingManager();
-        }
+            StartCoroutine(SendWebRequest());
+        }       
 
         private void OnEnable()
         {
