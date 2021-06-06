@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 using Photon.Pun;
 using UnityEngine.Playables;
+using System;
 
 namespace GamePlay
 {
@@ -29,13 +30,28 @@ namespace GamePlay
             if (win)
             {
                 _winCanvas.gameObject.SetActive(true);
-                //_winCanvas.GetComponent<PlayableDirector>().Play();
+                _winCanvas.GetComponent<PlayableDirector>().Play();
+                StartCoroutine(WaitAnimation(_winCanvas.GetComponent<PlayableDirector>(),
+                delegate ()
+                {
+                    //TODO: Save score and show leadboard
+                }));
             }
             else
             {
                 _loseCanvas.gameObject.SetActive(true);
                 _loseCanvas.GetComponent<PlayableDirector>().Play();
             }
+        }
+
+        private IEnumerator WaitAnimation(PlayableDirector playable, Action finished = null)
+        {
+            while (playable.state == PlayState.Playing)
+            {
+                yield return null;
+            }
+
+            finished?.Invoke();
         }
     }
 }
