@@ -115,6 +115,15 @@ namespace GamePlay
             {
                 _lightPower = Mathf.MoveTowards(CurrentLightPower, 0, deltaTime / LightDuration);
                 UpdateLightIntensity();
+
+                if (_lightPower > 0)
+                {
+                    //Checking if there is any creature on the light zone to deal dmg.
+                    for (int i = 0; i < creaturesApplyingDmg.Count; ++i)
+                    {
+                        creaturesApplyingDmg[i].ApplyLightDamage(lightDmg * Time.deltaTime);
+                    }
+                }
             }
         }
 
@@ -162,17 +171,6 @@ namespace GamePlay
             if (_closeRefill != null && other.gameObject == _closeRefill.gameObject)
             {
                 _closeRefill = null;
-            }
-        }
-
-        private void Update()
-        {
-            //Checking if there is any creature on the light zone to deal dmg.
-            for (int i = 0;
-                i < creaturesApplyingDmg.Count;
-                ++i)
-            {
-                creaturesApplyingDmg[i].ApplyLightDamage(lightDmg * Time.deltaTime);
             }
         }
         #endregion
