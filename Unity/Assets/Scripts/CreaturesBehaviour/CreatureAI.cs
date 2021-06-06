@@ -16,6 +16,7 @@ public class CreatureAI : MonoBehaviourPun
     [SerializeField] private Sensor sensor;
     [SerializeField] private Animator animator;
     [SerializeField] private Renderer skullRenderer;
+    [SerializeField] private AudioSource audioSource;
 
     [SerializeField] private string idleName = "Skull_Idle";
     [SerializeField] private string skullReactionName = "Skull_Reaction";    
