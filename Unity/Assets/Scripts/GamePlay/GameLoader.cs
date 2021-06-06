@@ -29,6 +29,7 @@ namespace GamePlay
         private Transform _playerSpawnPosition;
         private List<Transform> _refillPositions;
         private List<Transform> _enemySpawnPositions;
+        private int _startTimeStamp = -1;
 
         private void Awake()
         {
@@ -50,17 +51,20 @@ namespace GamePlay
 
         private IEnumerator LoadGame()
         {
+            _startTimeStamp = -1;
+
             yield return WaitPlayersToJoin();
             yield return BuildMap();
             yield return SpawnPlayers(_playerSpawnPosition);
             yield return SpawnCreatures(_enemySpawnPositions);
             yield return SpawnSafeZones(_refillPositions);
+            yield return GetStartTimeStamp();
 
             LoadingLog("Finished loading");
 
             yield return new WaitForSeconds(5);
 
-            _gameController.Initialize(_localPlayer, _playerList, _creatures, _lostKid, _exitCave);
+            _gameController.Initialize(_localPlayer, _playerList, _creatures, _lostKid, _exitCave, _startTimeStamp);
             _gameController.StartGame();
 
             _canvasLoading.SetActive(false);
@@ -337,6 +341,45 @@ namespace GamePlay
 
                 Utilities.PlaceOnWall(safePosition.position, Vector3.forward, safeZone.transform);
             }
+
+            yield return null;
+        }
+
+        private IEnumerator GetStartTimeStamp()
+        {
+            LoadingLog("Spawning creatures");
+
+            string StartTimeStampKey = "StartTimeStamp";
+            void OnChangedRoomData(HashtablePhoton properties)
+            {
+                if (properties.ContainsKey(StartTimeStampKey))
+                {
+                    _startTimeStamp = (int) properties[StartTimeStampKey];
+                }
+            }
+
+            void OnMasterClientSwitched(Player newMasterClient)
+            {
+                if (_startTimeStamp == -1 && PhotonNetwork.IsMasterClient)
+                {
+                    PhotonNetwork.CurrentRoom.SetCustomProperties(new HashtablePhoton() { { StartTimeStampKey, PhotonNetwork.ServerTimestamp } });
+                }
+            }
+
+            OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
+
+            NetworkEventDispatcher.RoomPropertiesUpdateEvent += OnChangedRoomData;
+            NetworkEventDispatcher.MasterClientSwitchedEvent += OnMasterClientSwitched;
+
+            if (_startTimeStamp == -1 && PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.CurrentRoom.SetCustomProperties(new HashtablePhoton() { { StartTimeStampKey, PhotonNetwork.ServerTimestamp } });
+            }
+
+            while (_startTimeStamp == -1) yield return null;
+
+            NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
+            NetworkEventDispatcher.MasterClientSwitchedEvent -= OnMasterClientSwitched;
 
             yield return null;
         }

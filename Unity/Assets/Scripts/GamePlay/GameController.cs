@@ -2,7 +2,6 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GamePlay
 {
@@ -18,6 +17,7 @@ namespace GamePlay
         private PlayerController _localPlayer;
         private LostKid _lostKid;
         private ExitCave _exitCave;
+        private int _startTimeStamp;
 
         private enum GameState
         {
@@ -28,13 +28,14 @@ namespace GamePlay
 
         private GameState _gameState = GameState.Idle;
 
-        public void Initialize(PlayerController localPlayer, List<PlayerController> players, List<CreatureAI> creatures, LostKid lostKid, ExitCave exitCave)
+        public void Initialize(PlayerController localPlayer, List<PlayerController> players, List<CreatureAI> creatures, LostKid lostKid, ExitCave exitCave, int startTimeStamp)
         {
             _gameState = GameState.Idle;
             _localPlayer = localPlayer;
             _playersList = players;
             _lostKid = lostKid;
             _exitCave = exitCave;
+            _startTimeStamp = startTimeStamp;
 
             _exitCave.Initialize(this);
             _lostKid.Initialize(_playersList);
@@ -80,7 +81,10 @@ namespace GamePlay
             }
 
             _ambientSound.Stop();
-            _endGameController.ShowWinGame(_playersList[0].UserID, _playersList.Count > 1? _playersList[1].UserID : "Invalid");
+            _endGameController.ShowWinGame(
+                _playersList[0].UserID, 
+                _playersList.Count > 1? _playersList[1].UserID : "Invalid", 
+                PhotonNetwork.ServerTimestamp - _startTimeStamp);
         }       
 
         private void ProcessInput(PlayerInput playerInput)
