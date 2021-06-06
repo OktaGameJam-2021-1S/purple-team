@@ -9,6 +9,8 @@ namespace GamePlay
 {
     public class PlayerController : MonoBehaviourPun, IPunObservable
     {
+        [SerializeField] private Transform _kidBoneRoot;
+        [SerializeField] private Animator _animator;
         [SerializeField] private MovementController _movementController;
         [SerializeField] private PlayerLightController _playerLightController;
 
@@ -51,6 +53,10 @@ namespace GamePlay
         public void UpdatePlayer(float deltaTime)
         {
             _playerLightController.UpdateLight(deltaTime);
+
+            _animator.SetFloat("Speed", _movementController.Velocity.magnitude / _movementController.MaxSpeed);
+            _animator.SetBool("HasKid", HasKid);
+            _animator.SetBool("HasLamp", _playerLightController.CurrentLightPower > 0);
         }
 
         public void UpdatePlayerPosition(float deltaTime)
@@ -63,9 +69,9 @@ namespace GamePlay
             _playerLightController.TurnOffLight();
             
             _carringKid = kid;
-            _carringKid.transform.SetParent(transform);
-            _carringKid.transform.localPosition = Vector3.up * 2;
-            _carringKid.transform.localRotation = Quaternion.identity;
+            _carringKid.transform.SetParent(_kidBoneRoot);
+            _carringKid.transform.localPosition = new Vector3(0, 0, -0.2f);
+            _carringKid.transform.localRotation = Quaternion.Euler(60, 0, 0);
         }
 
         public void DropKid(LostKid kid)

@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navMeshAgent;
-    [SerializeField] private Animator _animator;
     [SerializeField] float _maxSpeed = 5;
     [SerializeField] float _angularSpeed = 20;
 
@@ -19,6 +18,8 @@ public class MovementController : MonoBehaviour
             return _velocity;
         }
     }
+
+    public float MaxSpeed => _maxSpeed;
 
     public Vector3 Forward { get; private set; }
 
@@ -35,8 +36,6 @@ public class MovementController : MonoBehaviour
         Forward = moveDirection;
         _velocity = Forward * _maxSpeed;
         _navMeshAgent.angularSpeed = 0;
-
-        UpdateAnimation();
     }
 
     public void UpdatePosition(float deltaTime)
@@ -72,10 +71,5 @@ public class MovementController : MonoBehaviour
     public void RotateToAngle(float rotation)
     {
         _navMeshAgent.transform.rotation = Quaternion.Euler(0, rotation, 0);
-    }
-
-    private void UpdateAnimation()
-    {
-        _animator.SetFloat("Speed", Velocity.magnitude / _maxSpeed);
     }
 }
