@@ -31,15 +31,19 @@ public class CreaturesAIManager : MonoBehaviour
     List<CreatureAI> huntCreatures = new List<CreatureAI>();
     List<CreatureAI> fleeCreatures = new List<CreatureAI>();
 
+    List<PlayerController> players = new List<PlayerController>();
+
     private GameController _gameController;
 
     #endregion
 
     #region Methods
 
-    public void Initialize(GameController gameController, List<CreatureAI> creatures)
+    public void Initialize(GameController gameController, List<CreatureAI> creatures, List<PlayerController> players)
     {
         _gameController = gameController;
+
+        this.players = players;
 
         foreach (CreatureAI creature in creatures)
         {
@@ -56,10 +60,9 @@ public class CreaturesAIManager : MonoBehaviour
     /// Gets a fleeing point for the given creature considering its position.
     /// </summary>
     public NavMeshPath GetFleePath(CreatureAI creature)
-    {
-        NavMeshPath path;
-        NavMeshPath cachedFirstPath = null;
-        for (int i = 0;
+    {        
+        //Gets path based on the spawning points.
+        /*for (int i = 0;
             i < lCreaturesSpawnPoints.Count;
             ++i)
         {
@@ -72,8 +75,35 @@ public class CreaturesAIManager : MonoBehaviour
                     return path;
                 }
             }
+        }*/
+
+        Vector3 playersAveragePosition = Vector3.zero;
+        for(int i = 0;
+            i < players.Count;
+            ++i)
+        {
+            playersAveragePosition += players[i].transform.position;
         }
-        return cachedFirstPath;
+
+        playersAveragePosition = playersAveragePosition / players.Count;
+        Vector3 directionAwayFromPlayers = creature.transform.position - playersAveragePosition;
+        directionAwayFromPlayers.y = 0;
+        directionAwayFromPlayers.Normalize();
+
+        NavMeshPath path = new NavMeshPath();
+
+        if (creature.navMeshAgent.CalculatePath(creature.transform.position + directionAwayFromPlayers * minFleeDistance, path))
+        {
+            return path;
+        }
+
+        if(creature.navMeshAgent.CalculatePath(creature.spawnPosition, path))
+        {
+            return path;
+        }
+
+        Debug.LogError("Couldnt create a path neither away from players, neither to the spawn position of the creature, returning null");
+        return null;
     }
 
     /// <summary>

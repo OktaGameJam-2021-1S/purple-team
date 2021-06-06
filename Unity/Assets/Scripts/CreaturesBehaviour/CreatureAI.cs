@@ -18,13 +18,19 @@ public class CreatureAI : MonoBehaviourPun
     [SerializeField] private Renderer skullRenderer;
     [SerializeField] private AudioSource audioSource;
 
+    [Header("Audios")]
+    [SerializeField] private AudioClip roamingClip;
+    [SerializeField] private AudioClip takingDmgClip;
+
+
+    [Header("Animation controlling.")]
     [SerializeField] private string idleName = "Skull_Idle";
     [SerializeField] private string skullReactionName = "Skull_Reaction";    
 
 
     public NavMeshAgent navMeshAgent;
 
-
+    [Header("Behaviour states parameters")]
     [Tooltip("Used to calculate the next roaming position when free roaming.")]
     [SerializeField] private float roamingNextPointDistance;
     [Tooltip("Minimum ammount of seconds that the creature will wait after reaching a roaming position to start roaming again.")]
@@ -97,7 +103,7 @@ public class CreatureAI : MonoBehaviourPun
     /// <summary>
     /// Holds the initial spawn position.
     /// </summary>
-    private Vector3 spawnPosition;
+    public Vector3 spawnPosition;
 
     /// <summary>
     /// Caches the Player transfomr that this creature is hunting.
@@ -249,6 +255,8 @@ public class CreatureAI : MonoBehaviourPun
 
         navMeshAgent.speed = fleeSpeed;
 
+        audioSource.Stop();
+
         if (eyesCoroutine != null)
             StopCoroutine(eyesCoroutine);
 
@@ -307,7 +315,6 @@ public class CreatureAI : MonoBehaviourPun
 
         takingDmg = true;
         lightDmg += dmg;
-        print("Applying dmg: "+dmg.ToString()+", current lightDmg value: "+lightDmg+", behaviourState: " + CurrentState.ToString());
         if (lightDmg >= maxLightDmg)
         {
             Flee();
@@ -316,6 +323,13 @@ public class CreatureAI : MonoBehaviourPun
         else
         {
             navMeshAgent.isStopped = true;
+
+            if(audioSource.clip != takingDmgClip)
+            {
+                audioSource.Stop();
+                audioSource.clip = takingDmgClip;
+                audioSource.Play();
+            }
 
             if (behaviourCoroutine != null)
                 StopCoroutine(behaviourCoroutine);
@@ -393,7 +407,6 @@ public class CreatureAI : MonoBehaviourPun
 
         while(lightDmg > 0)
         {
-            print("Recovering");
             lightDmg -= recoverySpeed * Time.deltaTime;
             yield return null;
         }
@@ -418,7 +431,16 @@ public class CreatureAI : MonoBehaviourPun
     private IEnumerator RoamingCoroutine()
     {
         while(true)
-        {            
+        {
+            //To make a 1 in 5 chance to make the roaming sound.
+            int toSound = Random.Range(0, 5);
+
+            if(toSound == 0)
+            {
+                audioSource.Stop();
+                audioSource.PlayOneShot(roamingClip);
+            }
+
             Vector3 roamPosition = GetRandomNavMeshPosition();
             //DEBUG:::
             debugRoamingTarget = roamPosition;
