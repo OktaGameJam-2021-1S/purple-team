@@ -105,7 +105,7 @@ namespace Menu
         }
         public void LeaderBoardButton()
         {
-            throw new NotImplementedException();
+            UIRankingScreen.OpenTop10();
         }
         #endregion
 
