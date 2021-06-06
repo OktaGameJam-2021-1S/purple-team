@@ -919,7 +919,7 @@ MonoBehaviour:
   leaderboardButton: {fileID: 1421770389}
   lamp1: {fileID: 1248417191}
   lamp2: {fileID: 1458404443}
-  findingMatchAnimationTime: 4
+  findingMatchAnimationTime: 0.75
   URL: https://okta-team-purple.herokuapp.com/
 --- !u!114 &1860648316
 MonoBehaviour:
