@@ -90,7 +90,11 @@ function _top10() {
 
 function _saveScore(score, player1, player2) {
 	return _updateGamesPlayed(player1, player2)
-		.then(() => _query("INSERT INTO leaderboard(score, player1, player2) VALUES ($1, $2, $3) RETURNING *;", [score, player1, player2]))
+		.then(async () => {
+			const result = (await _query("SELECT * FROM leaderboard WHERE score=$1 AND player1=$2 AND player2=$3;", [score, player1, player2]));
+			if (result.length) return result;
+			return _query("INSERT INTO leaderboard(score, player1, player2) VALUES ($1, $2, $3) RETURNING *;", [score, player1, player2])
+		})
 		.then((scores) => scores[0])
 		.then((score) => _topRelative(score.id, score.score));
 }

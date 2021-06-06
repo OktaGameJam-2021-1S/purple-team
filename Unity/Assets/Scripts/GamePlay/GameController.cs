@@ -12,6 +12,7 @@ namespace GamePlay
         [SerializeField] private InputController _inputController;
         [SerializeField] private EndGameController _endGameController;
         [SerializeField] private CreaturesAIManager _creaturesAIManager;
+        [SerializeField] private AudioSource _ambientSound;
 
         private List<PlayerController> _playersList;
         private PlayerController _localPlayer;
@@ -66,6 +67,7 @@ namespace GamePlay
         public void RescuedKid()
         {
             _gameState = GameState.End;
+            _ambientSound.Stop();
             _endGameController.ShowEndGame(true);
         }       
 
@@ -94,6 +96,16 @@ namespace GamePlay
             {
                 player.UpdatePlayer(Time.deltaTime);
             }
+
+#if UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                RescuedKid();
+            } else if (Input.GetKeyDown(KeyCode.L))
+            {
+                PlayerDied(_localPlayer);
+            }
+#endif
         }
     }
 }
