@@ -25,6 +25,12 @@ namespace GamePlay
         public void Initialize(bool isLocalPlayer)
         {
             Utilities.ChangeObjectLayer(gameObject, LayerMask.NameToLayer((isLocalPlayer ? "MainCharacter" : "Character")));
+            if(isLocalPlayer)
+            {
+                var audioListener = FindObjectOfType<AudioListener>();
+                audioListener.transform.SetParent(transform);
+                audioListener.transform.localPosition = Vector3.zero;
+            }
             _playerLightController.Initialize(isLocalPlayer);
             _movementController.Initialize();
         }       
