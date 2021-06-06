@@ -13,19 +13,23 @@ namespace GamePlay
         [SerializeField] private Animator _animator;
         [SerializeField] private MovementController _movementController;
         [SerializeField] private PlayerLightController _playerLightController;
+        [SerializeField] private Renderer m_Renderer;
 
         public string UserID = "";
 
         public bool HasKid => _carringKid != null;
 
         private LostKid _carringKid = null;
-        private LostKid _closeKid = null;        
+        private LostKid _closeKid = null;
+
+        private bool isLocalPlayer;
 
         /// <summary>
         /// Initialize the Player Controller
         /// </summary>
         public void Initialize(bool isLocalPlayer)
         {
+            this.isLocalPlayer = isLocalPlayer;
             Utilities.ChangeObjectLayer(gameObject, LayerMask.NameToLayer((isLocalPlayer ? "MainCharacter" : "Character")));
             if(isLocalPlayer)
             {
@@ -112,6 +116,14 @@ namespace GamePlay
 
                 _playerLightController.SyncLight(isLightOn, lightPower, deltaTime);
             }
+        }
+
+        public void InitColors(bool primary)
+        {
+            if (primary)
+                m_Renderer.material.SetTextureOffset("_BaseMap", new Vector2(0, 0));
+            else
+                m_Renderer.material.SetTextureOffset("_BaseMap", new Vector2(0.0f, 0.88f));
         }
 
         #region Unity Events

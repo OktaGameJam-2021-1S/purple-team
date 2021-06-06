@@ -675,6 +675,7 @@ MonoBehaviour:
   _animator: {fileID: 5132487341278625806}
   _movementController: {fileID: 3389700396270497769}
   _playerLightController: {fileID: 6944778136644453172}
+  m_Renderer: {fileID: 5431188141815112274}
   UserID: 
 --- !u!114 &3389700396270497769
 MonoBehaviour:

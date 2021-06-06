@@ -241,6 +241,8 @@ namespace GamePlay
                 {
                     _localPlayer = photonPlayer;
                 }
+
+                photonPlayer.InitColors(player.IsMasterClient);
             }
 
             OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);

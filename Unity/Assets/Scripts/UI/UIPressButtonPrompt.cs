@@ -9,6 +9,15 @@ public class UIPressButtonPrompt : MonoBehaviour
 
     private int m_AnimTweenId;
 
+    public bool IsActive
+    { 
+        get
+        {
+            return m_Canvas.enabled;
+        }
+    }
+
+
     public static UIPressButtonPrompt Instance { get; private set; }
 
     private void Awake()
