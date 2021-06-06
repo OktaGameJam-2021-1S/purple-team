@@ -9,6 +9,10 @@ namespace GamePlay
 {
     public class LostKid : MonoBehaviourPun, IPunObservable
     {
+        [SerializeField] private AudioSource _loopCry;
+        [SerializeField] private AudioSource _farAwayCry;
+        [SerializeField] private float _timeFarCry = 30;
+
         public bool CanBeTaked => _currentGrabbingPlayer == null;
 
         private List<PlayerController> _players;
@@ -17,6 +21,24 @@ namespace GamePlay
         public void Initialize(List<PlayerController> players)
         {
             _players = players;
+            _loopCry.Play();
+
+            StartCoroutine(FarAwayCry());
+        }
+
+        private IEnumerator FarAwayCry()
+        {
+            WaitForSeconds waitForSeconds = new WaitForSeconds(_timeFarCry);
+            
+            while(true)
+            {
+                yield return waitForSeconds;
+
+                if (_currentGrabbingPlayer == null)
+                {
+                    _farAwayCry.Play();
+                }
+            }
         }
 
         public void TakeKid(PlayerController playerController)
@@ -74,6 +96,15 @@ namespace GamePlay
                 _currentGrabbingPlayer = _players.Find((PlayerController p) => p.photonView.ViewID == viewID);
                 _currentGrabbingPlayer.TakeKid(this);
                 Utilities.ChangeObjectLayer(gameObject, _currentGrabbingPlayer.gameObject.layer);
+            }
+
+            if (_currentGrabbingPlayer == null)
+            {
+                _loopCry.Play();
+            }
+            else
+            {
+                _loopCry.Stop();
             }
         }
     }
