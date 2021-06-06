@@ -3,7 +3,17 @@ guid: 73be6e35cc1281c469e9850a6c3d093d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Esquimo_Mat
+    second: {fileID: 2100000, guid: 3034941b0b9079646acb24393ac8a1e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lamp_Mat
+    second: {fileID: 2100000, guid: bf9989ee8ebd32f41a8ae7445c60e3df, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
