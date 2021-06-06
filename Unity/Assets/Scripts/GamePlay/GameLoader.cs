@@ -18,6 +18,7 @@ namespace GamePlay
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private GameObject _safeZonePrefab;
         [SerializeField] private LostKid _lostKid;
+        [SerializeField] private ExitCave _exitCave;
 
         private List<PlayerController> _playerList;
         private PlayerController _localPlayer;
@@ -51,7 +52,7 @@ namespace GamePlay
 
             LoadingLog("Finished loading");
 
-            _gameController.Initialize(_localPlayer, _playerList, _lostKid);
+            _gameController.Initialize(_localPlayer, _playerList, _lostKid, _exitCave);
             _gameController.StartGame();
         }
 
@@ -157,6 +158,8 @@ namespace GamePlay
             yield return null;
 
             _lostKid.transform.position = DungeonHelper.Instance.GetObjectivePoint().position;
+            _exitCave.transform.position = DungeonHelper.Instance.GetPlayerSpawnPoint().position;
+
             _playerSpawnPosition = DungeonHelper.Instance.GetPlayerSpawnPoint();
             _refillPositions = DungeonHelper.Instance.GetRefillPoints();
             _enemySpawnPositions = DungeonHelper.Instance.GetEnemySpawnPoints();
@@ -210,7 +213,7 @@ namespace GamePlay
 
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                Vector3 randomOffset = new Vector3(1, 0, 1) * Random.Range(-1, 1) * 5;
+                Vector3 randomOffset = new Vector3(1, 0, 1) * Random.Range(-1, 1) * 2;
                 PlayerController photonPlayer = Instantiate(_playerPrefab, spawnPosition.position + randomOffset, _playerPrefab.transform.rotation).GetComponent<PlayerController>();
                 photonPlayer.gameObject.name = "Player " + player.ActorNumber;
                 photonPlayer.photonView.OwnerActorNr = player.ActorNumber;

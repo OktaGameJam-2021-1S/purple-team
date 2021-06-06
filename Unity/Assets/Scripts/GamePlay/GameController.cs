@@ -11,6 +11,7 @@ namespace GamePlay
         private List<PlayerController> _playersList;
         private PlayerController _localPlayer;
         private LostKid _lostKid;
+        private ExitCave _exitCave;
 
         private enum GameState
         {
@@ -21,13 +22,15 @@ namespace GamePlay
 
         private GameState _gameState = GameState.Idle;
 
-        public void Initialize(PlayerController localPlayer, List<PlayerController> players, LostKid lostKid)
+        public void Initialize(PlayerController localPlayer, List<PlayerController> players, LostKid lostKid, ExitCave exitCave)
         {
             _gameState = GameState.Idle;
             _localPlayer = localPlayer;
             _playersList = players;
             _lostKid = lostKid;
+            _exitCave = exitCave;
 
+            _exitCave.Initialize(this);
             _lostKid.Initialize(_playersList);
             _cameraController.Initialize(_localPlayer.transform);
             _inputController.Initialize();
@@ -45,6 +48,12 @@ namespace GamePlay
         {
             _gameState = GameState.Main;
             //TODO: Add code to start the game
+        }
+
+        public void RescuedKid()
+        {
+            //TODO: Add end game code
+            Debug.Log("Congratulations, you won!");
         }
 
         private void ProcessInput(PlayerInput playerInput)
