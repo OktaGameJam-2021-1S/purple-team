@@ -675,6 +675,7 @@ MonoBehaviour:
   _animator: {fileID: 5132487341278625806}
   _movementController: {fileID: 3389700396270497769}
   _playerLightController: {fileID: 6944778136644453172}
+  UserID: 
 --- !u!114 &3389700396270497769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,7 +1304,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1458,6 +1459,7 @@ GameObject:
   - component: {fileID: 1210841293810639300}
   - component: {fileID: 5132487341278625806}
   - component: {fileID: 4676776551535524319}
+  - component: {fileID: 9004243181580483865}
   m_Layer: 8
   m_Name: Visual
   m_TagString: Untagged
@@ -1527,6 +1529,19 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
+--- !u!114 &9004243181580483865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379335983952389116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d1b553b31a71f4b906e00edc3b3dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _footStep: {fileID: 2282737931986183962}
 --- !u!1 &7754185931510469562
 GameObject:
   m_ObjectHideFlags: 0
