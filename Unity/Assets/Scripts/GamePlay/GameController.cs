@@ -41,7 +41,7 @@ namespace GamePlay
             _cameraController.Initialize(_localPlayer.transform);
             _inputController.Initialize();
             _endGameController.Initialize();
-            _creaturesAIManager.Initialize(this, creatures);
+            _creaturesAIManager.Initialize(this, creatures, _playersList);
 
             _localPlayer.Initialize(true);
 

@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 335660143419083735}
   - component: {fileID: 335660143437404069}
   - component: {fileID: 7123516310894976124}
-  - component: {fileID: 5921830380218816770}
+  - component: {fileID: 335660143419083732}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -121,6 +121,9 @@ MonoBehaviour:
   sensor: {fileID: 8321756628147161179}
   animator: {fileID: 335660143334883160}
   skullRenderer: {fileID: 5615279861345539432}
+  audioSource: {fileID: 335660143419083732}
+  roamingClip: {fileID: 8300000, guid: ac443ab73f08bc24db0b6b61cf657172, type: 3}
+  takingDmgClip: {fileID: 8300000, guid: 0c63599d0fa94be47b76638da9faf72b, type: 3}
   idleName: Skull_Idle
   skullReactionName: Skull_Reaction
   navMeshAgent: {fileID: 335660143437404069}
@@ -135,6 +138,7 @@ MonoBehaviour:
   fleeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   huntColor: {r: 1, g: 0, b: 0, a: 1}
   _currentState: 0
+  spawnPosition: {x: 0, y: 0, z: 0}
   playerHuntingTransform: {fileID: 0}
 --- !u!195 &335660143437404069
 NavMeshAgent:
@@ -145,7 +149,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 335660143437404065}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.00001
+  m_Radius: 0.1
   m_Speed: 12
   m_Acceleration: 20
   avoidancePriority: 99
@@ -174,36 +178,120 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &5921830380218816770
-MonoBehaviour:
+--- !u!82 &335660143419083732
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335660143437404065}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0489e605a1f42644d8646ac2f8efe87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensor: {fileID: 8321756628147161179}
-  animator: {fileID: 335660143334883160}
-  skullRenderer: {fileID: 5615279861345539432}
-  idleName: Skull_Idle
-  skullReactionName: Skull_Reaction
-  navMeshAgent: {fileID: 0}
-  roamingNextPointDistance: 10
-  roamWaitMin: 4
-  roamWaitMax: 8
-  roamSpeed: 1
-  fleeSpeed: 10
-  huntSpeed: 5
-  recoverySpeed: 3
-  maxLightDmg: 10
-  fleeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  huntColor: {r: 1, g: 0, b: 0, a: 1}
-  _currentState: 0
-  playerHuntingTransform: {fileID: 0}
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 50
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.02
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.135788
+      value: 0.7220157
+      inSlope: -1.020408
+      outSlope: -1.020408
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.40144378
+      value: 0.39969116
+      inSlope: -1.2351168
+      outSlope: -1.2351168
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9553528
+      value: 0
+      inSlope: -1.0204082
+      outSlope: -1.0204082
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &335660144079250098
 GameObject:
   m_ObjectHideFlags: 0

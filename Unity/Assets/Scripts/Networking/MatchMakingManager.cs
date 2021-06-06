@@ -20,6 +20,8 @@ namespace Networking
 
         public const byte TargetNumberOfPlayers = 2;
 
+        public bool tryCustomServerFirst = true;
+
         public void StartMatchMaking(string userID)
         {
             MatchMakingLog("Starting photon matchmaking");
@@ -27,7 +29,33 @@ namespace Networking
 
             PhotonNetwork.LocalPlayer.SetCustomProperties(new HashtablePhoton() { { "UserID", userID } });
 
-            PhotonNetwork.ConnectUsingSettings();
+            if (tryCustomServerFirst)
+            {
+                MatchMakingLog("connecting to custom server");
+
+                string customServerAddress = "201.40.90.119";
+                var protocol = ConnectionProtocol.Udp;
+                var port = 5055;
+
+#if UNITY_WEBGL
+                customServerAddress = $"ws://{customServerAddress}:9090/*";
+                protocol = ConnectionProtocol.WebSocketSecure;
+                port = 9090;
+#endif
+                PhotonNetwork.ConnectUsingSettings(new AppSettings
+                {
+                    Server = customServerAddress,
+                    Port = port,
+                    Protocol = protocol,
+                    EnableProtocolFallback = true,
+                    UseNameServer = false,
+                    NetworkLogging = DebugLevel.ERROR
+                });
+            }
+            else
+            {
+                PhotonNetwork.ConnectUsingSettings();
+            }
         }
 
         public void CancelMatchMaking()
@@ -62,6 +90,14 @@ namespace Networking
         public void OnDisconnected(DisconnectCause cause)
         {
             MatchMakingLog("Disconnected from matchmaking, cause - photon: " + cause.ToString());
+
+            if (cause == DisconnectCause.ExceptionOnConnect)
+            {
+                MatchMakingLog("retrying on default server");
+                tryCustomServerFirst = false;
+                StartMatchMaking((string) PhotonNetwork.LocalPlayer.CustomProperties["UserID]"]);
+                return;
+            }
 
             PhotonNetwork.RemoveCallbackTarget(this);
 
