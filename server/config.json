@@ -1,0 +1,8 @@
+{
+  "host": "ec2-54-145-224-156.compute-1.amazonaws.com",
+  "database": "detg2mrtr8fhrk",
+  "user": "edmakjjyazwdth",
+  "port": 5432,
+  "password": "db022970dea9ece4c31bc5564a0716fb6ab060e14033eac7eceae45932c6140e",
+  "uri": "postgres://edmakjjyazwdth:db022970dea9ece4c31bc5564a0716fb6ab060e14033eac7eceae45932c6140e@ec2-54-145-224-156.compute-1.amazonaws.com:5432/detg2mrtr8fhrk"
+}
