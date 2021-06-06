@@ -76,7 +76,7 @@ function _topRelative(id) {
 				bottom5.push(ranks[i]);
 			}
 
-			return { me: me, above5: above5, bottom5: bottom5 };
+			return { me: me, above5: above5, bottom5: _.reverse(bottom5) };
 		});
 }
 
