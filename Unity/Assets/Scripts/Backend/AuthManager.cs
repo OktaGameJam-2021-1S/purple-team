@@ -66,10 +66,6 @@ public class AuthManager : MonoBehaviour
 
     private IEnumerator Start()
     {
-//#if UNITY_WEBGL
-//        localNickname = $"Guest{Random.Range(1, int.MaxValue)}";
-//        yield break;
-//#endif
         if (PlayerPrefs.HasKey(namePrefsKey))
         {
             localNickname = PlayerPrefs.GetString(namePrefsKey);
@@ -113,5 +109,11 @@ public class AuthManager : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(Co_Login(name, onSuccess, onError));
+    }
+
+    public void InitAsGuest()
+    {
+        localDeviceId = $"Guest{Random.Range(1, int.MaxValue)}";
+        localNickname = $"Guest{Random.Range(1, int.MaxValue)}";
     }
 }

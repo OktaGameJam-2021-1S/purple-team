@@ -12,6 +12,7 @@ public class UILogin : MonoBehaviour
     [SerializeField] private Canvas m_Canvas;
     [SerializeField] private GraphicRaycaster m_InputRaycaster;
     [SerializeField] private Button m_ConfirmButton;
+    [SerializeField] private Button m_SkipButton;
     [SerializeField] private TMP_InputField m_InputField;
     [SerializeField] private RectTransform m_MainRect;
 
@@ -26,6 +27,7 @@ public class UILogin : MonoBehaviour
         m_ConfirmButton.onClick.AddListener(OnClickOk);
         m_ErrorObject.SetActive(false);
         m_LoadOverlay.SetActive(false);
+        m_SkipButton.onClick.AddListener(OnClickSkip);
     }
 
     private void Start()
@@ -47,6 +49,12 @@ public class UILogin : MonoBehaviour
         AuthManager.Instance.Authenticate(m_InputField.text, AnimateClose, OnError);
     }
 
+    private void OnClickSkip()
+    {
+        AuthManager.Instance.InitAsGuest();
+        AnimateClose();
+    }
+
     private void OnError(string msg)
     {
         m_LoadOverlay.SetActive(false);
@@ -58,7 +66,7 @@ public class UILogin : MonoBehaviour
     {
         LeanTween.cancel(m_AnimTweenId);
         m_MainRect.localScale = Vector3.zero;
-        m_AnimTweenId = LeanTween.scale(m_MainRect.gameObject, Vector3.one, 0.4f)
+        m_AnimTweenId = LeanTween.scale(m_MainRect.gameObject, Vector3.one*2, 0.4f)
             .setEaseOutBack()
             .setOnStart(() =>
             {
@@ -75,7 +83,7 @@ public class UILogin : MonoBehaviour
     private void AnimateClose()
     {
         LeanTween.cancel(m_AnimTweenId);
-        m_MainRect.localScale = Vector3.one;
+        m_MainRect.localScale = Vector3.one*2;
         m_AnimTweenId = LeanTween.scale(m_MainRect.gameObject, Vector3.zero, 0.25f)
             .setEaseInBack()
             .setOnStart(() =>
