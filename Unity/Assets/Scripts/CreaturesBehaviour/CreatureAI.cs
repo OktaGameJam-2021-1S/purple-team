@@ -12,7 +12,7 @@ public class CreatureAI : MonoBehaviourPun
 
     #region Inspector Variables
 
-    [SerializeField] private TriggerSensor triggerSensor;
+    [SerializeField] private Sensor sensor;
     [SerializeField] private Animator animator;
     [SerializeField] private Renderer skullRenderer;
 
@@ -175,7 +175,7 @@ public class CreatureAI : MonoBehaviourPun
             navMeshAgent.Warp(transform.position);
         }
 
-        triggerSensor.OnDetected.AddListener(OnSenseSomething);
+        sensor.OnDetected.AddListener(OnSenseSomething);
         Roam();
         lightDmg = 0;
 
@@ -209,11 +209,11 @@ public class CreatureAI : MonoBehaviourPun
         if (currentAnimationName != idleName)
         {
             animator.SetBool("IsIdle", true);
-            currentAnimationName = idleName;            
+            currentAnimationName = idleName;          
         }
         animator.SetFloat("Speed", 0.75f);
         CurrentState = BehaviourState.Roam;
-        triggerSensor.gameObject.SetActive(true);
+        sensor.gameObject.SetActive(true);
 
         navMeshAgent.speed = roamSpeed;
 
@@ -241,7 +241,7 @@ public class CreatureAI : MonoBehaviourPun
         }
         animator.SetFloat("Speed", 2);
         CurrentState = BehaviourState.Flee;
-        triggerSensor.gameObject.SetActive(false);
+        sensor.gameObject.SetActive(false);
 
         navMeshAgent.speed = fleeSpeed;
 
@@ -269,7 +269,7 @@ public class CreatureAI : MonoBehaviourPun
         }
         animator.SetFloat("Speed", 1.5f);
         CurrentState = BehaviourState.Hunt;
-        triggerSensor.gameObject.SetActive(false);
+        sensor.gameObject.SetActive(false);
         playerHuntingTransform = player;
 
         navMeshAgent.speed = huntSpeed;
