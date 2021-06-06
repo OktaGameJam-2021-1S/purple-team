@@ -2,7 +2,8 @@
 using UnityEngine;
 
 namespace JackRabbit {
-	public class PlayerController : MonoBehaviour {
+	public class PlayerController : MonoBehaviour
+    {
 		public float maxSpeed = 5;
 		public float attackMoveSpeedMultiplier = 0.1f;
 		public float sprintMultiplier = 1.5f;
