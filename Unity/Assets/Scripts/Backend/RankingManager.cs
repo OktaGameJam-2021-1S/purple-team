@@ -84,7 +84,7 @@ public class RankingManager : MonoBehaviour
         UnityWebRequestAsyncOperation operation = UnityWebRequest.Get(string.Format(GET_SAVESCORE_ENDPOINT, player1, player2, score)).SendWebRequest();
         yield return operation;
 
-        if (operation.webRequest.responseCode == 200)
+        if (operation.webRequest.responseCode == 200 || operation.webRequest.responseCode == 201)
         {
             Debug.Log("leaderboard retrieved: " + operation.webRequest.downloadHandler.text);
             m_LastMatchRank = Newtonsoft.Json.JsonConvert.DeserializeObject<MatchScore>(operation.webRequest.downloadHandler.text);

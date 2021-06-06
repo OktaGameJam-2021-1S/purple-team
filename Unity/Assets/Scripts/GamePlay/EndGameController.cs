@@ -27,13 +27,21 @@ namespace GamePlay
 
         public void ShowWinGame(string userID1, string userID2, int time)
         {
+            time = time / 1000;
+            int score = Mathf.Clamp(1200 - time, 0, 1200);
             _winCanvas.gameObject.SetActive(true);
             _winCanvas.GetComponent<PlayableDirector>().Play();
-            StartCoroutine(WaitAnimation(_winCanvas.GetComponent<PlayableDirector>(),
-            delegate ()
+            StartCoroutine(WaitSecondsAndCallback(5.2f, delegate ()
             {
-                //TODO: Save score and show leadboard
-            }));
+                userID1 = "uid1";
+                userID2 = "uid2";
+                print("Saving Score:" + score + " for users: " + userID1 + " and: " + userID2);
+                RankingManager.Instance.SaveScore(userID1, userID2, score, delegate (RankingManager.MatchScore m)
+                {
+                    print("Opening last match UI");
+                    UIRankingScreen.OpenLastMatch();
+                });
+            }));            
         }
 
         public void ShowLoseGame()
@@ -50,6 +58,12 @@ namespace GamePlay
             }
 
             finished?.Invoke();
+        }
+
+        private IEnumerator WaitSecondsAndCallback(float seconds, Action callback = null)
+        {
+            yield return new WaitForSeconds(seconds);
+            callback?.Invoke();
         }
     }
 }
