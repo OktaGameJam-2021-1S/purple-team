@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killDistance: 0.5
-  minFleeDistance: 30
+  minFleeDistance: 40
   lCreaturesSpawnPoints: []
 --- !u!82 &612486707
 AudioSource:

@@ -18,7 +18,8 @@ namespace Menu
         [SerializeField] private Button exitButton;
         [SerializeField] private Button leaderboardButton;
 
-        [SerializeField] private Image[] findingMatchLamps;
+        [SerializeField] private Image lamp1;
+        [SerializeField] private Image lamp2;
 
         [SerializeField] private float findingMatchAnimationTime = 4;
 
@@ -69,24 +70,12 @@ namespace Menu
 
         private IEnumerator FindingMatchAnimationCoroutine()
         {
-            float time = findingMatchAnimationTime / (findingMatchLamps.Length + 1);
-            int partCounter = 0;
-            float counter;
-
+            lamp1.gameObject.SetActive(true);
             while(true)
             {
-                if (partCounter >= findingMatchLamps.Length)
-                {
-                    for (int i = 0; i < findingMatchLamps.Length; ++i) { findingMatchLamps[i].gameObject.SetActive(false); }
-                    partCounter = 0;
-                }
-                else
-                {
-                    findingMatchLamps[partCounter].gameObject.SetActive(true);
-                    partCounter++;
-                }
-                counter = 0;
-                while(counter < time)
+                lamp2.gameObject.SetActive(!lamp2.gameObject.activeInHierarchy);
+                float counter = 0;
+                while(counter < findingMatchAnimationTime)
                 {
                     counter += Time.deltaTime;
                     yield return null;
@@ -98,11 +87,10 @@ namespace Menu
 
         #region UI Callbacks
         public void OnStartMatchMakingClick()
-        {
-			_matchMakingManager.StartMatchMaking(AuthManager.Instance.localDeviceId);
+        {			
             if (startMatchMakingOnce)
             {
-                _matchMakingManager.StartMatchMaking();
+                _matchMakingManager.StartMatchMaking(AuthManager.Instance.localDeviceId);
                 startMatchMakingOnce = false;
                 loadingCoroutine = StartCoroutine(FindingMatchAnimationCoroutine());
             }
