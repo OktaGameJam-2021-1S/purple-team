@@ -69,6 +69,8 @@ namespace GamePlay
                 CreatureAI creature = go.transform.parent.GetComponent<CreatureAI>();
                 if (creature != null)
                 {
+                    print("Found Creature, adding it to the creatures list");
+                    Debug.Break();
                     creaturesApplyingDmg.Add(creature);
                 }
             }

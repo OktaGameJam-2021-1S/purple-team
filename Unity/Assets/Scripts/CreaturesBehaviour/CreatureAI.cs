@@ -10,8 +10,16 @@ public class CreatureAI : MonoBehaviour
 {
 
     #region Inspector Variables
+
     [SerializeField] private TriggerSensor triggerSensor;
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private string idleName = "Skull_Idle";
+    [SerializeField] private string skullReactionName = "Skull_Reaction";
+
+
     public NavMeshAgent navMeshAgent;
+
 
     [Tooltip("Used to calculate the next roaming position when free roaming.")]
     [SerializeField] private float roamingNextPointDistance;
@@ -138,6 +146,7 @@ public class CreatureAI : MonoBehaviour
     public void Roam()
     {
         print("Roam called");
+        animator.Play(idleName);
         CurrentState = BehaviourState.Roam;
         triggerSensor.gameObject.SetActive(true);
 
@@ -155,6 +164,7 @@ public class CreatureAI : MonoBehaviour
     public void Flee()
     {
         print("Flee called");
+        animator.Play(idleName);
         CurrentState = BehaviourState.Flee;
         triggerSensor.gameObject.SetActive(false);
 
@@ -172,6 +182,7 @@ public class CreatureAI : MonoBehaviour
     public void HuntPlayer(Transform player)
     {
         print("Hunt called");
+        animator.Play(idleName);
         CurrentState = BehaviourState.Hunt;
         triggerSensor.gameObject.SetActive(false);
         playerHuntingTransform = player;
@@ -193,12 +204,14 @@ public class CreatureAI : MonoBehaviour
         if (CurrentState == BehaviourState.Flee)
             return;
 
-        takingDmg = true;        
+        takingDmg = true;
+        animator.Play(skullReactionName);
         lightDmg += dmg;
         print("Applying dmg: "+dmg.ToString()+", current lightDmg value: "+lightDmg+", behaviourState: " + CurrentState.ToString());
         if (lightDmg >= maxLightDmg)
         {
-            Flee();           
+            Flee();
+            lightDmg = 0;
         }
         else
         {
@@ -354,6 +367,7 @@ public class CreatureAI : MonoBehaviour
         triggerSensor.OnDetected.AddListener(OnSenseSomething);
         CreaturesAIManager.Instance.RegisterCreatureAI(this);
         Roam();
+        lightDmg = 0;
 
         //DEBUG::: For Testing
         SetSpawnPosition(transform.position);
