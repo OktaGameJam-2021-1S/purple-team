@@ -17,6 +17,7 @@ namespace GamePlay
     {
         [SerializeField] private GameController _gameController;
         [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private GameObject _creaturePrefab;
         [SerializeField] private GameObject _safeZonePrefab;
         [SerializeField] private LostKid _lostKid;
         [SerializeField] private ExitCave _exitCave;
@@ -31,6 +32,7 @@ namespace GamePlay
         private void Awake()
         {
             _playerList = new List<PlayerController>();
+            _creatures = new List<CreatureAI>();
         }
 
         private void Start()
@@ -50,11 +52,12 @@ namespace GamePlay
             yield return WaitPlayersToJoin();
             yield return BuildMap();
             yield return SpawnPlayers(_playerSpawnPosition);
+            yield return SpawnCreatures(_enemySpawnPositions);
             yield return SpawnSafeZones(_refillPositions);
 
             LoadingLog("Finished loading");
 
-            _gameController.Initialize(_localPlayer, _playerList, new List<CreatureAI>(), _lostKid, _exitCave);
+            _gameController.Initialize(_localPlayer, _playerList, _creatures, _lostKid, _exitCave);
             _gameController.StartGame();
         }
 
@@ -228,6 +231,77 @@ namespace GamePlay
                 {
                     _localPlayer = photonPlayer;
                 }
+            }
+
+            OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
+
+            NetworkEventDispatcher.RoomPropertiesUpdateEvent += OnChangedRoomData;
+            NetworkEventDispatcher.MasterClientSwitchedEvent += OnMasterClientSwitched;
+
+            if (!receivedViewIds && PhotonNetwork.IsMasterClient)
+            {
+                GenerateViewIds();
+            }
+
+            while (!receivedViewIds) yield return null;
+
+            NetworkEventDispatcher.RoomPropertiesUpdateEvent -= OnChangedRoomData;
+            NetworkEventDispatcher.MasterClientSwitchedEvent -= OnMasterClientSwitched;
+
+            yield return null;
+        }
+
+        private IEnumerator SpawnCreatures(List<Transform> spawnPositions)
+        {
+            LoadingLog("Spawning creatures");
+
+            string creatureViewIDKey = "creatureViewID";
+            bool receivedViewIds = false;
+            void OnChangedRoomData(HashtablePhoton properties)
+            {
+                for (int i = 0; i < _creatures.Count; i++)
+                {
+                    string key = creatureViewIDKey + i;
+                    if (properties.TryGetValue(key, out object viewID))
+                    {
+                        _creatures[i].photonView.ViewID = (int)viewID;
+
+                        receivedViewIds = true;
+                    }
+                }
+            }
+
+            void OnMasterClientSwitched(Player newMasterClient)
+            {
+                if (!receivedViewIds && PhotonNetwork.IsMasterClient)
+                {
+                    GenerateViewIds();
+                }
+            }
+
+            void GenerateViewIds()
+            {
+                LoadingLog("Generating creatures viewIDs");
+
+                HashtablePhoton viewIDs = new HashtablePhoton();
+
+                for (int i = 0; i < _creatures.Count; i++)
+                {
+                    int id = PhotonNetwork.AllocateViewID(true);
+
+                    viewIDs.Add(creatureViewIDKey + i, id);
+                }
+
+                PhotonNetwork.CurrentRoom.SetCustomProperties(viewIDs);
+            }
+
+            for (int i = 0; i < spawnPositions.Count; i++)
+            {
+                Transform spawnPosition = spawnPositions[i];
+
+                CreatureAI creatureAI = Instantiate(_creaturePrefab, spawnPosition.position, _creaturePrefab.transform.rotation).GetComponent<CreatureAI>();
+                creatureAI.gameObject.name = "Creature_" + i;
+                _creatures.Add(creatureAI);
             }
 
             OnChangedRoomData(PhotonNetwork.CurrentRoom.CustomProperties);
