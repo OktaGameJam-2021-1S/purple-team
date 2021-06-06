@@ -341,7 +341,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -591,7 +591,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -869,10 +869,10 @@ MonoBehaviour:
   layoutGraph:
     Nodes:
     - nodeId:
-        A: 5428091
-        B: 1169587546
-        C: -2047053123
-        D: -1039462911
+        A: 1895219147
+        B: 1315212408
+        C: -500608630
+        D: 1909382037
       position: {x: 0, y: 480, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -883,10 +883,10 @@ MonoBehaviour:
       pathLength: 0
       mainPath: 0
     - nodeId:
-        A: -2115865429
-        B: 1206454123
-        C: -1841332815
-        D: 949358127
+        A: -2008213064
+        B: 1288945146
+        C: -1572023661
+        D: 118794377
       position: {x: 120, y: 480, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -897,10 +897,10 @@ MonoBehaviour:
       pathLength: 0
       mainPath: 0
     - nodeId:
-        A: -11084702
-        B: 1286901006
-        C: 143516073
-        D: -1829091445
+        A: 1999025645
+        B: 1332845369
+        C: 999807142
+        D: -583102127
       position: {x: 240, y: 480, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -911,10 +911,10 @@ MonoBehaviour:
       pathLength: 0
       mainPath: 0
     - nodeId:
-        A: -765084907
-        B: 1217073633
-        C: -2125160553
-        D: -1350233305
+        A: -1465515102
+        B: 1127653552
+        C: 989367941
+        D: 103349657
       position: {x: 360, y: 480, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -925,10 +925,10 @@ MonoBehaviour:
       pathLength: 0
       mainPath: 0
     - nodeId:
-        A: 6623105
-        B: 1325342146
-        C: 253593768
-        D: 602009740
+        A: 1676702171
+        B: 1316729843
+        C: 171835581
+        D: -1948988303
       position: {x: 480, y: 480, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -939,10 +939,10 @@ MonoBehaviour:
       pathLength: 0
       mainPath: 0
     - nodeId:
-        A: 819828089
-        B: 1211747138
-        C: 239723148
-        D: 1635685280
+        A: 1782264495
+        B: 1260622323
+        C: -704524382
+        D: -393621458
       position: {x: 0, y: 360, z: 0}
       active: 1
       color: {r: 1, g: 0.38431373, b: 0, a: 1}
@@ -950,11 +950,11 @@ MonoBehaviour:
       pathName: refill4
       items:
       - itemId:
-          A: -1973780312
-          B: 1288487300
-          C: -886630231
-          D: -1785165533
-        type: 3
+          A: -281849423
+          B: 1169175193
+          C: 873463181
+          D: 353912692
+        type: 6
         markerName: LightRefill
         referencedItemIds: []
         editorSelected: 0
@@ -962,15 +962,15 @@ MonoBehaviour:
           itemType: Refill
           text: R
           textColor: {r: 1, g: 1, b: 1, a: 1}
-          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          backgroundColor: {r: 1, g: 0.3626509, b: 0.0047169924, a: 1}
       pathIndex: 0
       pathLength: 1
       mainPath: 0
     - nodeId:
-        A: 2043306557
-        B: 1074062173
-        C: 130295690
-        D: 1684867967
+        A: 85051550
+        B: 1198498078
+        C: 216943779
+        D: 694797367
       position: {x: 120, y: 360, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -981,10 +981,10 @@ MonoBehaviour:
       pathLength: 0
       mainPath: 0
     - nodeId:
-        A: -957230044
-        B: 1273312377
-        C: -1532577627
-        D: 598607738
+        A: -1158585873
+        B: 1319261635
+        C: 851551657
+        D: 726419936
       position: {x: 240, y: 360, z: 0}
       active: 1
       color: {r: 1, g: 0.38431373, b: 0, a: 1}
@@ -992,11 +992,11 @@ MonoBehaviour:
       pathName: refill1
       items:
       - itemId:
-          A: -93470060
-          B: 1087208072
-          C: 474172840
-          D: -1016142173
-        type: 3
+          A: -1654667376
+          B: 1082016374
+          C: -27643982
+          D: 969291716
+        type: 6
         markerName: LightRefill
         referencedItemIds: []
         editorSelected: 0
@@ -1004,15 +1004,15 @@ MonoBehaviour:
           itemType: Refill
           text: R
           textColor: {r: 1, g: 1, b: 1, a: 1}
-          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          backgroundColor: {r: 1, g: 0.3626509, b: 0.0047169924, a: 1}
       pathIndex: 0
       pathLength: 1
       mainPath: 0
     - nodeId:
-        A: 1018553215
-        B: 1223546577
-        C: 233918605
-        D: -147177799
+        A: 392178813
+        B: 1184121707
+        C: -1679252050
+        D: -813611575
       position: {x: 360, y: 360, z: 0}
       active: 1
       color: {r: 1, g: 0.38431373, b: 0, a: 1}
@@ -1020,11 +1020,11 @@ MonoBehaviour:
       pathName: refill3
       items:
       - itemId:
-          A: 1206428289
-          B: 1264891497
-          C: -1677107313
-          D: 885584850
-        type: 3
+          A: -1096658975
+          B: 1086842226
+          C: 1566698126
+          D: -1488365556
+        type: 6
         markerName: LightRefill
         referencedItemIds: []
         editorSelected: 0
@@ -1032,26 +1032,26 @@ MonoBehaviour:
           itemType: Refill
           text: R
           textColor: {r: 1, g: 1, b: 1, a: 1}
-          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          backgroundColor: {r: 1, g: 0.3626509, b: 0.0047169924, a: 1}
       pathIndex: 0
       pathLength: 1
       mainPath: 0
     - nodeId:
-        A: 2130090416
-        B: 1180154527
-        C: -352512090
-        D: -1101414883
+        A: -2117401200
+        B: 1076354607
+        C: 1469497477
+        D: 1434691614
       position: {x: 480, y: 360, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 4, y: 1, z: 0}
       pathName: main_goal
       items:
       - itemId:
-          A: -966726691
-          B: 1289301085
-          C: 1892054412
-          D: -1287474222
+          A: -321912308
+          B: 1126014154
+          C: 121899662
+          D: 303223059
         type: 5
         markerName: LevelGoal
         referencedItemIds: []
@@ -1065,49 +1065,91 @@ MonoBehaviour:
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: -70059204
-        B: 1168888089
-        C: -1874236521
-        D: 540158470
+        A: 582252227
+        B: 1334279704
+        C: 2073593739
+        D: -353242521
       position: {x: 0, y: 240, z: 0}
       active: 1
-      color: {r: 0.7490196, g: 0.36862746, b: 0.8, a: 1}
+      color: {r: 0.2627451, g: 0.2, b: 0.2, a: 1}
       coord: {x: 0, y: 2, z: 0}
       pathName: branch2
-      items: []
+      items:
+      - itemId:
+          A: 1282342449
+          B: 1183864876
+          C: 205724844
+          D: -1414510308
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: 343037305
+          B: 1120402480
+          C: 838141886
+          D: 1578393001
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
       pathIndex: 0
       pathLength: 1
       mainPath: 0
     - nodeId:
-        A: 243578817
-        B: 1128915411
-        C: 1094654382
-        D: 212965715
+        A: -1838113219
+        B: 1074094896
+        C: -614497375
+        D: 680120995
       position: {x: 120, y: 240, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 1, y: 2, z: 0}
       pathName: main
-      items: []
+      items:
+      - itemId:
+          A: 1664823344
+          B: 1304217863
+          C: 1557399981
+          D: 179908031
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
       pathIndex: 3
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: 1265557932
-        B: 1135903443
-        C: 1972797602
-        D: 431509681
+        A: 2005830840
+        B: 1092732118
+        C: 1206471308
+        D: 1262409396
       position: {x: 240, y: 240, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 2, y: 2, z: 0}
       pathName: main
       items:
       - itemId:
-          A: -457261900
-          B: 1287149117
-          C: 1053948595
-          D: 1784276865
+          A: 614957918
+          B: 1108613658
+          C: 668007597
+          D: 1054823448
         type: 2
         markerName: EnemySpawner
         referencedItemIds: []
@@ -1115,41 +1157,41 @@ MonoBehaviour:
         customInfo:
           itemType: custom
           text: 
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: -131675047
+          B: 1241422353
+          C: -1798271824
+          D: 191099607
+        type: 6
+        markerName: MineProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: MineProps
+          text: M
           textColor: {r: 1, g: 1, b: 1, a: 1}
           backgroundColor: {r: 0, g: 0, b: 0, a: 1}
       pathIndex: 4
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: 187647202
-        B: 1302573736
-        C: -108491367
-        D: 461921610
+        A: 548431844
+        B: 1198788094
+        C: 752671662
+        D: -1546688404
       position: {x: 360, y: 240, z: 0}
       active: 1
-      color: {r: 0.7477119, g: 0.36690104, b: 0.8018868, a: 1}
+      color: {r: 0.2627451, g: 0.2, b: 0.2, a: 1}
       coord: {x: 3, y: 2, z: 0}
       pathName: branch1
       items:
       - itemId:
-          A: -1593264182
-          B: 1338898492
-          C: 2059565699
-          D: -868970316
-        type: 2
-        markerName: EnemySpawner
-        referencedItemIds: []
-        editorSelected: 0
-        customInfo:
-          itemType: custom
-          text: 
-          textColor: {r: 1, g: 1, b: 1, a: 1}
-          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
-      - itemId:
-          A: 1563335409
-          B: 1285846004
-          C: 469897359
-          D: 503391740
+          A: 1559098997
+          B: 1232156571
+          C: -874708601
+          D: -752479623
         type: 2
         markerName: EnemySpawner
         referencedItemIds: []
@@ -1163,35 +1205,21 @@ MonoBehaviour:
       pathLength: 1
       mainPath: 0
     - nodeId:
-        A: 819189835
-        B: 1240372182
-        C: 1651776392
-        D: -1634289688
+        A: 1473251347
+        B: 1250201449
+        C: 211287227
+        D: 1576062474
       position: {x: 480, y: 240, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 4, y: 2, z: 0}
       pathName: main
       items:
       - itemId:
-          A: -382725678
-          B: 1151579585
-          C: -1155595646
-          D: -1398899190
-        type: 2
-        markerName: EnemySpawner
-        referencedItemIds: []
-        editorSelected: 0
-        customInfo:
-          itemType: custom
-          text: 
-          textColor: {r: 1, g: 1, b: 1, a: 1}
-          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
-      - itemId:
-          A: -476430341
-          B: 1249402045
-          C: -1449313369
-          D: -1107988884
+          A: -267229123
+          B: 1254554439
+          C: -1588993883
+          D: 1802193024
         type: 2
         markerName: EnemySpawner
         referencedItemIds: []
@@ -1205,13 +1233,13 @@ MonoBehaviour:
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: 1399566705
-        B: 1150730158
-        C: -500357443
-        D: 1430660415
+        A: 45940862
+        B: 1148037065
+        C: 396740029
+        D: -1377173646
       position: {x: 0, y: 120, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 0, y: 3, z: 0}
       pathName: main
       items: []
@@ -1219,13 +1247,13 @@ MonoBehaviour:
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: 1352822743
-        B: 1276809610
-        C: -464345671
-        D: -1317039338
+        A: 847294722
+        B: 1232076239
+        C: -108514398
+        D: -1898145761
       position: {x: 120, y: 120, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 1, y: 3, z: 0}
       pathName: main
       items: []
@@ -1233,21 +1261,21 @@ MonoBehaviour:
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: -463873697
-        B: 1182411494
-        C: -1934300998
-        D: -1227169967
+        A: 926821025
+        B: 1186007747
+        C: -336155756
+        D: -1600728656
       position: {x: 240, y: 120, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 2, y: 3, z: 0}
       pathName: main
       items:
       - itemId:
-          A: 1486105578
-          B: 1179217158
-          C: -673362528
-          D: 648196036
+          A: -1220575524
+          B: 1192445241
+          C: 463772595
+          D: 79535947
         type: 2
         markerName: EnemySpawner
         referencedItemIds: []
@@ -1261,21 +1289,21 @@ MonoBehaviour:
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: 160843637
-        B: 1182555061
-        C: -2025349702
-        D: -1329254390
+        A: 1135445796
+        B: 1206638777
+        C: -1786596200
+        D: -1860564792
       position: {x: 360, y: 120, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 3, y: 3, z: 0}
       pathName: main
       items:
       - itemId:
-          A: 2120655510
-          B: 1297725400
-          C: 759516559
-          D: 1302186756
+          A: -590948775
+          B: 1193423726
+          C: 1977068677
+          D: -707892066
         type: 2
         markerName: EnemySpawner
         referencedItemIds: []
@@ -1286,38 +1314,38 @@ MonoBehaviour:
           textColor: {r: 1, g: 1, b: 1, a: 1}
           backgroundColor: {r: 0, g: 0, b: 0, a: 1}
       - itemId:
-          A: 394560510
-          B: 1120766259
-          C: -515186792
-          D: -1632167610
-        type: 2
-        markerName: EnemySpawner
+          A: -1725606412
+          B: 1112148070
+          C: 1263505552
+          D: -48810843
+        type: 6
+        markerName: MineProps
         referencedItemIds: []
         editorSelected: 0
         customInfo:
-          itemType: custom
-          text: 
+          itemType: MineProps
+          text: M
           textColor: {r: 1, g: 1, b: 1, a: 1}
           backgroundColor: {r: 0, g: 0, b: 0, a: 1}
       pathIndex: 6
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: -243404502
-        B: 1319477552
-        C: -276347750
-        D: 1334449408
+        A: -1938684844
+        B: 1302008276
+        C: -438123377
+        D: 151112054
       position: {x: 480, y: 120, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 4, y: 3, z: 0}
       pathName: main
       items:
       - itemId:
-          A: -1358245713
-          B: 1209963206
-          C: -132167770
-          D: -499835753
+          A: 1230579398
+          B: 1150525473
+          C: 553572483
+          D: -620704676
         type: 2
         markerName: EnemySpawner
         referencedItemIds: []
@@ -1331,21 +1359,21 @@ MonoBehaviour:
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: 185286331
-        B: 1227809560
-        C: 210254467
-        D: -1952899782
+        A: -1198329032
+        B: 1248408648
+        C: -1713098106
+        D: 1708364305
       position: {x: 0, y: 0, z: 0}
       active: 1
-      color: {r: 0, g: 1, b: 0, a: 1}
+      color: {r: 0.26415092, g: 0.20015775, b: 0.19811319, a: 1}
       coord: {x: 0, y: 4, z: 0}
       pathName: main_start
       items:
       - itemId:
-          A: 953765261
-          B: 1159321233
-          C: -1443043943
-          D: 969561731
+          A: 309943555
+          B: 1340214204
+          C: -68412235
+          D: -767661491
         type: 4
         markerName: SpawnPoint
         referencedItemIds: []
@@ -1355,14 +1383,112 @@ MonoBehaviour:
           text: 
           textColor: {r: 1, g: 1, b: 1, a: 1}
           backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: 913036257
+          B: 1321917415
+          C: 858527653
+          D: -1037793074
+        type: 6
+        markerName: EntranceLadder
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceLadder
+          text: L
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+      - itemId:
+          A: 2119431578
+          B: 1209315274
+          C: -816795975
+          D: 38222878
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 1230010957
+          B: 1124470663
+          C: -1887910222
+          D: -1612484233
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 2117396088
+          B: 1189850535
+          C: -108058999
+          D: 1462247155
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 121540849
+          B: 1310477183
+          C: 1699968427
+          D: -1321047331
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 1297119584
+          B: 1116849324
+          C: 2082576512
+          D: 856476239
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
+      - itemId:
+          A: 588179585
+          B: 1204627186
+          C: -1682918524
+          D: 943681786
+        type: 6
+        markerName: EntranceProps
+        referencedItemIds: []
+        editorSelected: 0
+        customInfo:
+          itemType: EntranceProps
+          text: E
+          textColor: {r: 1, g: 1, b: 1, a: 1}
+          backgroundColor: {r: 0.21537913, g: 0.3773585, b: 0.27517733, a: 1}
       pathIndex: 0
       pathLength: 10
       mainPath: 1
     - nodeId:
-        A: 1473871097
-        B: 1166510561
-        C: -1736928111
-        D: -389587366
+        A: 1458045360
+        B: 1125713031
+        C: -405698132
+        D: 1676622388
       position: {x: 120, y: 0, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -1373,10 +1499,10 @@ MonoBehaviour:
       pathLength: 0
       mainPath: 0
     - nodeId:
-        A: 319776520
-        B: 1307589220
-        C: 753504403
-        D: -436256575
+        A: 2000990186
+        B: 1162112572
+        C: 153020350
+        D: -490306427
       position: {x: 240, y: 0, z: 0}
       active: 1
       color: {r: 1, g: 0.38431373, b: 0, a: 1}
@@ -1384,11 +1510,11 @@ MonoBehaviour:
       pathName: refill2
       items:
       - itemId:
-          A: -20207610
-          B: 1288302119
-          C: -1011059784
-          D: 864274656
-        type: 3
+          A: 200619526
+          B: 1174869809
+          C: -1087969118
+          D: 1268118993
+        type: 6
         markerName: LightRefill
         referencedItemIds: []
         editorSelected: 0
@@ -1396,15 +1522,15 @@ MonoBehaviour:
           itemType: Refill
           text: R
           textColor: {r: 1, g: 1, b: 1, a: 1}
-          backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+          backgroundColor: {r: 1, g: 0.3626509, b: 0.0047169924, a: 1}
       pathIndex: 0
       pathLength: 1
       mainPath: 0
     - nodeId:
-        A: 765611553
-        B: 1075085971
-        C: 1133086651
-        D: 300356296
+        A: 1481144404
+        B: 1134383871
+        C: -1238531689
+        D: 2044572559
       position: {x: 360, y: 0, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -1415,10 +1541,10 @@ MonoBehaviour:
       pathLength: 0
       mainPath: 0
     - nodeId:
-        A: 188353275
-        B: 1131303383
-        C: 1077618569
-        D: 1479877791
+        A: 1630739707
+        B: 1141530518
+        C: -581014391
+        D: 429794837
       position: {x: 480, y: 0, z: 0}
       active: 0
       color: {r: 0, g: 1, b: 0, a: 1}
@@ -1430,20 +1556,20 @@ MonoBehaviour:
       mainPath: 0
     Links:
     - linkId:
-        A: 254866749
-        B: 1116280059
-        C: 754645409
-        D: -344048779
+        A: -519390309
+        B: 1284276917
+        C: -2123823967
+        D: -668310402
       source:
-        A: -70059204
-        B: 1168888089
-        C: -1874236521
-        D: 540158470
+        A: 582252227
+        B: 1334279704
+        C: 2073593739
+        D: -353242521
       destination:
-        A: 819828089
-        B: 1211747138
-        C: 239723148
-        D: 1635685280
+        A: 1782264495
+        B: 1260622323
+        C: -704524382
+        D: -393621458
       state:
         type: 1
         items: []
@@ -1458,20 +1584,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 154563490
-        B: 1197666942
-        C: -2107988803
-        D: -567033106
+        A: -371271485
+        B: 1246380183
+        C: -908331883
+        D: -260930917
       source:
-        A: -70059204
-        B: 1168888089
-        C: -1874236521
-        D: 540158470
+        A: 582252227
+        B: 1334279704
+        C: 2073593739
+        D: -353242521
       destination:
-        A: 243578817
-        B: 1128915411
-        C: 1094654382
-        D: 212965715
+        A: -1838113219
+        B: 1074094896
+        C: -614497375
+        D: 680120995
       state:
         type: 1
         items: []
@@ -1486,20 +1612,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 243877499
-        B: 1109921343
-        C: 1972870325
-        D: 672763640
+        A: -919698545
+        B: 1145899539
+        C: 354256777
+        D: 1252361675
       source:
-        A: 243578817
-        B: 1128915411
-        C: 1094654382
-        D: 212965715
+        A: -1838113219
+        B: 1074094896
+        C: -614497375
+        D: 680120995
       destination:
-        A: 1265557932
-        B: 1135903443
-        C: 1972797602
-        D: 431509681
+        A: 2005830840
+        B: 1092732118
+        C: 1206471308
+        D: 1262409396
       state:
         type: 1
         items: []
@@ -1514,20 +1640,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 678878875
-        B: 1229185454
-        C: 1298014398
-        D: -151021684
+        A: -1678515061
+        B: 1316033795
+        C: 1766112410
+        D: 424326754
       source:
-        A: 1265557932
-        B: 1135903443
-        C: 1972797602
-        D: 431509681
+        A: 2005830840
+        B: 1092732118
+        C: 1206471308
+        D: 1262409396
       destination:
-        A: -957230044
-        B: 1273312377
-        C: -1532577627
-        D: 598607738
+        A: -1158585873
+        B: 1319261635
+        C: 851551657
+        D: 726419936
       state:
         type: 1
         items: []
@@ -1542,20 +1668,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 798780108
-        B: 1092146707
-        C: 168674700
-        D: -720798355
+        A: 499528695
+        B: 1127710454
+        C: -300570458
+        D: -1816743592
       source:
-        A: 187647202
-        B: 1302573736
-        C: -108491367
-        D: 461921610
+        A: 548431844
+        B: 1198788094
+        C: 752671662
+        D: -1546688404
       destination:
-        A: 1018553215
-        B: 1223546577
-        C: 233918605
-        D: -147177799
+        A: 392178813
+        B: 1184121707
+        C: -1679252050
+        D: -813611575
       state:
         type: 1
         items: []
@@ -1570,20 +1696,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 942882799
-        B: 1299828080
-        C: 1280996031
-        D: 572125392
+        A: 403519855
+        B: 1297484518
+        C: -1928536171
+        D: -2127943705
       source:
-        A: 819189835
-        B: 1240372182
-        C: 1651776392
-        D: -1634289688
+        A: 1473251347
+        B: 1250201449
+        C: 211287227
+        D: 1576062474
       destination:
-        A: 187647202
-        B: 1302573736
-        C: -108491367
-        D: 461921610
+        A: 548431844
+        B: 1198788094
+        C: 752671662
+        D: -1546688404
       state:
         type: 1
         items: []
@@ -1598,20 +1724,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 1667291621
-        B: 1285310734
-        C: -946933086
-        D: 1020256783
+        A: -207800337
+        B: 1115077771
+        C: -1088114554
+        D: -1017309098
       source:
-        A: 819189835
-        B: 1240372182
-        C: 1651776392
-        D: -1634289688
+        A: 1473251347
+        B: 1250201449
+        C: 211287227
+        D: 1576062474
       destination:
-        A: 2130090416
-        B: 1180154527
-        C: -352512090
-        D: -1101414883
+        A: -2117401200
+        B: 1076354607
+        C: 1469497477
+        D: 1434691614
       state:
         type: 1
         items: []
@@ -1626,20 +1752,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: -887492505
-        B: 1170084729
-        C: 2114472336
-        D: 1912037014
+        A: 1909199240
+        B: 1207529113
+        C: -52236144
+        D: 81023184
       source:
-        A: 1399566705
-        B: 1150730158
-        C: -500357443
-        D: 1430660415
+        A: 45940862
+        B: 1148037065
+        C: 396740029
+        D: -1377173646
       destination:
-        A: -70059204
-        B: 1168888089
-        C: -1874236521
-        D: 540158470
+        A: 582252227
+        B: 1334279704
+        C: 2073593739
+        D: -353242521
       state:
         type: 1
         items: []
@@ -1654,20 +1780,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 396845635
-        B: 1117671533
-        C: 1422351745
-        D: 1369201266
+        A: 664806062
+        B: 1139026928
+        C: -1091992910
+        D: 1806300852
       source:
-        A: 1399566705
-        B: 1150730158
-        C: -500357443
-        D: 1430660415
+        A: 45940862
+        B: 1148037065
+        C: 396740029
+        D: -1377173646
       destination:
-        A: 1352822743
-        B: 1276809610
-        C: -464345671
-        D: -1317039338
+        A: 847294722
+        B: 1232076239
+        C: -108514398
+        D: -1898145761
       state:
         type: 1
         items: []
@@ -1682,20 +1808,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: -1184916873
-        B: 1192732425
-        C: 1676609412
-        D: 1496225963
+        A: -1521158257
+        B: 1132045399
+        C: 2129691314
+        D: 1094860881
       source:
-        A: 1352822743
-        B: 1276809610
-        C: -464345671
-        D: -1317039338
+        A: 847294722
+        B: 1232076239
+        C: -108514398
+        D: -1898145761
       destination:
-        A: 243578817
-        B: 1128915411
-        C: 1094654382
-        D: 212965715
+        A: -1838113219
+        B: 1074094896
+        C: -614497375
+        D: 680120995
       state:
         type: 1
         items: []
@@ -1710,20 +1836,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: -1272096306
-        B: 1247969228
-        C: -1697970031
-        D: 1958431093
+        A: 1906203899
+        B: 1100529129
+        C: 290328460
+        D: 563042717
       source:
-        A: 1265557932
-        B: 1135903443
-        C: 1972797602
-        D: 431509681
+        A: 2005830840
+        B: 1092732118
+        C: 1206471308
+        D: 1262409396
       destination:
-        A: -463873697
-        B: 1182411494
-        C: -1934300998
-        D: -1227169967
+        A: 926821025
+        B: 1186007747
+        C: -336155756
+        D: -1600728656
       state:
         type: 1
         items: []
@@ -1738,20 +1864,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 1619450068
-        B: 1121840549
-        C: 1660792215
-        D: -1909972405
+        A: 1865112693
+        B: 1093637367
+        C: -418971504
+        D: -1205005832
       source:
-        A: -463873697
-        B: 1182411494
-        C: -1934300998
-        D: -1227169967
+        A: 926821025
+        B: 1186007747
+        C: -336155756
+        D: -1600728656
       destination:
-        A: 160843637
-        B: 1182555061
-        C: -2025349702
-        D: -1329254390
+        A: 1135445796
+        B: 1206638777
+        C: -1786596200
+        D: -1860564792
       state:
         type: 1
         items: []
@@ -1766,20 +1892,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: -1088566661
-        B: 1143862545
-        C: -2101979760
-        D: 1558826402
+        A: -7083726
+        B: 1078242804
+        C: 1179900323
+        D: -1459222238
       source:
-        A: 187647202
-        B: 1302573736
-        C: -108491367
-        D: 461921610
+        A: 548431844
+        B: 1198788094
+        C: 752671662
+        D: -1546688404
       destination:
-        A: 160843637
-        B: 1182555061
-        C: -2025349702
-        D: -1329254390
+        A: 1135445796
+        B: 1206638777
+        C: -1786596200
+        D: -1860564792
       state:
         type: 2
         items: []
@@ -1794,20 +1920,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: 497578565
-        B: 1143670502
-        C: 1406917809
-        D: 1517077055
+        A: -60071312
+        B: 1151940515
+        C: 210997667
+        D: 836465311
       source:
-        A: 160843637
-        B: 1182555061
-        C: -2025349702
-        D: -1329254390
+        A: 1135445796
+        B: 1206638777
+        C: -1786596200
+        D: -1860564792
       destination:
-        A: -243404502
-        B: 1319477552
-        C: -276347750
-        D: 1334449408
+        A: -1938684844
+        B: 1302008276
+        C: -438123377
+        D: 151112054
       state:
         type: 1
         items: []
@@ -1822,20 +1948,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: -1155711068
-        B: 1238647652
-        C: -995913297
-        D: -702770859
+        A: -685814264
+        B: 1266544839
+        C: -1436705918
+        D: -467778064
       source:
-        A: -243404502
-        B: 1319477552
-        C: -276347750
-        D: 1334449408
+        A: -1938684844
+        B: 1302008276
+        C: -438123377
+        D: 151112054
       destination:
-        A: 819189835
-        B: 1240372182
-        C: 1651776392
-        D: -1634289688
+        A: 1473251347
+        B: 1250201449
+        C: 211287227
+        D: 1576062474
       state:
         type: 1
         items: []
@@ -1850,20 +1976,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: -1494344789
-        B: 1240076280
-        C: -1586946933
-        D: 1213981503
+        A: -375376106
+        B: 1125559525
+        C: -888685147
+        D: -659870713
       source:
-        A: 185286331
-        B: 1227809560
-        C: 210254467
-        D: -1952899782
+        A: -1198329032
+        B: 1248408648
+        C: -1713098106
+        D: 1708364305
       destination:
-        A: 1399566705
-        B: 1150730158
-        C: -500357443
-        D: 1430660415
+        A: 45940862
+        B: 1148037065
+        C: 396740029
+        D: -1377173646
       state:
         type: 1
         items: []
@@ -1878,20 +2004,20 @@ MonoBehaviour:
         C: 0
         D: 0
     - linkId:
-        A: -2019832810
-        B: 1325152429
-        C: -577696851
-        D: -1637914829
+        A: 950982893
+        B: 1235343936
+        C: -1847545467
+        D: -2054855890
       source:
-        A: -463873697
-        B: 1182411494
-        C: -1934300998
-        D: -1227169967
+        A: 926821025
+        B: 1186007747
+        C: -336155756
+        D: -1600728656
       destination:
-        A: 319776520
-        B: 1307589220
-        C: 753504403
-        D: -436256575
+        A: 2000990186
+        B: 1162112572
+        C: 153020350
+        D: -490306427
       state:
         type: 1
         items: []
