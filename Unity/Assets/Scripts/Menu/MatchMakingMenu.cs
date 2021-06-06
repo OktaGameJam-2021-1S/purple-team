@@ -8,6 +8,7 @@ using Networking;
 using UnityEngine.SceneManagement;
 
 using UnityEngine.Networking;
+using Photon.Pun;
 
 namespace Menu
 {
@@ -18,10 +19,8 @@ namespace Menu
         [SerializeField] private Button exitButton;
         [SerializeField] private Button leaderboardButton;
 
-        [SerializeField] private Image lamp1;
-        [SerializeField] private Image lamp2;
-
-        [SerializeField] private float findingMatchAnimationTime = 4;
+        [SerializeField] private Animator lamp1;
+        [SerializeField] private Animator lamp2;
 
         private MatchMakingManager _matchMakingManager;
         public string URL = "https://okta-team-purple.herokuapp.com/";
@@ -71,15 +70,14 @@ namespace Menu
         private IEnumerator FindingMatchAnimationCoroutine()
         {
             lamp1.gameObject.SetActive(true);
-            while(true)
+            lamp2.gameObject.SetActive(true);
+
+            while (true)
             {
-                lamp2.gameObject.SetActive(!lamp2.gameObject.activeInHierarchy);
-                float counter = 0;
-                while(counter < findingMatchAnimationTime)
-                {
-                    counter += Time.deltaTime;
-                    yield return null;
-                }
+                lamp1.SetBool("Finded", PhotonNetwork.InRoom);
+                lamp2.SetBool("Finded", PhotonNetwork.PlayerList.Length > 1);
+
+                yield return null;
             }
         }
 
@@ -121,12 +119,17 @@ namespace Menu
 
         private void OnFailedToFindAMatch()
         {
-
+            startMatchMakingOnce = true;
         }
 
         private void OnCancelMatchMaking()
         {
+            startMatchMakingOnce = true;
 
+            lamp1.gameObject.SetActive(false);
+            lamp2.gameObject.SetActive(false);
+
+            StopAllCoroutines();
         }
         #endregion
     }
