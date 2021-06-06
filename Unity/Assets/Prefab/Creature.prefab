@@ -134,7 +134,7 @@ MonoBehaviour:
   fleeSpeed: 10
   huntSpeed: 15
   recoverySpeed: 3
-  maxLightDmg: 10
+  maxLightDmg: 1
   fleeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   huntColor: {r: 1, g: 0, b: 0, a: 1}
   _currentState: 0
