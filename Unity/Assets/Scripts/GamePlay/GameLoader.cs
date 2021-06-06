@@ -15,6 +15,7 @@ namespace GamePlay
 {
     public class GameLoader : MonoBehaviour
     {
+        [SerializeField] private GameObject _canvasLoading;
         [SerializeField] private GameController _gameController;
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private GameObject _creaturePrefab;
@@ -57,8 +58,12 @@ namespace GamePlay
 
             LoadingLog("Finished loading");
 
+            yield return new WaitForSeconds(5);
+
             _gameController.Initialize(_localPlayer, _playerList, _creatures, _lostKid, _exitCave);
             _gameController.StartGame();
+
+            _canvasLoading.SetActive(false);
         }
 
         private IEnumerator WaitPlayersToJoin()
