@@ -2108,7 +2108,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 742
+  zIndex: 744
   inputPins:
   - {fileID: -7209133688960759230}
   outputPins:
@@ -2134,7 +2134,7 @@ MonoBehaviour:
   consumeOnAttach: 1
   attachmentProbability: 1
   IsStatic: 0
-  affectsNavigation: 0
+  affectsNavigation: 1
   selectionRuleEnabled: 0
   selectionRuleClassName: 
   transformRuleEnabled: 0
@@ -3035,7 +3035,7 @@ MonoBehaviour:
   indexCounter:
     index: 56
   topZIndex:
-    index: 743
+    index: 745
   nodes:
   - {fileID: -6812903639289231307}
   - {fileID: -7274696304824330118}
@@ -4418,7 +4418,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 1
-  zIndex: 743
+  zIndex: 745
   inputPins:
   - {fileID: -4396472569748687163}
   outputPins:
@@ -4444,7 +4444,7 @@ MonoBehaviour:
   consumeOnAttach: 1
   attachmentProbability: 1
   IsStatic: 0
-  affectsNavigation: 1
+  affectsNavigation: 0
   selectionRuleEnabled: 0
   selectionRuleClassName: 
   transformRuleEnabled: 0
