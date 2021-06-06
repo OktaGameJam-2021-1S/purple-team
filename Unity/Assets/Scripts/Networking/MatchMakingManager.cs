@@ -40,7 +40,7 @@ namespace Networking
 #if UNITY_WEBGL
                 customServerAddress = $"ws://{customServerAddress}:9090/*";
                 protocol = ConnectionProtocol.WebSocketSecure;
-                port = 9090;
+                //port = 9090;
 #endif
                 PhotonNetwork.ConnectUsingSettings(new AppSettings
                 {
