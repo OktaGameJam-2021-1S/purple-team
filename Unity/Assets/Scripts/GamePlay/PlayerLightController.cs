@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SensorToolkit;
 
 namespace GamePlay
 {
@@ -9,6 +10,8 @@ namespace GamePlay
         [SerializeField] private float _lightDuration = 20;
         [SerializeField] private Light _pointLight;
         [SerializeField] private Light _flashLight;
+        [SerializeField] private TriggerSensor _triggerSensor;
+        [SerializeField] private float lightDmg = 10;        
 
         /// <summary>
         /// Current power of the light
@@ -34,11 +37,19 @@ namespace GamePlay
         private float _lightPower = 1;
         private LightRefill _closeRefill;
 
+        /// <summary>
+        /// Holds all creatures on the light zone that are receiving dmg
+        /// </summary>
+        private List<CreatureAI> creaturesApplyingDmg = new List<CreatureAI>();
+
         public void Initialize(bool isLocalPlayer)
         {
             if (isLocalPlayer)
             {
                 _flashLight.cullingMask = _flashLight.cullingMask | 1 << LayerMask.NameToLayer("Character");
+
+                _triggerSensor.OnDetected.AddListener(OnDetect);
+                _triggerSensor.OnLostDetection.AddListener(OnLostDetection);
             }
             else
             {
@@ -48,6 +59,34 @@ namespace GamePlay
 
             _maxLightInsensity = _flashLight.intensity;
         }
+
+        #region Creatures Interaction methods
+
+        private void OnDetect(GameObject go, Sensor sensor)
+        {
+            if (go.transform.parent != null)
+            {
+                CreatureAI creature = go.transform.parent.GetComponent<CreatureAI>();
+                if (creature != null)
+                {
+                    creaturesApplyingDmg.Add(creature);
+                }
+            }
+        }
+
+        private void OnLostDetection(GameObject go, Sensor sensor)
+        {
+            if (go.transform.parent != null)
+            {
+                CreatureAI creature = go.transform.parent.GetComponent<CreatureAI>();
+                if (creature != null)
+                {
+                    creaturesApplyingDmg.Remove(creature);
+                }
+            }
+        }
+
+        #endregion
 
         public void ProcessInput(bool refillLightButton)
         {
@@ -106,6 +145,8 @@ namespace GamePlay
             _flashLight.intensity = _maxLightInsensity * CurrentLightPower;
         }
 
+        #region Unity Events
+
         private void OnTriggerEnter(Collider other)
         {
             LightRefill lightRefill = other.GetComponent<LightRefill>();
@@ -123,5 +164,17 @@ namespace GamePlay
                 _closeRefill = null;
             }
         }
+
+        private void Update()
+        {
+            //Checking if there is any creature on the light zone to deal dmg.
+            for (int i = 0;
+                i < creaturesApplyingDmg.Count;
+                ++i)
+            {
+                creaturesApplyingDmg[i].ApplyLightDamage(lightDmg * Time.deltaTime);
+            }
+        }
+        #endregion
     }
 }

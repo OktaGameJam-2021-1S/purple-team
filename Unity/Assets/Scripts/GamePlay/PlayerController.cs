@@ -17,7 +17,7 @@ namespace GamePlay
         public bool HasKid => _carringKid != null;
 
         private LostKid _carringKid = null;
-        private LostKid _closeKid = null;
+        private LostKid _closeKid = null;        
 
         /// <summary>
         /// Initialize the Player Controller
@@ -27,7 +27,7 @@ namespace GamePlay
             Utilities.ChangeObjectLayer(gameObject, LayerMask.NameToLayer((isLocalPlayer ? "MainCharacter" : "Character")));
             _playerLightController.Initialize(isLocalPlayer);
             _movementController.Initialize();
-        }
+        }       
 
         /// <summary>
         /// Process player input
@@ -103,6 +103,14 @@ namespace GamePlay
             }
         }
 
+        #region Unity Events
+
+        //DEBUG::: Debug initialization
+        private void Start()
+        {            
+            Initialize(true);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             LostKid kid = other.GetComponent<LostKid>();
@@ -119,5 +127,6 @@ namespace GamePlay
                 _closeKid = null;
             }
         }
+        #endregion
     }
 }
