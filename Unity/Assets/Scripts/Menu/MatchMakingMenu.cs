@@ -91,6 +91,7 @@ namespace Menu
                 _matchMakingManager.StartMatchMaking(AuthManager.Instance.localDeviceId);
                 startMatchMakingOnce = false;
                 loadingCoroutine = StartCoroutine(FindingMatchAnimationCoroutine());
+                playButton.gameObject.SetActive(false);
             }
         }
 
