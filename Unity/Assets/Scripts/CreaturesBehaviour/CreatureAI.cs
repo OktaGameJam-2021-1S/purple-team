@@ -6,6 +6,7 @@ using SensorToolkit;
 using System;
 using Random = UnityEngine.Random;
 using Photon.Pun;
+using GamePlay;
 
 public class CreatureAI : MonoBehaviourPun
 {
@@ -140,6 +141,7 @@ public class CreatureAI : MonoBehaviourPun
     }
 
     private CreaturesAIManager _aiManager;
+    private float _killDistance;
     #endregion
 
     #region enums
@@ -161,9 +163,10 @@ public class CreatureAI : MonoBehaviourPun
 
     #region Methods
 
-    public void Initialize(CreaturesAIManager aiManager)
+    public void Initialize(CreaturesAIManager aiManager, float killDistance)
     {
         _aiManager = aiManager;
+        _killDistance = killDistance;
 
         if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 500, 1))
         {
@@ -441,6 +444,11 @@ public class CreatureAI : MonoBehaviourPun
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(playerHuntingTransform.position);
             yield return null;
+
+            if (Vector3.Distance(playerHuntingTransform.position, transform.position) <= _killDistance)
+            {
+                _aiManager.GotPlayer(this, playerHuntingTransform.GetComponent<PlayerController>());
+            }
         }
     }
 
