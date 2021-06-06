@@ -91,7 +91,7 @@ namespace Networking
         {
             MatchMakingLog("Disconnected from matchmaking, cause - photon: " + cause.ToString());
 
-            if (cause == DisconnectCause.ExceptionOnConnect)
+            if (cause == DisconnectCause.Exception)
             {
                 MatchMakingLog("retrying on default server");
                 tryCustomServerFirst = false;
