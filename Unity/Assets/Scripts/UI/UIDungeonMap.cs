@@ -8,10 +8,11 @@ public class UIDungeonMap : MonoBehaviour
     [SerializeField] private RectTransform m_Panel;
 
     private int m_TweenId;
+    public bool startActive = false;
 
     private void Awake()
     {
-        m_Canvas.enabled = false;
+        m_Canvas.enabled = startActive;
     }
 
     [ContextMenu("Show")]
