@@ -46,25 +46,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &335660143334883160
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606271600021881348}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf0d415344989b64ca97763439b7f229, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &335660143437404065
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,9 +55,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 335660143437404070}
-  - component: {fileID: 335660143437404071}
-  - component: {fileID: 335660143437404068}
   - component: {fileID: 335660143437404069}
+  - component: {fileID: 335660143419083735}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -99,49 +79,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &335660143437404071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335660143437404065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d02294cb6f55304a92134c1dbccfff8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TriggerSensor: {fileID: 335660144079250096}
---- !u!114 &335660143437404068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335660143437404065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9321350031b7734eb069c487bc1cce9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerSensor: {fileID: 335660144079250096}
-  animator: {fileID: 335660143334883160}
-  skullRenderer: {fileID: 5615279861345539432}
-  idleName: Skull_Idle
-  skullReactionName: Skull_Reaction
-  navMeshAgent: {fileID: 335660143437404069}
-  roamingNextPointDistance: 10
-  roamWaitMin: 4
-  roamWaitMax: 8
-  roamSpeed: 2
-  fleeSpeed: 15
-  huntSpeed: 3
-  recoverySpeed: 3
-  maxLightDmg: 10
-  fleeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  huntColor: {r: 1, g: 0, b: 0, a: 1}
-  _currentState: 0
-  playerHuntingTransform: {fileID: 0}
 --- !u!195 &335660143437404069
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -164,6 +101,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &335660143419083735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335660143437404065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0489e605a1f42644d8646ac2f8efe87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerSensor: {fileID: 335660144079250096}
+  animator: {fileID: 335660143334883160}
+  skullRenderer: {fileID: 5615279861345539432}
+  idleName: Skull_Idle
+  skullReactionName: Skull_Reaction
+  navMeshAgent: {fileID: 0}
+  roamingNextPointDistance: 10
+  roamWaitMin: 4
+  roamWaitMax: 8
+  roamSpeed: 1
+  fleeSpeed: 10
+  huntSpeed: 5
+  recoverySpeed: 3
+  maxLightDmg: 10
+  fleeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  huntColor: {r: 1, g: 0, b: 0, a: 1}
+  _currentState: 0
+  playerHuntingTransform: {fileID: 0}
 --- !u!1 &335660144079250098
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,11 +207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645baa5ef8f256c4b9101fdcf8bc6534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Length: 5
+  Length: 7
   BaseSize: 0.5
-  FOVAngle: 80.9
+  FOVAngle: 110
   ElevationAngle: 33.1
-  Resolution: 1
+  Resolution: 5
 --- !u!114 &335660144079250096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +243,25 @@ MonoBehaviour:
   MinimumVisibility: 0.215
   LineOfSightUpdateMode: 0
   CheckLineOfSightInterval: 1
+--- !u!95 &335660143334883160
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606271600021881348}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf0d415344989b64ca97763439b7f229, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &335660143334883157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -362,7 +348,7 @@ PrefabInstance:
     - target: {fileID: 5279901391095900733, guid: c6f53f562947b9f4591e87de19bd1006, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: e4d419f0b3240594dbd544107b474def, type: 2}
+      objectReference: {fileID: 2100000, guid: 51d14e0fd3936be48bf8d5031d3e24c7, type: 2}
     - target: {fileID: 5289495900443451171, guid: c6f53f562947b9f4591e87de19bd1006, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -1.8644819e-12
