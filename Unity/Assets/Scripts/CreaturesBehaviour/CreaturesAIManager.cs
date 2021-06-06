@@ -62,20 +62,9 @@ public class CreaturesAIManager : MonoBehaviour
     public NavMeshPath GetFleePath(CreatureAI creature)
     {        
         //Gets path based on the spawning points.
-        /*for (int i = 0;
-            i < lCreaturesSpawnPoints.Count;
-            ++i)
-        {
-            path = new NavMeshPath();
-            cachedFirstPath = path;
-            if (creature.navMeshAgent.CalculatePath(lCreaturesSpawnPoints[i], path))
-            {
-                if(path.GetPathLength() > minFleeDistance)
-                {
-                    return path;
-                }
-            }
-        }*/
+
+        NavMeshPath cachedFirstPath = null;
+        NavMeshPath path;        
 
         Vector3 playersAveragePosition = Vector3.zero;
         for(int i = 0;
@@ -90,20 +79,33 @@ public class CreaturesAIManager : MonoBehaviour
         directionAwayFromPlayers.y = 0;
         directionAwayFromPlayers.Normalize();
 
-        NavMeshPath path = new NavMeshPath();
+        path = new NavMeshPath();
 
         if (creature.navMeshAgent.CalculatePath(creature.transform.position + directionAwayFromPlayers * minFleeDistance, path))
         {
+            print("Getting path to random point");
             return path;
         }
 
-        if(creature.navMeshAgent.CalculatePath(creature.spawnPosition, path))
+        for (int i = 0;
+            i < lCreaturesSpawnPoints.Count;
+            ++i)
         {
-            return path;
+            path = new NavMeshPath();
+            if (cachedFirstPath == null)
+            {
+                cachedFirstPath = path;
+            }
+            if (creature.navMeshAgent.CalculatePath(lCreaturesSpawnPoints[i], path))
+            {
+                if(path.GetPathLength() > minFleeDistance)
+                {
+                    print("Found min ditance flee position");
+                    return path;
+                }
+            }
         }
-
-        Debug.LogError("Couldnt create a path neither away from players, neither to the spawn position of the creature, returning null");
-        return null;
+        return cachedFirstPath;
     }
 
     /// <summary>
@@ -184,13 +186,6 @@ public class CreaturesAIManager : MonoBehaviour
         roamCreatures = new List<CreatureAI>();
         huntCreatures = new List<CreatureAI>();
         fleeCreatures = new List<CreatureAI>();      
-    }
-
-    private void Update()
-    {
-        //TODO::: Balancing can also be implemented here.        
-    }
-
-
+    }    
     #endregion
 }
