@@ -28,17 +28,8 @@ public class AuthManager : MonoBehaviour
 
     public bool initialized { get; private set; }
 
-    public string localDeviceId
-    {
-        get
-        {
-            string val = SystemInfo.deviceUniqueIdentifier;
-#if UNITY_EDITOR
-            val += (ParrelSync.ClonesManager.IsClone() ? "" : "_clone");
-#endif
-            return val;
-        }
-    }
+    public string localDeviceId { get; private set; }
+
     public string localNickname { get; private set; }
     private string namePrefsKey => $"{localDeviceId}.name";
 
@@ -54,14 +45,31 @@ public class AuthManager : MonoBehaviour
 
         localNickname = "";
         player = null;
+
+
+        if (PlayerPrefs.HasKey("AuthManager.DeviceId"))
+        {
+            localDeviceId = PlayerPrefs.GetString("AuthManager.DeviceId");
+        }
+        else
+        {
+            localDeviceId = SystemInfo.deviceUniqueIdentifier;
+#if UNITY_EDITOR
+            localDeviceId += (ParrelSync.ClonesManager.IsClone() ? "_clone" : "");
+#endif
+#if UNITY_WEBGL
+            localDeviceId = $"Guest{Random.Range(1, int.MaxValue)}";
+#endif
+            PlayerPrefs.SetString("AuthManager.DeviceId", localDeviceId);
+        }
     }
 
     private IEnumerator Start()
     {
-#if UNITY_WEBGL
-        localNickname = $"Guest{Random.Range(1, int.MaxValue)}";
-        yield break;
-#endif
+//#if UNITY_WEBGL
+//        localNickname = $"Guest{Random.Range(1, int.MaxValue)}";
+//        yield break;
+//#endif
         if (PlayerPrefs.HasKey(namePrefsKey))
         {
             localNickname = PlayerPrefs.GetString(namePrefsKey);
@@ -85,7 +93,11 @@ public class AuthManager : MonoBehaviour
         if (op.webRequest.responseCode == 200 || op.webRequest.responseCode == 201)
         {
             Debug.Log("authenticated: " + op.webRequest.downloadHandler.text);
-            player = Newtonsoft.Json.JsonConvert.DeserializeObject<PlayerData>(op.webRequest.downloadHandler.text);
+            player = new PlayerData
+            {
+                id = localDeviceId,
+                name = name
+            };
             localNickname = name;
             PlayerPrefs.SetString(namePrefsKey, player.name);
             onSuccess?.Invoke();
