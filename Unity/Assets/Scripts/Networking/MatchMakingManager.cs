@@ -20,7 +20,7 @@ namespace Networking
 
         public const byte TargetNumberOfPlayers = 2;
 
-        public bool tryCustomServerFirst = true;
+        public bool tryCustomServerFirst = false;
 
         public void StartMatchMaking(string userID)
         {
