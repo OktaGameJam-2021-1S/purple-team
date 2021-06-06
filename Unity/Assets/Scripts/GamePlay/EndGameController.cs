@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using Photon.Pun;
+using UnityEngine.Playables;
 
 namespace GamePlay
 {
@@ -28,10 +29,12 @@ namespace GamePlay
             if (win)
             {
                 _winCanvas.gameObject.SetActive(true);
+                //_winCanvas.GetComponent<PlayableDirector>().Play();
             }
             else
             {
                 _loseCanvas.gameObject.SetActive(true);
+                _loseCanvas.GetComponent<PlayableDirector>().Play();
             }
         }
     }
