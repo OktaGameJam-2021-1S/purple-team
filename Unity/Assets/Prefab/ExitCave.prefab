@@ -350,9 +350,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1180593569567903941}
     m_Modifications:
+    - target: {fileID: 540557482782772344, guid: 94e751538f4bfa04cb79795e16d26f49, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4174752065446207242, guid: 94e751538f4bfa04cb79795e16d26f49, type: 3}
       propertyPath: m_Name
       value: Tile_Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174752065446207242, guid: 94e751538f4bfa04cb79795e16d26f49, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5181330872110807233, guid: 94e751538f4bfa04cb79795e16d26f49, type: 3}
       propertyPath: m_RootOrder
