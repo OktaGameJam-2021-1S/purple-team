@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5181330872110807233}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tile_WallElevation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 5338948766506455106}
   - component: {fileID: 4501769813309542562}
   - component: {fileID: 6105805914472705972}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
