@@ -1,6 +1,8 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GamePlay
 {
@@ -8,6 +10,7 @@ namespace GamePlay
     {
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private InputController _inputController;
+        [SerializeField] private EndGameController _endGameController;
         private List<PlayerController> _playersList;
         private PlayerController _localPlayer;
         private LostKid _lostKid;
@@ -34,6 +37,7 @@ namespace GamePlay
             _lostKid.Initialize(_playersList);
             _cameraController.Initialize(_localPlayer.transform);
             _inputController.Initialize();
+            _endGameController.Initialize();
 
             _localPlayer.Initialize(true);
 
@@ -52,9 +56,9 @@ namespace GamePlay
 
         public void RescuedKid()
         {
-            //TODO: Add end game code
-            Debug.Log("Congratulations, you won!");
-        }
+            _gameState = GameState.End;
+            _endGameController.ShowEndGame(true);
+        }       
 
         private void ProcessInput(PlayerInput playerInput)
         {
