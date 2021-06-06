@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 335660143419083735}
   - component: {fileID: 335660143437404069}
   - component: {fileID: 7123516310894976124}
+  - component: {fileID: 5921830380218816770}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -173,6 +174,36 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &5921830380218816770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335660143437404065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0489e605a1f42644d8646ac2f8efe87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensor: {fileID: 8321756628147161179}
+  animator: {fileID: 335660143334883160}
+  skullRenderer: {fileID: 5615279861345539432}
+  idleName: Skull_Idle
+  skullReactionName: Skull_Reaction
+  navMeshAgent: {fileID: 0}
+  roamingNextPointDistance: 10
+  roamWaitMin: 4
+  roamWaitMax: 8
+  roamSpeed: 1
+  fleeSpeed: 10
+  huntSpeed: 5
+  recoverySpeed: 3
+  maxLightDmg: 10
+  fleeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  huntColor: {r: 1, g: 0, b: 0, a: 1}
+  _currentState: 0
+  playerHuntingTransform: {fileID: 0}
 --- !u!1 &335660144079250098
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +267,7 @@ MonoBehaviour:
   SensorRange: 10
   DetectsOnLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   SensorUpdateMode: 0
   CheckInterval: 1
   InitialBufferSize: 20
