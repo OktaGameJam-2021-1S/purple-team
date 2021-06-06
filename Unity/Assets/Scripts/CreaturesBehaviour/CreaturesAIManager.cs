@@ -69,12 +69,14 @@ public class CreaturesAIManager : MonoBehaviour
     public NavMeshPath GetFleePath(CreatureAI creature)
     {
         NavMeshPath path;
+        NavMeshPath cachedFirstPath = null;
         for (int i = 0;
             i < lCreaturesSpawnPoints.Count;
             ++i)
         {
-             path = new NavMeshPath();
-            if(creature.navMeshAgent.CalculatePath(lCreaturesSpawnPoints[i].position, path))
+            path = new NavMeshPath();
+            cachedFirstPath = path;
+            if (creature.navMeshAgent.CalculatePath(lCreaturesSpawnPoints[i].position, path))
             {
                 if(path.GetPathLength() > minFleeDistance)
                 {
@@ -82,7 +84,7 @@ public class CreaturesAIManager : MonoBehaviour
                 }
             }
         }
-        return null;
+        return cachedFirstPath;
     }
 
     /// <summary>

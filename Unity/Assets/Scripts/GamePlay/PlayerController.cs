@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SensorToolkit;
 
 using Photon.Pun;
 using Utils;
@@ -11,9 +12,16 @@ namespace GamePlay
     {
         [SerializeField] private MovementController _movementController;
         [SerializeField] private PlayerLightController _playerLightController;
+        [SerializeField] private TriggerSensor _triggerSensor;
+        [SerializeField] private float lightDmg = 10;
 
         private LostKid _carringKid = null;
         private LostKid _closeKid = null;
+
+        /// <summary>
+        /// Holds all creatures on the light zone that are receiving dmg
+        /// </summary>
+        private List<CreatureAI> creaturesApplyingDmg = new List<CreatureAI>();
 
         /// <summary>
         /// Initialize the Player Controller
@@ -23,7 +31,37 @@ namespace GamePlay
             Utilities.ChangeObjectLayer(gameObject, LayerMask.NameToLayer((isLocalPlayer ? "MainCharacter" : "Character")));
             _playerLightController.Initialize(isLocalPlayer);
             _movementController.Initialize();
+            _triggerSensor.OnDetected.AddListener(OnDetect);
+            _triggerSensor.OnLostDetection.AddListener(OnLostDetection);
         }
+
+        #region Creatures Interaction methods
+
+        private void OnDetect(GameObject go, Sensor sensor)
+        {
+            if (go.transform.parent != null)
+            {
+                CreatureAI creature = go.transform.parent.GetComponent<CreatureAI>();
+                if (creature != null)
+                {
+                    creaturesApplyingDmg.Add(creature);
+                }
+            }
+        }
+
+        private void OnLostDetection(GameObject go, Sensor sensor)
+        {
+            if (go.transform.parent != null)
+            {
+                CreatureAI creature = go.transform.parent.GetComponent<CreatureAI>();
+                if (creature != null)
+                {
+                    creaturesApplyingDmg.Remove(creature);
+                }
+            }
+        }
+
+        #endregion
 
         /// <summary>
         /// Process player input
@@ -95,6 +133,25 @@ namespace GamePlay
             }
         }
 
+        #region Unity Events
+
+        //DEBUG::: Debug initialization
+        private void Start()
+        {            
+            Initialize(true);
+        }
+
+        private void Update()
+        {
+            //Checking if there is any creature on the light zone to deal dmg.
+            for(int i = 0;
+                i < creaturesApplyingDmg.Count;
+                ++i)
+            {
+                creaturesApplyingDmg[i].ApplyLightDamage(lightDmg * Time.deltaTime);
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             LostKid kid = other.GetComponent<LostKid>();
@@ -111,5 +168,6 @@ namespace GamePlay
                 _closeKid = null;
             }
         }
+        #endregion
     }
 }

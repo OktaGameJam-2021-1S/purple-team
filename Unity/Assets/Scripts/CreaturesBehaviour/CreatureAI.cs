@@ -10,7 +10,7 @@ public class CreatureAI : MonoBehaviour
 {
 
     #region Inspector Variables
-    [SerializeField] private TriggerSensor m_TriggerSensor;
+    [SerializeField] private TriggerSensor triggerSensor;
     public NavMeshAgent navMeshAgent;
 
     [Tooltip("Used to calculate the next roaming position when free roaming.")]
@@ -19,12 +19,19 @@ public class CreatureAI : MonoBehaviour
     [SerializeField] private int roamWaitMin = 4;
     [Tooltip("Maximum ammount of seconds that the creature will wait after reaching a roaming position to start roaming again.")]
     [SerializeField] private int roamWaitMax = 8;
+
     [Tooltip("The roaming speed of the creature")]
     [SerializeField] private float roamSpeed = 1;
     [Tooltip("The speed of the creature when it is fleeing")]
     [SerializeField] private float fleeSpeed = 3;
     [Tooltip("The speed of the creature when it is hunting a player")]
     [SerializeField] private float huntSpeed = 3;
+
+    [Tooltip("The recovery speed of the light dmg that the creature can take")]
+    [SerializeField] private float recoverySpeed = 3;
+
+    [Tooltip("The max light dmg that this creature can take to start fleeing.")]
+    [SerializeField] private float maxLightDmg = 10;
 
     #endregion
 
@@ -81,12 +88,12 @@ public class CreatureAI : MonoBehaviour
     /// <summary>
     /// Holds the current lightDmg taken, which ticks down when not in a light and ticks up if a ligth is being casted on the creature.
     /// </summary>
-    private float lightDmg;
+    private float lightDmg = 0;
 
     /// <summary>
-    /// Defines the max light dmg that the creatures needs to take to flee.
+    /// Holds whether this creature is currently taking dmg or not.
     /// </summary>
-    private float maxLightDmg;
+    private bool takingDmg = false;
     #endregion
 
     #region enums
@@ -125,10 +132,14 @@ public class CreatureAI : MonoBehaviour
         this.spawnPosition = spawnPosition;
     }
 
+    /// <summary>
+    /// Starts the Roam behaviour for this creature
+    /// </summary>
     public void Roam()
     {
+        print("Roam called");
         CurrentState = BehaviourState.Roam;
-        m_TriggerSensor.gameObject.SetActive(true);
+        triggerSensor.gameObject.SetActive(true);
 
         navMeshAgent.speed = roamSpeed;
 
@@ -138,10 +149,14 @@ public class CreatureAI : MonoBehaviour
         behaviourCoroutine = StartCoroutine(RoamingCoroutine());
     }
 
+    /// <summary>
+    /// Starts the Fleeing behaviour for this creature
+    /// </summary>
     public void Flee()
     {
+        print("Flee called");
         CurrentState = BehaviourState.Flee;
-        m_TriggerSensor.gameObject.SetActive(false);
+        triggerSensor.gameObject.SetActive(false);
 
         navMeshAgent.speed = fleeSpeed;
 
@@ -151,10 +166,14 @@ public class CreatureAI : MonoBehaviour
         behaviourCoroutine = StartCoroutine(FleeingCoroutine());
     }
 
+    /// <summary>
+    /// Starts the hunting of a player for this creature
+    /// </summary>
     public void HuntPlayer(Transform player)
     {
+        print("Hunt called");
         CurrentState = BehaviourState.Hunt;
-        m_TriggerSensor.gameObject.SetActive(false);
+        triggerSensor.gameObject.SetActive(false);
         playerHuntingTransform = player;
 
         navMeshAgent.speed = huntSpeed;
@@ -165,10 +184,31 @@ public class CreatureAI : MonoBehaviour
         behaviourCoroutine = StartCoroutine(HuntingCoroutine());
     }
 
-
+    /// <summary>
+    /// Apply a dmg value to this creature.
+    /// </summary>
     public void ApplyLightDamage(float dmg)
     {
-        throw new NotImplementedException();
+        //Can only apply dmg to creature if it is not fleeing.
+        if (CurrentState == BehaviourState.Flee)
+            return;
+
+        takingDmg = true;        
+        lightDmg += dmg;
+        print("Applying dmg: "+dmg.ToString()+", current lightDmg value: "+lightDmg+", behaviourState: " + CurrentState.ToString());
+        if (lightDmg >= maxLightDmg)
+        {
+            Flee();           
+        }
+        else
+        {
+            navMeshAgent.isStopped = true;
+
+            if (behaviourCoroutine != null)
+                StopCoroutine(behaviourCoroutine);
+
+            behaviourCoroutine = StartCoroutine(TakingDmgCoroutine());
+        }
     }
 
     /// <summary>
@@ -201,20 +241,53 @@ public class CreatureAI : MonoBehaviour
     #endregion
 
     #region Coroutines
+
+    /// <summary>
+    /// Implementation for the taking dmg from light.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator TakingDmgCoroutine()
+    {
+        //Waiting a frame to not recover the dmg on the same frame that the dmg is being taken.
+        yield return null;
+
+        while(lightDmg > 0)
+        {
+            print("Recovering");
+            lightDmg -= recoverySpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        takingDmg = false;
+
+        if (CurrentState == BehaviourState.Hunt)
+        {
+            print("Back To hunting");
+            HuntPlayer(playerHuntingTransform);
+        }
+        else if (CurrentState == BehaviourState.Roam)
+        {
+            print("Back to Roaming");
+            Roam();
+        }
+    }
+
     /// <summary>
     /// Implementation of the Roaming Behaviour
     /// </summary>
     private IEnumerator RoamingCoroutine()
     {
         while(true)
-        {
+        {            
             Vector3 roamPosition = GetRandomNavMeshPosition();
             //DEBUG:::
             debugRoamingTarget = roamPosition;
+            navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(roamPosition);
 
             while(!navMeshAgent.PathComplete())
             {
+                print("Roaming");
                 yield return null;
             }
             //int randomWait = Random.Range(roamWaitMin, roamWaitMax + 1);
@@ -230,6 +303,8 @@ public class CreatureAI : MonoBehaviour
     {        
         while(true)
         {
+            print("Hunting");
+            navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(playerHuntingTransform.position);
             yield return null;
         }
@@ -241,9 +316,11 @@ public class CreatureAI : MonoBehaviour
     private IEnumerator FleeingCoroutine()
     {
         NavMeshPath fleePath = CreaturesAIManager.Instance.GetFleePath(this);
+        navMeshAgent.isStopped = false;
         navMeshAgent.SetPath(fleePath);
         while(!navMeshAgent.PathComplete())
         {
+            print("Fleeing");
             yield return null;
         }
 
@@ -261,7 +338,10 @@ public class CreatureAI : MonoBehaviour
     {
         if(go.CompareTag("Player"))
         {
-            HuntPlayer(go.transform);
+            if (CurrentState != BehaviourState.Flee && !takingDmg)
+            {
+                HuntPlayer(go.transform);
+            }
         }
     }
 
@@ -271,7 +351,7 @@ public class CreatureAI : MonoBehaviour
 
     private void Start()
     {
-        m_TriggerSensor.OnDetected.AddListener(OnSenseSomething);
+        triggerSensor.OnDetected.AddListener(OnSenseSomething);
         CreaturesAIManager.Instance.RegisterCreatureAI(this);
         Roam();
 
