@@ -66,13 +66,13 @@ function _topRelative(id) {
 
 			const above5=[];
 			for(let i=index - 5; i < index && i < ranks.length - 1; i++) {
-				if (!ranks[i]) continue;
+				if(!ranks[i]) continue;
 				above5.push(ranks[i]);
 			}
 
 			const bottom5=[];
 			for(let i=index + 5; i > index && i >= 0; i--) {
-				if (!ranks[i]) continue;
+				if(!ranks[i]) continue;
 				bottom5.push(ranks[i]);
 			}
 
@@ -89,11 +89,11 @@ function _top10() {
 }
 
 function _saveScore(score, player1, player2) {
-	return _updateGamesPlayed(player1, player2)
-		.then(async () => {
-			const result = (await _query("SELECT * FROM leaderboard WHERE score=$1 AND player1=$2 AND player2=$3;", [score, player1, player2]));
-			if (result.length) return result;
-			return _query("INSERT INTO leaderboard(score, player1, player2) VALUES ($1, $2, $3) RETURNING *;", [score, player1, player2])
+	return _query("SELECT * FROM leaderboard WHERE score=$1 AND player1=$2 AND player2=$3;", [score, player1, player2])
+		.then((result) => {
+			if(result.length) return result;
+			return _updateGamesPlayed(player1, player2)
+				.then(() => _query("INSERT INTO leaderboard(score, player1, player2) VALUES ($1, $2, $3) RETURNING *;", [score, player1, player2]));
 		})
 		.then((scores) => scores[0])
 		.then((score) => _topRelative(score.id, score.score));
