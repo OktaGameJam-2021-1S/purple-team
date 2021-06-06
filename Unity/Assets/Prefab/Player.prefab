@@ -204,7 +204,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 5005872973243041187, guid: 73be6e35cc1281c469e9850a6c3d093d, type: 3}
-  - {fileID: -7386831663782905832, guid: 73be6e35cc1281c469e9850a6c3d093d, type: 3}
+  - {fileID: 2100000, guid: 0183836ef0bc040438b5858a0e337df4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67f5e5cb9e5f094784144add7cbc944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lightDuration: 30
+  _lightDuration: 35
   _pointLight: {fileID: 1958985742903782760}
   _flashLight: {fileID: 7665183104213275482}
 --- !u!114 &5590478000801955650
@@ -963,8 +963,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.8627451, b: 0.48235294, a: 1}
-  m_Intensity: 0.75
-  m_Range: 10
+  m_Intensity: 2
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1217,13 +1217,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8685406174252567055}
-  m_LocalRotation: {x: -0.000000029802322, y: -1.0370789e-13, z: -1.03707875e-13, w: 1}
+  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
   m_LocalPosition: {x: -1.9004774, y: 0.93007874, z: 0.5892759}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8785115126845203826}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!108 &7665183104213275482
 Light:
   m_ObjectHideFlags: 0
@@ -1238,8 +1238,8 @@ Light:
   m_Color: {r: 1, g: 0.861561, b: 0.48400003, a: 1}
   m_Intensity: 75
   m_Range: 30
-  m_SpotAngle: 62.34244
-  m_InnerSpotAngle: 36.962788
+  m_SpotAngle: 120
+  m_InnerSpotAngle: 50
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1607285432410017965}
-  _offset: {x: 0, y: -0.2, z: 0.25}
+  _offset: {x: 0, y: 1.5, z: 0.25}
   _updateMethod: 0
   _useLocalOffset: 0
   _copyRotation: 0
