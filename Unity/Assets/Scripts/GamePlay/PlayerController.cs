@@ -115,13 +115,6 @@ namespace GamePlay
         }
 
         #region Unity Events
-
-        //DEBUG::: Debug initialization
-        private void Start()
-        {            
-            Initialize(true);
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             LostKid kid = other.GetComponent<LostKid>();
