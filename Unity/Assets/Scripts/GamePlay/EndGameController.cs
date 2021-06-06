@@ -25,7 +25,7 @@ namespace GamePlay
             SceneManager.LoadScene("Menu");
         }
 
-        public void ShowWinGame(string userID1, string userID2)
+        public void ShowWinGame(string userID1, string userID2, int time)
         {
             _winCanvas.gameObject.SetActive(true);
             _winCanvas.GetComponent<PlayableDirector>().Play();
