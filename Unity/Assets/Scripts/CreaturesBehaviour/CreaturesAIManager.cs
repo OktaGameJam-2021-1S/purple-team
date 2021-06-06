@@ -159,7 +159,7 @@ public class CreaturesAIManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         roamCreatures = new List<CreatureAI>();
         huntCreatures = new List<CreatureAI>();
-        fleeCreatures = new List<CreatureAI>();        
+        fleeCreatures = new List<CreatureAI>();      
     }
 
     private void Update()

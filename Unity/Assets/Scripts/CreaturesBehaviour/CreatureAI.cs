@@ -13,9 +13,11 @@ public class CreatureAI : MonoBehaviour
 
     [SerializeField] private TriggerSensor triggerSensor;
     [SerializeField] private Animator animator;
+    [SerializeField] private Renderer skullRenderer;
 
     [SerializeField] private string idleName = "Skull_Idle";
     [SerializeField] private string skullReactionName = "Skull_Reaction";    
+
 
     public NavMeshAgent navMeshAgent;
 
@@ -39,6 +41,9 @@ public class CreatureAI : MonoBehaviour
 
     [Tooltip("The max light dmg that this creature can take to start fleeing.")]
     [SerializeField] private float maxLightDmg = 10;
+
+    [SerializeField] private Color fleeColor = Color.yellow;
+    [SerializeField] private Color huntColor = Color.red;
 
     #endregion
 
@@ -82,6 +87,11 @@ public class CreatureAI : MonoBehaviour
     private Coroutine behaviourCoroutine;
 
     /// <summary>
+    /// Caches the coroutine that runs the eyes animations for each behaviour.
+    /// </summary>
+    private Coroutine eyesCoroutine;
+
+    /// <summary>
     /// Holds the initial spawn position.
     /// </summary>
     private Vector3 spawnPosition;
@@ -106,6 +116,27 @@ public class CreatureAI : MonoBehaviour
     /// Holds the current animation name;
     /// </summary>
     private string currentAnimationName;
+
+    /// <summary>
+    /// Caches the eyes material
+    /// </summary>
+    private Material _eyesMaterial;
+
+    private Material EyesMaterial
+    { 
+        get
+        {
+            if(_eyesMaterial == null)
+            {
+                _eyesMaterial = skullRenderer.materials[1];
+            }
+            return _eyesMaterial;
+        }
+        set
+        {
+            _eyesMaterial = value;
+        }
+    }
     #endregion
 
     #region enums
@@ -153,12 +184,18 @@ public class CreatureAI : MonoBehaviour
         if (currentAnimationName != idleName)
         {
             animator.Play(idleName);
-            currentAnimationName = idleName;
+            currentAnimationName = idleName;            
         }
+        animator.speed = .75f;
         CurrentState = BehaviourState.Roam;
         triggerSensor.gameObject.SetActive(true);
 
         navMeshAgent.speed = roamSpeed;
+
+        if (eyesCoroutine != null)
+            StopCoroutine(eyesCoroutine);
+
+        eyesCoroutine = StartCoroutine(RoamingEyesAnimation());
 
         if (behaviourCoroutine != null)
             StopCoroutine(behaviourCoroutine);
@@ -175,12 +212,18 @@ public class CreatureAI : MonoBehaviour
         if (currentAnimationName != idleName)
         {
             currentAnimationName = idleName;
-            animator.Play(idleName);
+            animator.Play(idleName);            
         }
+        animator.speed = 2;
         CurrentState = BehaviourState.Flee;
         triggerSensor.gameObject.SetActive(false);
 
         navMeshAgent.speed = fleeSpeed;
+
+        if (eyesCoroutine != null)
+            StopCoroutine(eyesCoroutine);
+
+        EyesMaterial.SetColor("_EmissionColor", fleeColor);
 
         if (behaviourCoroutine != null)
             StopCoroutine(behaviourCoroutine);
@@ -197,13 +240,19 @@ public class CreatureAI : MonoBehaviour
         if (currentAnimationName != idleName)
         {
             currentAnimationName = idleName;
-            animator.Play(idleName);
+            animator.Play(idleName);            
         }
+        animator.speed = 1.5f;
         CurrentState = BehaviourState.Hunt;
         triggerSensor.gameObject.SetActive(false);
         playerHuntingTransform = player;
 
         navMeshAgent.speed = huntSpeed;
+
+        if (eyesCoroutine != null)
+            StopCoroutine(eyesCoroutine);
+
+        EyesMaterial.SetColor("_EmissionColor", huntColor);
 
         if (behaviourCoroutine != null)
             StopCoroutine(behaviourCoroutine);
@@ -219,13 +268,15 @@ public class CreatureAI : MonoBehaviour
         //Can only apply dmg to creature if it is not fleeing.
         if (CurrentState == BehaviourState.Flee)
             return;
-
-        takingDmg = true;
+        
         if (currentAnimationName != skullReactionName)
         {
             currentAnimationName = skullReactionName;
             animator.Play(skullReactionName);
         }
+        EyesMaterial.SetColor("_EmissionColor", fleeColor * 1);
+
+        takingDmg = true;
         lightDmg += dmg;
         print("Applying dmg: "+dmg.ToString()+", current lightDmg value: "+lightDmg+", behaviourState: " + CurrentState.ToString());
         if (lightDmg >= maxLightDmg)
@@ -275,6 +326,33 @@ public class CreatureAI : MonoBehaviour
 
     #region Coroutines
 
+    private IEnumerator RoamingEyesAnimation()
+    {
+        float fadeAnimationTime = 2f;
+        WaitForSeconds wait = new WaitForSeconds(5f);
+        float counter = 0;
+
+        while(true)
+        {
+            while(counter < fadeAnimationTime)
+            {
+                EyesMaterial.SetColor("_EmissionColor", huntColor * (counter / fadeAnimationTime));
+                counter += Time.deltaTime;
+                yield return null;
+            }
+            while (counter > 0)
+            {
+                EyesMaterial.SetColor("_EmissionColor", huntColor * (counter / fadeAnimationTime));
+                counter -= Time.deltaTime;
+                yield return null;
+            }
+            counter = 0;
+            EyesMaterial.SetColor("_EmissionColor", huntColor * 0);
+
+            yield return wait;
+        }
+    }
+
     /// <summary>
     /// Implementation for the taking dmg from light.
     /// </summary>
@@ -322,9 +400,9 @@ public class CreatureAI : MonoBehaviour
             {
                 yield return null;
             }
-            //int randomWait = Random.Range(roamWaitMin, roamWaitMax + 1);
+            int randomWait = Random.Range(roamWaitMin, roamWaitMax + 1);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(randomWait);
         }
     }
 
@@ -353,6 +431,8 @@ public class CreatureAI : MonoBehaviour
         {
             yield return null;
         }
+
+        yield return new WaitForSeconds(1f);
 
         Roam();
     }

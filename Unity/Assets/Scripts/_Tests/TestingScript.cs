@@ -5,14 +5,17 @@ using UnityEngine.AI;
 
 public class TestingScript : MonoBehaviour
 {
-    public CreatureAI creature;
+    public Renderer renderer;
+    public Color c = Color.yellow;
+    public float intensity;
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            print("Making Creature Flee");
-            creature.Flee();
+            print("Setting intensity");
+            var m = renderer.materials[1];
+            m.SetColor("_EmissionColor", c * intensity);
         }
     }
 }
